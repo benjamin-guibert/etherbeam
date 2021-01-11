@@ -254,7 +254,7 @@ describe TokensController, type: :controller do
     describe 'when WETH' do
       let(:body) { JSON.parse(response.body) }
 
-      before { get :show, params: { address: '0xc02AAA39B223FE8D0A0E5C4F27EAD9083C756CC2' } }
+      before { get :show, params: { address: '0xC02AAA39B223FE8D0A0E5C4F27EAD9083C756CC2' } }
 
       it { is_expected.to respond_with :ok }
 

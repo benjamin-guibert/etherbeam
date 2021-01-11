@@ -16,7 +16,7 @@ class TokensController < ApplicationController
   end
 
   def show
-    if sanitized_hash == Token::WETH_HASH then show_weth
+    if sanitized_hash == sanitize_hash(Token::WETH_HASH) then show_weth
     elsif params[:list] == 'actions' then show_with_actions
     else
       show_token
@@ -26,13 +26,13 @@ class TokensController < ApplicationController
   end
 
   def show_token
-    @token = Token.with_prices.find_by_address_hash(sanitized_hash)
+    @token = Token.with_prices.find_by_sanitized_hash(sanitized_hash)
 
     render_token if @token
   end
 
   def show_with_actions
-    @token = Token.with_prices.with_actions.find_by_address_hash(sanitized_hash)
+    @token = Token.with_prices.with_actions.find_by_sanitized_hash(sanitized_hash)
 
     render_token_with_actions if @token
   end

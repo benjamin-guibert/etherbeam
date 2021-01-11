@@ -4,7 +4,7 @@ class TokenPricesController < ApplicationController
   include HashHelper
 
   def save
-    @token = Token.find_by_address_hash sanitize_hash params[:address]
+    @token = Token.find_by_sanitized_hash sanitize_hash params[:address]
 
     return head :not_found unless @token
 

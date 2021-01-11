@@ -26,20 +26,20 @@ services:
       - etherbeam
     depends_on:
       - database
-  # eth-server:
-  #   container_name: etherbeam_eth_server_dev
-  #   build: packages/eth-server/.
-  #   environment:
-  #     - NODE_ENV=development
-  #     - NODE_PORT=3002
-  #   volumes:
-  #     - ./packages/eth-server/log:/app/log:rw
-  #   ports:
-  #     - "3002:3000"
-  #   networks:
-  #     - etherbeam
-  #   depends_on:
-  #     - server
+  eth-server:
+    container_name: etherbeam_eth_server_dev
+    build: packages/eth-server/.
+    environment:
+      - NODE_ENV=development
+      - NODE_PORT=3002
+    volumes:
+      - ./packages/eth-server/log:/app/log:rw
+    ports:
+      - "3002:3000"
+    networks:
+      - etherbeam
+    depends_on:
+      - server
 
 networks:
   etherbeam:

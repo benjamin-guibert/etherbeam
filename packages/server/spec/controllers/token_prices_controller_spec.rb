@@ -5,11 +5,11 @@ require 'rails_helper'
 describe TokenPricesController, type: :controller do
   describe 'POST #save' do
     it do
-      is_expected.to route(:post, 'tokens/0x0a00000000000000000000000000000000000111/prices')
+      is_expected.to route(:post, 'tokens/0x0A00000000000000000000000000000000000111/prices')
         .to(
           controller: :token_prices,
           action: :save,
-          address: '0x0a00000000000000000000000000000000000111'
+          address: '0x0A00000000000000000000000000000000000111'
         )
     end
 
