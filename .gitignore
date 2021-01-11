@@ -1,0 +1,50 @@
+# Dependencies
+
+.bundle
+/node_modules
+/packages/*/node_modules
+/packages/*/vendor/*
+!/packages/*/vendor/.keep
+
+# Deployment
+
+/packages/*/.next
+/packages/*/dist
+/production
+
+# Tests
+
+/packages/*/coverage
+
+# Logs
+
+/packages/*/log/*
+!/packages/*/log/.keep
+*.log
+
+# Temporary files
+
+/packages/*/tmp/*
+!/packages/*/tmp/.keep
+/packages/*/tmp/pids/*
+!/packages/*/tmp/pids/
+!/packages/*/tmp/pids/.keep
+/packages/*/tmp/db/*
+!/packages/*/tmp/db/
+
+# Development storage
+
+/packages/*/storage/*
+!/packages/*/storage/.keep
+.byebug_history
+
+
+# Environment
+
+.env
+/packages/*/config/master.key
+/packages/eth-server/geth
+
+# Misc.
+
+.DS_Store

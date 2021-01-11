@@ -1,0 +1,40 @@
+name: Deploy Server
+env:
+  APP_PATH: /var/app/etherbeam
+  DOCKER_NETWORK: etherbeam-net
+
+on:
+  - workflow_dispatch
+
+jobs:
+  deploy-server:
+    name: Deploy Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST_DEV }}
+          port: ${{ secrets.SSH_PORT_DEV }}
+          username: ${{ secrets.SSH_USER_DEV }}
+          key: ${{ secrets.SSH_KEY_DEV }}
+          script_stop: true
+          script: |
+            cd ${{ env.APP_PATH }}
+            docker stop etherbeam_eth_server || true && docker rm etherbeam_eth_server || true
+            docker stop etherbeam_server || true && docker rm etherbeam_server || true
+            docker stop etherbeam_database || true && docker rm etherbeam_database || true
+            docker-compose -f docker-compose.production.yml up -d
+            install -d -m 770 -o deploy -g user ${{ env.APP_PATH }}/dump
+
+      - name: Wait & check Docker containers
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST_DEV }}
+          port: ${{ secrets.SSH_PORT_DEV }}
+          username: ${{ secrets.SSH_USER_DEV }}
+          key: ${{ secrets.SSH_KEY_DEV }}
+          script: |
+            sleep 1m
+            docker ps -a -f "network=${{ env.DOCKER_NETWORK }}" | grep Exited && exit 1 || exit 0
