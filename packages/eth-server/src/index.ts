@@ -12,7 +12,7 @@ import {
   startFetchingTransactionReceipts,
   stopFetchingTokenPrices,
   startFetchingTokenPrices,
-  subscribeToPendingTransactions,
+  // subscribeToPendingTransactions,
   unsubscribeFromPendingTransactions,
 } from './libraries/ethereum'
 
