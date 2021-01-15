@@ -1,0 +1,34 @@
+version: "3.5"
+
+services:
+  database:
+    container_name: etherbeam_database_test
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - etherbeam
+  server:
+    container_name: etherbeam_server_test
+    build: packages/server/.
+    environment:
+      - RAILS_ENV=test
+    networks:
+      - etherbeam
+    depends_on:
+      - database
+  eth-server:
+    container_name: etherbeam_eth_server_test
+    build: packages/eth-server/.
+    environment:
+      - NODE_ENV=test
+    networks:
+      - etherbeam
+    depends_on:
+      - server
+
+networks:
+  etherbeam:
+    name: etherbeam-net

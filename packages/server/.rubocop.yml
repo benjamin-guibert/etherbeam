@@ -1,0 +1,20 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/**/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "db/**/*"
+Metrics/MethodLength:
+  Exclude:
+    - "spec/**/*"
+    - "db/**/*"
+Metrics/AbcSize:
+  Exclude:
+    - "spec/**/*"
+    - "db/**/*"
+Style/Documentation:
+  Enabled: false

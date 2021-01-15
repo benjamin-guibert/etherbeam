@@ -1,0 +1,40 @@
+.app-clickable {
+  cursor: pointer;
+}
+
+.app-hover {
+  @include hover() {
+    color: $table-dark-hover-color !important;
+    background-color: $table-dark-hover-bg !important;
+  }
+}
+
+.app-w {
+  @for $i from 1 through 12 {
+    &-#{$i} {
+      width: percentage(($i * (100 / 12)) / 100) !important;
+    }
+  }
+}
+
+.app-mw {
+  max-width: 300px;
+}
+
+.app-va {
+  &-0 {
+    vertical-align: unset !important;
+  }
+
+  &-t {
+    vertical-align: top !important;
+  }
+
+  &-m {
+    vertical-align: middle !important;
+  }
+
+  &-b {
+    vertical-align: bottom !important;
+  }
+}

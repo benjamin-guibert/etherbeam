@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IconLink /> should match snapshot 1`] = `
+<a
+  class="shadow-none app-class btn btn-link"
+  href="https://url.com"
+  target="_blank"
+  title="Title"
+>
+  Content
+</a>
+`;

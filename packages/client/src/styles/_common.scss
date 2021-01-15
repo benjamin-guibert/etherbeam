@@ -1,0 +1,20 @@
+@import 'variables';
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+@import 'common/texts';
+@import 'common/misc';
+
+html,
+body {
+  height: 100%;
+}
+
+// .table {
+//   table-layout: fixed;
+// }
+
+// .table th,
+// .table td {
+//   vertical-align: middle !important;
+// }

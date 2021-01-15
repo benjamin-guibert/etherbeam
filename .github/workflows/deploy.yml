@@ -1,0 +1,134 @@
+name: Deploy
+env:
+  APP_PATH: /var/app/etherbeam
+  WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
+  SERVER_PATH: ${{env.APP_PATH}}/packages/server
+  ETH_SERVER_PATH: ${{env.APP_PATH}}/packages/eth-server
+  CLIENT_PATH: ${{env.APP_PATH}}/packages/client
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-base:
+    name: Deploy base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Copy repository to the VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "*"
+          target: "${{ env.APP_PATH }}"
+          rm: false
+
+  deploy-server:
+    name: Deploy Server
+    runs-on: ubuntu-latest
+    needs: deploy-base
+    steps:
+      - name: Build Docker container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ env.APP_PATH }}
+            docker-compose -f docker-compose.production.yml build server
+      - name: Copy repository to the VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "${{ env.SERVER_PATH}}/*"
+          target: "${{ env.APP_PATH }}"
+          rm: true
+
+  deploy-eth-sever:
+    name: Deploy Ethereum Server
+    runs-on: ubuntu-latest
+    needs: deploy-base
+    steps:
+      - name: Create Ethereum Server .env file
+        working-directory: ${{ env.ETH_SERVER_PATH }}
+        run: |
+          touch .env
+          echo ETH_PROVIDER_IPC=1 >> .env
+          echo ETH_POOL_PROVIDER_IPC=0 >> .env
+          echo ETH_POOL_PROVIDER=${{ secrets.ETH_POOL_PROVIDER }} >> .env
+      - name: Build Docker container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ env.APP_PATH }}
+            docker-compose -f docker-compose.production.yml build eth-server
+      - name: Copy repository to the VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "${{ env.ETH_SERVER_PATH}}/*"
+          target: "${{ env.APP_PATH }}"
+          rm: true
+
+  deploy-client:
+    name: Deploy Client
+    runs-on: ubuntu-latest
+    needs: deploy-base
+    steps:
+      - name: Create Client .env file
+        working-directory: ${{ env.CLIENT_PATH }}
+        run: echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
+
+      - name: Get the Node version
+        id: node
+        working-directory: ${{ env.CLIENT_PATH }}
+        run: echo "::set-output name=NODE_VERSION::$(cat .node-version)"
+
+      - name: Set up Node ${{ steps.node.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.node.outputs.NODE_VERSION }}"
+
+      - name: Install root dependencies
+        run: yarn install --non-interactive
+
+      - name: Install client dependencies
+        working-directory: ${{ env.CLIENT_PATH }}
+        run: yarn install --non-interactive
+
+      - name: Build distribution
+        working-directory: ${{ env.CLIENT_PATH }} }}
+        run: |
+          yarn build
+          ls -halrt dist
+
+      - name: Copy repository to the VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "${{ env.CLIENT_PATH}}/*"
+          target: "${{ env.APP_PATH }}"
+          rm: true
