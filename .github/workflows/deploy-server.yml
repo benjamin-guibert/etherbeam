@@ -15,10 +15,10 @@ jobs:
       - name: Deploy Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
             cd ${{ env.APP_PATH }}
@@ -31,10 +31,10 @@ jobs:
       - name: Wait & check Docker containers
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             sleep 1m
             docker ps -a -f "network=${{ env.DOCKER_NETWORK }}" | grep Exited && exit 1 || exit 0

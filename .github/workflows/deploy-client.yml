@@ -15,15 +15,13 @@ jobs:
       WORKING_DIRECTORY: packages/client
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
       - name: Deploy client
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
             sudo rm -rf ${{ env.WWW_PATH }}/*

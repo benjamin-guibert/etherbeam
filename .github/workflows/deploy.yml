@@ -1,7 +1,7 @@
 name: Deploy
 env:
   APP_PATH: /var/app/etherbeam
-  WWW_PATH: /var/www/${{ secrets.NGINX_NAME_DEV }}
+  WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
   SERVER_PATH: ${{env.APP_PATH}}/packages/server
   ETH_SERVER_PATH: ${{env.APP_PATH}}/packages/eth-server
   CLIENT_PATH: ${{env.APP_PATH}}/packages/client
@@ -21,10 +21,10 @@ jobs:
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           source: "*"
           target: "${{ env.APP_PATH }}"
           rm: false
@@ -37,10 +37,10 @@ jobs:
       - name: Build Docker container
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
             cd ${{ env.APP_PATH }}
@@ -48,10 +48,10 @@ jobs:
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           source: "${{ env.SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
           rm: true
@@ -67,14 +67,14 @@ jobs:
           touch .env
           echo ETH_PROVIDER_IPC=1 >> .env
           echo ETH_POOL_PROVIDER_IPC=0 >> .env
-          echo ETH_POOL_PROVIDER=${{ secrets.ETH_POOL_PROVIDER_DEV }} >> .env
+          echo ETH_POOL_PROVIDER=${{ secrets.ETH_POOL_PROVIDER }} >> .env
       - name: Build Docker container
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           script_stop: true
           script: |
             cd ${{ env.APP_PATH }}
@@ -82,10 +82,10 @@ jobs:
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           source: "${{ env.ETH_SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
           rm: true
@@ -97,7 +97,7 @@ jobs:
     steps:
       - name: Create Client .env file
         working-directory: ${{ env.CLIENT_PATH }}
-        run: echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST_DEV }} >> .env
+        run: echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
 
       - name: Get the Node version
         id: node
@@ -125,10 +125,10 @@ jobs:
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSH_HOST_DEV }}
-          port: ${{ secrets.SSH_PORT_DEV }}
-          username: ${{ secrets.SSH_USER_DEV }}
-          key: ${{ secrets.SSH_KEY_DEV }}
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
           source: "${{ env.CLIENT_PATH}}/*"
           target: "${{ env.APP_PATH }}"
           rm: true
