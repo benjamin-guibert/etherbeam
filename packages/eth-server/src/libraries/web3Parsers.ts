@@ -24,14 +24,13 @@ const decodeContractMethodData = (
   const method = (contract.web3 as any)._jsonInterface // eslint-disable-line @typescript-eslint/no-explicit-any
     .find((method: { signature: string }) => method.signature == methodId)
 
+  if (!method) return null
+
   let values = undefined
   if (topics) {
     const selectedTopics = method.anonymous ? topics : topics.slice(1)
     values = web3.eth.abi.decodeLog(method.inputs, data.slice(2), selectedTopics)
   } else {
-    const methodId = data.slice(0, 10)
-    const method = (contract.web3 as any)._jsonInterface // eslint-disable-line @typescript-eslint/no-explicit-any
-      .find((method: { signature: string }) => method.signature == methodId)
     values = web3.eth.abi.decodeParameters(method.inputs, data.slice(10))
   }
 
@@ -58,9 +57,10 @@ const decodeTransactionActionData = (
   try {
     transaction.action = decodeContractMethodData(to, input, data)
   } catch (error) {
+    if (transaction.status == TransactionStatus.cancelled) return
+
     transaction.systemLogs.push({ type: LogType.Error, message: 'Error while decoding action data.' })
-    logger.error('Error while decoding action data.')
-    logger.error(error.message)
+    logger.error(`Error while decoding action data for transaction ${transaction.hash}.`)
     logger.error(error.stack)
   }
 }
@@ -78,9 +78,10 @@ const decodeTransactionLogsData = (
       })
     )
   } catch (error) {
+    if (transaction.status == TransactionStatus.cancelled) return
+
     transaction.systemLogs.push({ type: LogType.Error, message: 'Error while decoding log data.' })
-    logger.error('Error while decoding log data.')
-    logger.error(error.message)
+    logger.error(`Error while decoding log data for transaction ${transaction.hash}.`)
     logger.error(error.stack)
   }
 }

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Difference /> Hour should match snapshot 1`] = `
+<span
+  class="text-monospace badge badge-secondary"
+>
+  <span
+    class="mr-2"
+  >
+    1H
+  </span>
+  +0 %
+</span>
+`;

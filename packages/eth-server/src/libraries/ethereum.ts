@@ -1,7 +1,7 @@
 import { getLogger } from './logger'
 import fs from 'fs'
 import Web3 from 'web3'
-import { getAddressHashesFromTransaction, isTransactionWatched, sleep, tryAction } from './helpers'
+import { isTransactionWatched, sleep, tryAction } from './helpers'
 import { Contract, ContractType, Token, Transaction, WETH_HASH } from './types'
 import {
   fetchContracts,
@@ -161,15 +161,6 @@ const trySaveTransactions = async (transactions: Transaction[]): Promise<boolean
   return !!result
 }
 
-const isTransactionWatched2 = (transaction: Transaction, contracts: Contract[]): boolean => {
-  const tokenHashes = contracts
-    .filter((contract) => contract.type == ContractType.Token)
-    .map((token) => token.sanitizedHash)
-  const transactionHashes = getAddressHashesFromTransaction(transaction).filter((hash) => hash != WETH_HASH)
-
-  return transactionHashes.some((hash) => tokenHashes.includes(hash))
-}
-
 const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise<void> => {
   logger.debug(`New block header received: #${blockHeader.number}.`)
 
@@ -177,7 +168,8 @@ const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise
 
   if (!transactions) return
 
-  const filteredTransactions = transactions.filter((transaction) => isTransactionWatched2(transaction, data.contracts))
+  const filteredTransactions = transactions.filter((transaction) => isTransactionWatched(transaction, data.contracts))
+
   if (!filteredTransactions.length) return
 
   const result = await trySaveTransactions(filteredTransactions)

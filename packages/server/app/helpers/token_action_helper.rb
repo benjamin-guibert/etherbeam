@@ -4,21 +4,25 @@ module TokenActionHelper
   include HashHelper
 
   def parse_transaction_token_actions(block_transaction)
-    action = block_transaction.transaction_method_action
-    logs = block_transaction.transaction_method_logs.to_a
+    return unless block_transaction.validated?
 
+    action = block_transaction.transaction_method_action
     return unless action
 
-    begin
-      create_token_actions block_transaction, action, logs
-    rescue StandardError => e
-      block_transaction.add_log 'Error while parsing token actions.', type: :error
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-    end
+    logs = block_transaction.transaction_method_logs.to_a
+
+    try_create_token_actions(block_transaction, action, logs)
   end
 
   private
+
+  def try_create_token_actions(block_transaction, action, logs)
+    create_token_actions block_transaction, action, logs
+  rescue StandardError => e
+    block_transaction.add_log 'Error while parsing token actions.', type: :error
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
+  end
 
   def create_token_actions(block_transaction, action, logs)
     method_name = action.name
@@ -55,13 +59,14 @@ module TokenActionHelper
 
   def create_swap_token_actions(block_transaction, action, logs)
     pathes = parameter_by_name(action.parameters, 'path').addresses
-
+    # binding.pry
     pathes[0..-2].each do |path|
       create_swap_token_action block_transaction, logs, pathes, path
     end
   end
 
   def create_swap_token_action(block_transaction, logs, pathes, path)
+    # binding.pry
     next_path = next_path(pathes, path)
     action_params = {
       block_transaction: block_transaction, holder_address_hash: block_transaction.from_address_hash,

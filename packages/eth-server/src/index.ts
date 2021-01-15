@@ -39,7 +39,7 @@ try {
     forever(
       () => {
         subscribeToNewBlocks(data)
-        subscribeToPendingTransactions(data)
+        //subscribeToPendingTransactions(data)
         startFetchingTokenPrices(data)
         startFetchingTransactionReceipts(data)
 

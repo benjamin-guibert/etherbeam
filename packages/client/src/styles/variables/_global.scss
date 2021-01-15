@@ -1,0 +1,33 @@
+$app-space-1: ($spacer * 0.25);
+$app-space-2: ($spacer * 0.5);
+$app-space-3: $spacer;
+$app-space-4: ($spacer * 1.5);
+$app-space-5: ($spacer * 3);
+
+$app-size-xs: 0.75em;
+$app-size-sm: 0.975em;
+$app-size-m: 1em;
+$app-size-lg: 1.33em;
+
+$app-size-2: 2em;
+$app-size-3: 3em;
+$app-size-4: 4em;
+$app-size-5: 5em;
+$app-size-6: 6em;
+$app-size-7: 7em;
+$app-size-8: 8em;
+$app-size-9: 9em;
+$app-size-10: 10em;
+
+$app-rs-1: percentage((1 * (100 / 12)) / 100);
+$app-rs-2: percentage((2 * (100 / 12)) / 100);
+$app-rs-3: 25%;
+$app-rs-4: percentage((4 * (100 / 12)) / 100);
+$app-rs-5: percentage((5 * (100 / 12)) / 100);
+$app-rs-6: 50%;
+$app-rs-7: percentage((7 * (100 / 12)) / 100);
+$app-rs-8: percentage((8 * (100 / 12)) / 100);
+$app-rs-9: 75%;
+$app-rs-10: percentage((10 * (100 / 12)) / 100);
+$app-rs-11: percentage((11 * (100 / 12)) / 100);
+$app-rs-12: 100%;

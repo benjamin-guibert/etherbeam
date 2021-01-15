@@ -1,4 +1,4 @@
-import { Contract, ContractType, Transaction, WETH_HASH } from './types'
+import { Contract, ContractType, Transaction, USDC_HASH, WETH_HASH } from './types'
 import uniq from 'lodash/uniq'
 
 export const sleep = (milliseconds: number, callback?: () => void): Promise<void> => {
@@ -60,9 +60,11 @@ export const getAddressHashesFromTransaction = ({ from, to, action }: Transactio
 }
 
 export const isTransactionWatched = (transaction: Transaction, contracts: Contract[]): boolean => {
+  const ignoredHashes = [WETH_HASH, USDC_HASH]
   const tokenHashes = contracts
-    .filter((contract) => contract.type == ContractType.Token)
+    .filter((contract) => contract.type == ContractType.Token && !ignoredHashes.includes(contract.hash))
     .map((token) => token.sanitizedHash)
-  const transactionHashes = getAddressHashesFromTransaction(transaction).filter((hash) => hash != WETH_HASH)
+  const transactionHashes = getAddressHashesFromTransaction(transaction)
+
   return transactionHashes.some((hash) => tokenHashes.includes(hash))
 }

@@ -1,0 +1,23 @@
+.app-text {
+  &-xs {
+    font-size: $app-size-xs !important;
+  }
+
+  &-sm {
+    font-size: $app-size-sm !important;
+  }
+
+  &-m {
+    font-size: $app-size-m !important;
+  }
+
+  &-lg {
+    font-size: $app-size-lg !important;
+  }
+
+  @for $i from 2 through 10 {
+    &-#{$i} {
+      font-size: #{$i}em !important;
+    }
+  }
+}

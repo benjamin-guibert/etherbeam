@@ -7,7 +7,7 @@ import {
   isTransactionWatched,
 } from 'libraries/helpers'
 import { createTransaction, createContract, createToken } from '../../../tests/fixtures/libraries/ethereum'
-import { WETH_HASH } from 'libraries/types'
+import { USDC_HASH, WETH_HASH } from 'libraries/types'
 
 describe('Sleep', () => {
   let result = undefined
@@ -328,6 +328,17 @@ describe('Is transaction watched', () => {
     beforeAll(() => {
       const transaction = createTransaction()
       transaction.from = WETH_HASH
+
+      result = isTransactionWatched(transaction, contracts)
+    })
+
+    it('should return result', () => expect(result).toBeFalsy())
+  })
+
+  describe('USDC', () => {
+    beforeAll(() => {
+      const transaction = createTransaction()
+      transaction.from = USDC_HASH
 
       result = isTransactionWatched(transaction, contracts)
     })

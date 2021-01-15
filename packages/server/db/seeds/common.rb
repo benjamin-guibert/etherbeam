@@ -13,6 +13,19 @@ Token.create!(
   telegram: 'https://t.me/radar_relay'
 )
 
+Token.create!(
+  address_hash: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+  address_type: :token,
+  label: 'USD Coin (USDC)',
+  abi: JSON.dump(JSON.parse(File.read('db/seeds/abis/usdc.json'))),
+  name: 'USD Coin',
+  symbol: 'USDC',
+  decimals: 6,
+  website: 'https://www.centre.io/',
+  whitepaper: 'https://www.centre.io/pdfs/centre-whitepaper.pdf',
+  github: 'https://github.com/centrehq'
+)
+
 Contract.create!(
   address_hash: '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D',
   address_type: :contract,

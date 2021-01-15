@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Toaster /> With toasts should match snapshot 1`] = `
+<div
+  class="fixed-top m-3"
+>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="fade toast ml-auto bg-danger show"
+    role="alert"
+  >
+    <div
+      class="toast-header"
+    >
+      <strong
+        class="mr-auto"
+      >
+        Error
+      </strong>
+      <button
+        class="close ml-2 mb-1"
+        data-dismiss="toast"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+        <span
+          class="sr-only"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+    <div
+      class="toast-body"
+    >
+      Message 1
+    </div>
+  </div>
+  <div
+    aria-atomic="true"
+    aria-live="assertive"
+    class="fade toast ml-auto bg-danger show"
+    role="alert"
+  >
+    <div
+      class="toast-header"
+    >
+      <strong
+        class="mr-auto"
+      >
+        Error
+      </strong>
+      <button
+        class="close ml-2 mb-1"
+        data-dismiss="toast"
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+        <span
+          class="sr-only"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+    <div
+      class="toast-body"
+    >
+      Message 2
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Toaster /> Without toasts should match snapshot 1`] = `
+<div
+  class="fixed-top m-3"
+/>
+`;

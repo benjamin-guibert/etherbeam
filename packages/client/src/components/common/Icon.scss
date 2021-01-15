@@ -1,0 +1,36 @@
+@import 'styles/variables';
+
+.app-icon {
+  &-xs {
+    width: $app-size-xs;
+    height: $app-size-xs;
+  }
+
+  &-sm {
+    width: $app-size-sm;
+    height: $app-size-sm;
+  }
+
+  &-m {
+    width: $app-size-m;
+    height: $app-size-m;
+  }
+
+  &-lg {
+    width: $app-size-lg;
+    height: $app-size-lg;
+    vertical-align: -25%;
+  }
+
+  &-max {
+    width: 100%;
+    height: 100%;
+  }
+
+  @for $i from 2 through 10 {
+    &-#{$i} {
+      width: #{$i}em;
+      height: #{$i}em;
+    }
+  }
+}

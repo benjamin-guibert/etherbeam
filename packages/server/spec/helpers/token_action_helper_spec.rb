@@ -8,7 +8,10 @@ describe TokenActionHelper, type: :helper do
       let(:token) { create :token }
       let(:wallet) { create :address, :wallet }
       let(:block_transaction) do
-        create :block_transaction_mined, from_address_hash: wallet.address_hash, to_address_hash: token.address_hash
+        create :block_transaction_mined,
+               status: :validated,
+               from_address_hash: wallet.address_hash,
+               to_address_hash: token.address_hash
       end
       let(:transaction_method) do
         create :transaction_method, block_transaction: block_transaction, contract: token, name: 'approve'
@@ -41,8 +44,10 @@ describe TokenActionHelper, type: :helper do
       let(:wallet) { create :address, :wallet }
       let(:other_wallet) { create :address, :wallet }
       let(:block_transaction) do
-        block_transaction = create :block_transaction_mined, from_address_hash: wallet.address_hash,
-                                                             to_address_hash: token.address_hash
+        block_transaction = create :block_transaction_mined,
+                                   status: :validated,
+                                   from_address_hash: wallet.address_hash,
+                                   to_address_hash: token.address_hash
         transaction_method = create :transaction_method, block_transaction: block_transaction, contract: token,
                                                          name: 'transfer'
         address_parameter = create :transaction_method_parameter, transaction_method: transaction_method, index: 0,
@@ -85,8 +90,10 @@ describe TokenActionHelper, type: :helper do
       let(:wallet) { create :address, :wallet }
       let(:other_contract) { create :contract }
       let(:block_transaction) do
-        block_transaction = create :block_transaction_mined, from_address_hash: wallet.address_hash,
-                                                             to_address_hash: token.address_hash
+        block_transaction = create :block_transaction_mined,
+                                   status: :validated,
+                                   from_address_hash: wallet.address_hash,
+                                   to_address_hash: token.address_hash
         transaction_method = create :transaction_method, block_transaction: block_transaction, contract: contract,
                                                          name: 'swap'
         path_parameter = create :transaction_method_parameter, transaction_method: transaction_method, index: 0,
@@ -151,7 +158,7 @@ describe TokenActionHelper, type: :helper do
 
     context 'when unknown' do
       let(:block_transaction) do
-        block_transaction = create :block_transaction_mined
+        block_transaction = create :block_transaction_mined, status: :validated
         create :transaction_method, block_transaction: block_transaction
 
         block_transaction.reload
@@ -166,8 +173,20 @@ describe TokenActionHelper, type: :helper do
       it { expect(block_transaction.logs.count).to eq 1 }
     end
 
-    context 'when none' do
-      let(:block_transaction) { create :block_transaction }
+    context 'when canceled' do
+      let(:block_transaction) { create :block_transaction_with_action, status: :cancelled }
+
+      before do
+        parse_transaction_token_actions block_transaction
+        block_transaction.reload
+      end
+
+      it { expect(block_transaction.transaction_actions.count).to eq 0 }
+      it { expect(block_transaction.logs.count).to eq 0 }
+    end
+
+    context 'when no action' do
+      let(:block_transaction) { create :block_transaction_mined, status: :validated }
 
       before do
         parse_transaction_token_actions block_transaction

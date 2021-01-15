@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TransactionActionsList /> should match snapshot 1`] = `
+Array [
+  <h2>
+    Actions
+  </h2>,
+  <table
+    class="shadow-lg table table-dark table-sm table-striped"
+  >
+    <thead>
+      <tr
+        class="text-center"
+      >
+        <th />
+        <th>
+          Action
+        </th>
+        <th>
+          Time
+        </th>
+        <th
+          class="d-none d-sm-table-cell"
+        >
+          Holder
+        </th>
+        <th />
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+]
+`;

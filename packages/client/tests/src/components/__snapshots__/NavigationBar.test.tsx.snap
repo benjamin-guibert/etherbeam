@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavigationBar /> should match snapshot 1`] = `
+<nav
+  class="mb-4 navbar navbar-expand navbar-light bg-light"
+>
+  <a
+    class="navbar-brand"
+    href="/"
+    id="navbar-home"
+  >
+    <img
+      alt=""
+      class="app-icon app-icon-lg"
+      src=""
+    />
+    Etherbeam
+  </a>
+  <button
+    aria-controls="navbar-nav"
+    aria-label="Toggle navigation"
+    class="navbar-toggler collapsed"
+    type="button"
+  >
+    <span
+      class="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    class="navbar-collapse collapse"
+    id="navbar-nav"
+  >
+    <a
+      class="nav-link"
+      href="/tokens"
+      id="navbar-nav-tokens"
+    >
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-dot-circle fa-w-16 fa-lg mr-1"
+        data-icon="dot-circle"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        viewBox="0 0 512 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm80 248c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80z"
+          fill="currentColor"
+        />
+      </svg>
+      Tokens
+    </a>
+  </div>
+</nav>
+`;

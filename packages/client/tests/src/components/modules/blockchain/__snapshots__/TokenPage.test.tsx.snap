@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TokenPage /> No price history should match snapshot 1`] = `
+<div
+  class="text-center "
+>
+  <div
+    class="text-center m-1 spinner-border text-secondary"
+    role="status"
+  >
+    <span
+      class="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<TokenPage /> No price should match snapshot 1`] = `
+<div
+  class="text-center "
+>
+  <div
+    class="text-center m-1 spinner-border text-secondary"
+    role="status"
+  >
+    <span
+      class="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<TokenPage /> Unknown should match snapshot 1`] = `
+<div
+  class="text-center "
+>
+  <div
+    class="text-center m-1 spinner-border text-secondary"
+    role="status"
+  >
+    <span
+      class="sr-only"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<TokenPage /> Valid should match snapshot 1`] = `
+<div
+  class="container"
+>
+  <h1>
+    Token
+  </h1>
+  <div
+    class="row"
+  >
+    <div
+      class="my-auto d-none d-lg-inline col"
+    >
+      <a
+        class="p-0 app-text-m  btn btn-link"
+        href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        target="_blank"
+      >
+        <span
+          class="text-monospace"
+        >
+          0x0000000000000000000000000000000000000111
+        </span>
+      </a>
+    </div>
+    <div
+      class="my-auto d-none d-sm-inline d-lg-none col"
+    >
+      <a
+        class="p-0 app-text-m  btn btn-link"
+        href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        target="_blank"
+      >
+        <span
+          class="text-monospace"
+        >
+          0x0000...0111
+        </span>
+      </a>
+    </div>
+    <div
+      class="ml-auto text-sm-right col"
+    />
+  </div>
+  <div
+    class="app-text-lg my-3"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="text-monospace col"
+      >
+        <span
+          class="d-none d-sm-inline text-muted"
+        >
+          TKN 1 = 
+        </span>
+        ETH NaN
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="my-auto col"
+      >
+        <span
+          class="text-monospace badge badge-success"
+        >
+          <span
+            class="mr-2"
+          >
+            1H
+          </span>
+          +100 %
+        </span>
+      </div>
+      <div
+        class="my-auto col"
+      >
+        <span
+          class="text-monospace badge badge-danger"
+        >
+          <span
+            class="mr-2"
+          >
+            1D
+          </span>
+          -50 %
+        </span>
+      </div>
+      <div
+        class="my-auto col"
+      >
+        <span
+          class="text-monospace badge badge-danger"
+        >
+          <span
+            class="mr-2"
+          >
+            1W
+          </span>
+          -75 %
+        </span>
+      </div>
+      <div
+        class="my-auto col"
+      >
+        <span
+          class="text-monospace badge badge-secondary"
+        >
+          <span
+            class="mr-2"
+          >
+            1M
+          </span>
+          +0 %
+        </span>
+      </div>
+      <div
+        class="my-auto col"
+      >
+        <span
+          class="text-monospace badge badge-success"
+        >
+          <span
+            class="mr-2"
+          >
+            1Y
+          </span>
+          +300 %
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
