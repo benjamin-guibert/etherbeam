@@ -2,9 +2,9 @@ name: Deploy
 env:
   APP_PATH: /var/app/etherbeam
   WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
-  SERVER_PATH: ${{env.APP_PATH}}/packages/server
-  ETH_SERVER_PATH: ${{env.APP_PATH}}/packages/eth-server
-  CLIENT_PATH: ${{env.APP_PATH}}/packages/client
+  SERVER_PATH: /var/app/etherbeam/packages/server
+  ETH_SERVER_PATH: /var/app/etherbeam/packages/eth-server
+  CLIENT_PATH: /var/app/etherbeam/packages/client
 
 on:
   push:
