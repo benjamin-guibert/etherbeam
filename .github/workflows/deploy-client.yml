@@ -1,8 +1,4 @@
 name: Deploy Client
-env:
-  WWW_USER: www-data
-  APP_PATH: /var/app/etherbeam
-  WWW_PATH: /var/www/${{ secrets.NGINX_NAME_DEV }}
 
 on:
   - workflow_dispatch
@@ -11,8 +7,12 @@ jobs:
   deploy-client:
     name: Deploy Client
     runs-on: ubuntu-latest
+    environment: development
     env:
+      APP_PATH: /var/app/etherbeam
       WORKING_DIRECTORY: packages/client
+      WWW_USER: www-data
+      WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
 
     steps:
       - name: Deploy client

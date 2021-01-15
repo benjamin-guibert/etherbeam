@@ -1,7 +1,6 @@
-name: Deploy
+name: Deploy Build
 env:
   APP_PATH: /var/app/etherbeam
-  WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
   SERVER_PATH: /var/app/etherbeam/packages/server
   ETH_SERVER_PATH: /var/app/etherbeam/packages/eth-server
   CLIENT_PATH: /var/app/etherbeam/packages/client
@@ -15,6 +14,8 @@ jobs:
   deploy-base:
     name: Deploy base
     runs-on: ubuntu-latest
+    environment: development
+
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -30,9 +31,11 @@ jobs:
           rm: false
 
   deploy-server:
-    name: Deploy Server
+    name: Deploy Server build
     runs-on: ubuntu-latest
+    environment: development
     needs: deploy-base
+
     steps:
       - name: Build Docker container
         uses: appleboy/ssh-action@master
@@ -57,9 +60,11 @@ jobs:
           rm: true
 
   deploy-eth-sever:
-    name: Deploy Ethereum Server
+    name: Deploy Ethereum Server build
     runs-on: ubuntu-latest
+    environment: development
     needs: deploy-base
+
     steps:
       - name: Create Ethereum Server .env file
         working-directory: ${{ env.ETH_SERVER_PATH }}
@@ -91,9 +96,11 @@ jobs:
           rm: true
 
   deploy-client:
-    name: Deploy Client
+    name: Deploy Client build
     runs-on: ubuntu-latest
+    environment: development
     needs: deploy-base
+
     steps:
       - name: Create Client .env file
         working-directory: ${{ env.CLIENT_PATH }}

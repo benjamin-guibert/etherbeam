@@ -10,6 +10,7 @@ jobs:
   deploy-server:
     name: Deploy Server
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
       - name: Deploy Server
