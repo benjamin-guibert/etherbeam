@@ -37,6 +37,7 @@ Rails.application.configure do
     IPAddr.new('0.0.0.0/0'),
     IPAddr.new('::/0'),
     'localhost',
-    'server'
+    'server',
+    'etherbeam-server'
   ]
 end

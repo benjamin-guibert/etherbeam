@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-Rails.application.configure do # rubocop:disable Metrics/BlockLength
+Rails.application.configure do
   config.cache_classes = false
-
   config.eager_load = false
 
   config.consider_all_requests_local = true
@@ -36,9 +35,5 @@ Rails.application.configure do # rubocop:disable Metrics/BlockLength
 
   config.debug_exception_response_format = :default
 
-  config.hosts = [
-    IPAddr.new('0.0.0.0/0'),
-    IPAddr.new('::/0'),
-    'localhost'
-  ]
+  config.hosts = '*'
 end
