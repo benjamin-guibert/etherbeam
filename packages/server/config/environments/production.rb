@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  config.secret_key_base = '<%= ENV["SECRET_KEY_BASE"] %>'
+
   config.cache_classes = true
 
   config.eager_load = true
@@ -12,6 +14,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   config.log_level = :info
+
   config.log_tags = [:request_id]
 
   config.action_mailer.perform_caching = false
