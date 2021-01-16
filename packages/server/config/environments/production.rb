@@ -36,6 +36,7 @@ Rails.application.configure do
   config.hosts = [
     IPAddr.new('0.0.0.0/0'),
     IPAddr.new('::/0'),
-    'localhost'
+    'localhost',
+    'server'
   ]
 end
