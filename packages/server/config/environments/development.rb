@@ -35,11 +35,6 @@ Rails.application.configure do
 
   config.debug_exception_response_format = :default
 
-  config.hosts = [
-    IPAddr.new('0.0.0.0/0'),
-    IPAddr.new('::/0'),
-    'localhost',
-    'server',
-    'etherbeam-server'
-  ]
+  config.hosts = [IPAddr.new('0.0.0.0/0'), IPAddr.new('::/0'),
+                  'localhost', 'server', 'etherbeam-server']
 end
