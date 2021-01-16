@@ -132,7 +132,7 @@ jobs:
         run: yarn install --non-interactive
 
       - name: Build distribution
-        working-directory: ${{ env.CLIENT_PATH }} }}
+        working-directory: ${{ env.CLIENT_PATH }}
         run: |
           yarn build
           ls -halrt dist
