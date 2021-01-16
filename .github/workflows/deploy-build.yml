@@ -1,9 +1,9 @@
 name: Deploy Build
 env:
   APP_PATH: /var/app/etherbeam
-  SERVER_PATH: /var/app/etherbeam/packages/server
-  ETH_SERVER_PATH: /var/app/etherbeam/packages/eth-server
-  CLIENT_PATH: /var/app/etherbeam/packages/client
+  SERVER_PATH: packages/server
+  ETH_SERVER_PATH: packages/eth-server
+  CLIENT_PATH: packages/client
 
 on:
   push:
@@ -104,7 +104,9 @@ jobs:
     steps:
       - name: Create Client .env file
         working-directory: ${{ env.CLIENT_PATH }}
-        run: echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
+        run: |
+          touch .env
+          echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
 
       - name: Get the Node version
         id: node
