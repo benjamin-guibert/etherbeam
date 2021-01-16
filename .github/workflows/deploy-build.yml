@@ -28,7 +28,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "*"
           target: "${{ env.APP_PATH }}"
-          rm: false
+          rm: true
 
   deploy-server:
     name: Deploy Server build
@@ -59,7 +59,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "${{ env.SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
-          rm: true
+          rm: false
 
   deploy-eth-sever:
     name: Deploy Ethereum Server build
@@ -97,7 +97,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "${{ env.ETH_SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
-          rm: true
+          rm: false
 
   deploy-client:
     name: Deploy Client build
@@ -146,4 +146,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "${{ env.CLIENT_PATH}}/*"
           target: "${{ env.APP_PATH }}"
-          rm: true
+          rm: false
