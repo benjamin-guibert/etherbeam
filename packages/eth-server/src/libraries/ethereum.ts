@@ -162,7 +162,7 @@ const trySaveTransactions = async (transactions: Transaction[]): Promise<boolean
 }
 
 const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise<void> => {
-  logger.debug(`New block header received: #${blockHeader.number}.`)
+  logger.info(`New block header received: #${blockHeader.number}.`)
 
   const transactions = await tryFetchBlockTransactions(blockHeader.number, data)
 
@@ -170,7 +170,10 @@ const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise
 
   const filteredTransactions = transactions.filter((transaction) => isTransactionWatched(transaction, data.contracts))
 
-  if (!filteredTransactions.length) return
+  if (!filteredTransactions.length) {
+    logger.info(`No transaction to save from ${transactions} transactions in block #${blockHeader.number}.`)
+    return
+  }
 
   const result = await trySaveTransactions(filteredTransactions)
 
