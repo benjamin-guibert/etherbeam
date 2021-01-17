@@ -54,19 +54,17 @@ const TokensPage = ({ addToast }: TokensPageProps): ReactElement => {
               <thead className="text-center">
                 <tr>
                   <th className="d-none d-sm-table-cell">Name</th>
-                  <th>Symbol</th>
                   <th>Price (Ether)</th>
                   <th className="d-none d-md-table-cell">Address</th>
                 </tr>
               </thead>
               <tbody>
                 {tokens.map((token, index) => {
-                  const { hash, name, symbol, price, priceHistory } = token
+                  const { hash, name, price, priceHistory } = token
 
                   return (
                     <tr key={index} className="app-clickable" onClick={() => history.push('/tokens/' + hash)}>
                       <td className="d-none d-sm-table-cell">{name}</td>
-                      <td className="text-monospace text-center">{symbol}</td>
                       <td className="text-monospace">
                         <Row>
                           <Col>{price ? printEtherAmount(price) : '--'}</Col>

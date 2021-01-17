@@ -3,13 +3,14 @@ import { MemoryRouter, Route } from 'react-router-dom'
 import { mount, ReactWrapper } from 'enzyme'
 import { mocked } from 'ts-jest/utils'
 import { act } from 'react-dom/test-utils'
-import { clearMocks } from '../../../../helpers'
+import { clearMocks, mockTradingViewWidget } from '../../../../helpers'
 import { createToken } from '../../../../fixtures/ethereum'
-import TokenPage from 'components/modules/blockchain/TokenPage'
 
 jest.mock('libraries/ethereum/server')
+mockTradingViewWidget()
 
 import { fetchToken } from 'libraries/ethereum/server'
+import TokenPage from 'components/modules/blockchain/TokenPage'
 
 const fetchTokenMock = mocked(fetchToken)
 const addToast = jest.fn()

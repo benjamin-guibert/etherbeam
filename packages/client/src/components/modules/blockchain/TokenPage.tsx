@@ -24,6 +24,7 @@ import { Token, TransactionActionType } from 'libraries/ethereum/types'
 import { fetchToken } from 'libraries/ethereum/server'
 import Page from 'components/common/Page'
 import TransactionActionsList from './TransactionActionsList'
+import TokenChart from 'components/common/TokenChart'
 
 const FETCH_TOKEN_INTERVAL = 30 * 1000
 
@@ -136,6 +137,7 @@ const TokenPage = ({ addToast }: TokenPageProps): ReactElement => {
                 )}
               </div>
             )}
+            <TokenChart symbol={symbol} height={300} />
             {!!filteredActions?.length && <TransactionActionsList actions={filteredActions} />}
           </>
         </Page>
