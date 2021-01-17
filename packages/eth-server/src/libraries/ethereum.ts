@@ -171,7 +171,7 @@ const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise
   const filteredTransactions = transactions.filter((transaction) => isTransactionWatched(transaction, data.contracts))
 
   if (!filteredTransactions.length) {
-    logger.info(`No transaction to save from ${transactions} transactions in block #${blockHeader.number}.`)
+    logger.info(`No transaction to save from ${transactions.length} transactions in block #${blockHeader.number}.`)
     return
   }
 
