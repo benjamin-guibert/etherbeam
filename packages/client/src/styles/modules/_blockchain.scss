@@ -1,0 +1,10 @@
+@use '../resources/fonts';
+
+.my-symbol {
+  font-family: fonts.$primary;
+  font-weight: bold;
+}
+
+.my-amount {
+  font-family: fonts.$monospace;
+}

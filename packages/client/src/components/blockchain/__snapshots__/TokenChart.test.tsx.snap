@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TokenChart /> Default should match snapshot 1`] = `
+<div
+  class="my-shadow w-100 h-100"
+>
+  <article />
+</div>
+`;

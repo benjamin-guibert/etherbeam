@@ -1,0 +1,6 @@
+@use '../styles/resources/sizes';
+
+.my-badge {
+  border-radius: sizes.$border-radius-s;
+  padding: 0px sizes.$space-xs;
+}

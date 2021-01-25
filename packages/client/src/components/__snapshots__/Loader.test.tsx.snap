@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> Spinner should match snapshot 1`] = `
+<div
+  class="my-loader"
+>
+  <div
+    class="my-loader-spinner"
+  />
+</div>
+`;

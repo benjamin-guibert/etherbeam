@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaginationItem /> Default should match snapshot 1`] = `
+<li>
+  <a
+    class="my-link"
+    tabindex="0"
+    title="Page 5"
+  >
+    5
+  </a>
+</li>
+`;

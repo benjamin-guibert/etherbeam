@@ -1,0 +1,7 @@
+@use '../../styles/resources/fonts';
+@use '../../styles/resources/sizes';
+
+.my-address-hash {
+  font-family: fonts.$monospace;
+  margin: sizes.$space-s;
+}

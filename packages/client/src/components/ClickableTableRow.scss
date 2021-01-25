@@ -1,0 +1,9 @@
+@use '../styles/resources/colors';
+
+.my-clickabletablerow {
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten(colors.$bg-dark-3, percentage(colors.$variant-1));
+  }
+}

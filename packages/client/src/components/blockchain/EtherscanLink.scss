@@ -1,0 +1,17 @@
+@use '../../styles/resources/sizes';
+
+.my-etherscanlink-img {
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: sizes.$border-radius;
+  vertical-align: middle;
+  padding: 1px;
+  width: sizes.$size;
+  height: sizes.$size;
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+  }
+}

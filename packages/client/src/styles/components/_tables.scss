@@ -1,0 +1,19 @@
+@use '../resources/colors';
+@use '../resources/sizes';
+
+table {
+  background-color: colors.$bg-dark-2;
+  border-collapse: collapse;
+  width: 100%;
+  padding: sizes.$space;
+
+  tbody tr:nth-child(odd) {
+    background-color: lighten(colors.$bg-dark-2, percentage(colors.$variant-1));
+  }
+
+  th,
+  td {
+    border: sizes.$border solid colors.$bd-dark-2;
+    padding: sizes.$space-s;
+  }
+}

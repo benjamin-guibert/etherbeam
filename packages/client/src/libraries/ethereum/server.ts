@@ -2,8 +2,8 @@ import axios from 'axios'
 import compact from 'lodash/compact'
 import { HttpStatus, getPagination, PaginatedContent } from 'libraries/api'
 import { Token, Transaction, USDC_HASH, WETH_HASH } from './types'
-import { parseTokenData, parseTransactionData } from './severParsers'
 import { TokenData, TransactionData } from './serverTypes'
+import { parseTokenData, parseTransactionData } from './serverParsers'
 
 const TIMEOUT = 60 * 1000
 const TRANSACTIONS_PER_PAGE = 20

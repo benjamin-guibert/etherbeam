@@ -87,7 +87,7 @@ export const createToken = (hash: string): Token => {
 
 export const createTokenAction = (
   type: TransactionActionType,
-  direction: TransactionActionDirection
+  direction?: TransactionActionDirection
 ): TransactionAction => {
   return {
     transaction: {

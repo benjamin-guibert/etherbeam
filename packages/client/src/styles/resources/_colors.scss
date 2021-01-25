@@ -1,0 +1,47 @@
+// Palette
+
+$dark: #222222;
+$light: #c2c2c2;
+$primary: #f5e48e;
+$secondary: #ebc699;
+$success: #59735b;
+$danger: #a22c29;
+
+// Variant
+
+$variant-1: 0.05;
+$variant-2: 0.2;
+$lighter: percentage(1 + $variant-2);
+$darker: percentage(1 - $variant-2);
+
+// Base
+
+$bg-dark-1: darken($dark, percentage($variant-1));
+$bg-dark-2: $dark;
+$bg-dark-3: lighten($dark, percentage($variant-1));
+$bd-dark-1: darken($dark, percentage($variant-2));
+$bd-dark-2: darken($dark, percentage($variant-1));
+$bd-dark-3: $dark;
+$fg-dark: $light;
+
+$bg-light-1: darken($light, percentage($variant-1));
+$bg-light-2: $light;
+$bg-light-3: lighten($light, percentage($variant-1));
+$bd-light-1: darken($light, percentage($variant-2));
+$bd-light-2: darken($light, percentage($variant-1));
+$bd-light-3: $light;
+$fg-light: darken($dark, percentage($variant-1));
+
+$bg-primary: $primary;
+$bd-primary: darken($primary, percentage($variant-1));
+
+$bg-secondary: $secondary;
+$bd-secondary: darken($secondary, percentage($variant-1));
+
+$bg-success: $success;
+$bd-success: darken($success, percentage($variant-1));
+
+$bg-danger: $danger;
+$bd-danger: darken($danger, percentage($variant-1));
+
+$fg-disabled: darken($light, percentage($variant-2));
