@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TokenPage /> Default should match snapshot 1`] = `
+<main
+  class="my-page my-mw-s"
+>
+  <h1
+    class="my-page-header"
+  >
+    Token
+  </h1>
+  <h2
+    class="my-page-subheader my-tokenpage-subheader"
+  >
+    <nav>
+      <ul
+        class="my-tokenpage-links my-hlist"
+      />
+    </nav>
+    <div>
+      <span
+        class="my-d-min-m"
+      >
+        <a
+          class="my-link"
+          href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+          tabindex="0"
+          target="_blank"
+        >
+          <span
+            class="my-address-hash"
+          >
+            0x0000000000000000000000000000000000000111
+          </span>
+        </a>
+      </span>
+      <span
+        class="my-d-max-m"
+      >
+        <a
+          class="my-link"
+          href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+          tabindex="0"
+          target="_blank"
+        >
+          <span
+            class="my-address-hash"
+          >
+            0x0000...0111
+          </span>
+        </a>
+      </span>
+    </div>
+  </h2>
+  <section
+    class="my-tokenpage-price"
+  >
+    <span
+      class="my-tokenpage-price-symbol my-d-min-xs"
+    >
+      <span
+        class="my-symbol"
+      >
+        TKN
+      </span>
+      <span
+        class="my-amount"
+      >
+         1 = 
+      </span>
+    </span>
+    <span
+      class="my-badge my-color-primary "
+    >
+      <span
+        class="my-symbol"
+      >
+        ETH
+      </span>
+      <span
+        class="my-amount"
+      >
+         NaN
+      </span>
+    </span>
+    <ul
+      class="my-tokenpricehistory my-hlist my-tokenpage-history"
+    >
+      <li>
+        <span
+          class="my-badge my-color-success "
+        >
+          <span
+            class="my-difference-prefix"
+          >
+            H
+          </span>
+          <span
+            class="my-amount"
+          >
+            +100%
+          </span>
+        </span>
+      </li>
+      <li>
+        <span
+          class="my-badge my-color-danger "
+        >
+          <span
+            class="my-difference-prefix"
+          >
+            D
+          </span>
+          <span
+            class="my-amount"
+          >
+            -50%
+          </span>
+        </span>
+      </li>
+      <li>
+        <span
+          class="my-badge my-color-danger "
+        >
+          <span
+            class="my-difference-prefix"
+          >
+            W
+          </span>
+          <span
+            class="my-amount"
+          >
+            -75%
+          </span>
+        </span>
+      </li>
+      <li>
+        <span
+          class="my-badge my-color-neutral "
+        >
+          <span
+            class="my-difference-prefix"
+          >
+            M
+          </span>
+          <span
+            class="my-amount"
+          >
+            +0%
+          </span>
+        </span>
+      </li>
+      <li>
+        <span
+          class="my-badge my-color-success "
+        >
+          <span
+            class="my-difference-prefix"
+          >
+            Y
+          </span>
+          <span
+            class="my-amount"
+          >
+            +300%
+          </span>
+        </span>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <div />
+  </section>
+  <section>
+    <h3>
+      Actions
+    </h3>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            Action
+          </th>
+          <th>
+            Time
+          </th>
+          <th
+            class="my-d-min-xs"
+          >
+            Holder
+          </th>
+          <th />
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </section>
+</main>
+`;
+
+exports[`<TokenPage /> Default should match snapshot 2`] = `
+<main
+  class="my-page my-mw-s"
+>
+  <h1
+    class="my-page-header"
+  >
+    Unknown token
+  </h1>
+  <div
+    class="my-alert my-color-danger"
+  >
+    The token '0x0000000000000000000000000000000000000111' is unknown.
+  </div>
+</main>
+`;

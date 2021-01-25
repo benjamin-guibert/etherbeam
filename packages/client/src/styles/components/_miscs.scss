@@ -1,0 +1,29 @@
+@use '../resources/sizes';
+
+// Margins
+
+.my-m {
+  margin: sizes.$space-s !important;
+}
+
+.my-m-0 {
+  margin: 0px !important;
+}
+
+// Horizontal navigation
+
+.my-hlist {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+
+  li {
+    display: inline;
+    padding-left: sizes.$space-s;
+
+    &:first-child {
+      padding: 0px;
+    }
+  }
+}

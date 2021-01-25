@@ -45,11 +45,17 @@ export interface TransactionMethodParameter {
 }
 
 export enum HistoryTime {
-  Hour = '1h',
-  Day = '1d',
-  Week = '1w',
-  Month = '1m',
-  Year = '1y',
+  Hour = 'h',
+  Day = 'd',
+  Week = 'w',
+  Month = 'm',
+  Year = 'y',
+}
+
+export interface TokenPriceHistory {
+  time: HistoryTime
+  price: BigNumber
+  ratio: number
 }
 
 export interface Token extends Address {
@@ -58,11 +64,7 @@ export interface Token extends Address {
   symbol: string
   decimals: number
   price?: BigNumber
-  priceHistory: {
-    time: HistoryTime
-    price: BigNumber
-    ratio: number
-  }[]
+  priceHistory: TokenPriceHistory[]
   website?: string
   whitepaper?: string
   github?: string

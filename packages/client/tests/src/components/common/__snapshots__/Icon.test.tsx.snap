@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Icon /> Default should match snapshot 1`] = `
-<img
-  alt="alt"
-  class="app-icon app-icon-xl app-class"
-  src="source"
-/>
-`;

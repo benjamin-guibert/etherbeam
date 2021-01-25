@@ -1,0 +1,131 @@
+@use 'resources/sizes';
+@use 'resources/colors';
+@use 'resources/fonts';
+
+// Status
+
+.my-disabled {
+  cursor: unset;
+  color: colors.$fg-disabled;
+
+  &:hover {
+    filter: none;
+  }
+}
+
+.my-active {
+  color: lighten(colors.$secondary, percentage(colors.$variant-1));
+  font-weight: bold;
+}
+
+// Colors
+
+.my-color-neutral {
+  background-color: colors.$bg-light-1 !important;
+  border-color: colors.$bd-light-1 !important;
+  color: colors.$fg-light !important;
+}
+
+.my-color-primary {
+  background-color: colors.$bg-primary !important;
+  border-color: colors.$bd-primary !important;
+  color: colors.$fg-light !important;
+}
+
+.my-color-secondary {
+  background-color: colors.$bg-secondary !important;
+  border-color: colors.$bd-secondary v;
+  color: colors.$fg-light !important;
+}
+
+.my-color-success {
+  background-color: colors.$bg-success !important;
+  border-color: colors.$bd-success !important;
+  color: colors.$fg-dark !important;
+}
+
+.my-color-danger {
+  background-color: colors.$bg-danger !important;
+  border-color: colors.$bd-danger !important;
+  color: colors.$fg-dark !important;
+}
+
+// Texts
+
+.my-text {
+  // Alignment
+
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: left;
+  }
+
+  // Fonts
+
+  &-monospace {
+    font-family: fonts.$monospace;
+  }
+}
+
+// Display
+
+.my-d {
+  &-min {
+    &-xs {
+      @media screen and (max-width: sizes.$breakpoint-w-xs) {
+        display: none;
+      }
+    }
+
+    &-s {
+      @media screen and (max-width: sizes.$breakpoint-w-s) {
+        display: none;
+      }
+    }
+
+    &-m {
+      @media screen and (max-width: sizes.$breakpoint-w-m) {
+        display: none;
+      }
+    }
+
+    &-l {
+      @media screen and (max-width: sizes.$breakpoint-w-l) {
+        display: none;
+      }
+    }
+  }
+
+  &-max {
+    &-xs {
+      @media screen and (min-width: sizes.$breakpoint-w-xs) {
+        display: none;
+      }
+    }
+
+    &-s {
+      @media screen and (min-width: sizes.$breakpoint-w-s) {
+        display: none;
+      }
+    }
+
+    &-m {
+      @media screen and (min-width: sizes.$breakpoint-w-m) {
+        display: none;
+      }
+    }
+
+    &-l {
+      @media screen and (min-width: sizes.$breakpoint-w-l) {
+        display: none;
+      }
+    }
+  }
+}

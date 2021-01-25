@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EtherscanLink /> Default should match snapshot 1`] = `
+<a
+  class="my-link"
+  href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+  tabindex="0"
+  target="_blank"
+  title="Etherscan"
+>
+  <div
+    class="my-etherscanlink-img"
+  >
+    <img
+      src="/images/etherscan.svg"
+    />
+  </div>
+</a>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TokenAmount /> Ether should match snapshot 1`] = `
+<span
+  class="my-badge my-color-neutral "
+>
+  <span
+    class="my-symbol"
+  >
+    ETH
+  </span>
+  <span
+    class="my-amount"
+  >
+     1,000
+  </span>
+</span>
+`;

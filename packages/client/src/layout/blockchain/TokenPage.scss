@@ -1,0 +1,22 @@
+@use '../../styles/resources/sizes';
+@use '../../styles/resources/fonts';
+@use '../../styles/resources/colors';
+
+.my-tokenpage {
+  &-subheader {
+    justify-content: space-between;
+  }
+
+  &-links li {
+    padding-left: 0px !important;
+  }
+
+  &-price {
+    color: colors.$fg-disabled;
+    font-size: sizes.$size-l;
+  }
+
+  &-history {
+    margin: sizes.$space-s 0px !important;
+  }
+}
