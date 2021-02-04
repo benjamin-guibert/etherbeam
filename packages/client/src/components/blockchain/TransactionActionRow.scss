@@ -1,0 +1,109 @@
+@use '../../styles/resources/colors';
+@use '../../styles/resources/sizes';
+
+.my-transactionactionrow {
+  td {
+    padding: sizes.$spacer-xs sizes.$spacer-s !important;
+  }
+
+  &-action {
+    display: flex;
+    align-items: center;
+  }
+
+  &-icon {
+    margin-right: sizes.$spacer-s;
+  }
+
+  &-unknown,
+  &-approval,
+  &-transfer {
+    background-color: colors.$dark;
+    border-color: colors.$dark-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$dark-active;
+    }
+  }
+
+  &-buy {
+    background-color: colors.$positive;
+    border-color: colors.$positive-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$positive-active;
+    }
+  }
+
+  &-sell {
+    background-color: colors.$negative;
+    border-color: colors.$negative-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$negative-active;
+    }
+  }
+
+  // td {
+  //   border-color: colors.$bd-dark-3;
+  //   padding: 0px;
+  // }
+
+  // &-action {
+  //   display: flex;
+  //   align-items: center;
+  //   padding: sizes.$space-xs 0px;
+  // }
+
+  // &-icon {
+  //   font-size: sizes.$size-l;
+  //   margin: 0px sizes.$space-s;
+  // }
+
+  // &-unknown {
+  //   background-color: colors.$bg-dark-2 !important;
+
+  //   .my-transactionactionitem-icon {
+  //     color: lighten(colors.$bg-dark-2, colors.$variant-2);
+  //   }
+  // }
+
+  // &-approval {
+  //   background-color: colors.$bg-dark-3 !important;
+
+  //   .my-transactionactionitem-icon {
+  //     color: lighten(colors.$bg-dark-3, colors.$variant-2);
+  //   }
+  // }
+
+  // &-transfer {
+  //   background-color: colors.$bg-dark-3 !important;
+
+  //   .my-transactionactionitem-icon {
+  //     color: lighten(colors.$bg-dark-3, colors.$variant-2);
+  //   }
+  // }
+
+  // &-buy {
+  //   background-color: colors.$bg-success !important;
+
+  //   .my-transactionactionitem-icon {
+  //     color: lighten(colors.$bg-success, colors.$variant-2);
+  //   }
+
+  //   td {
+  //     border-color: colors.$bd-success;
+  //   }
+  // }
+
+  // &-sell {
+  //   background-color: colors.$bg-danger !important;
+  //   .my-transactionactionitem-icon {
+  //     color: lighten(colors.$bg-danger, colors.$variant-2);
+  //   }
+
+  //   td {
+  //     border-color: colors.$bd-danger;
+  //   }
+  // }
+}

@@ -1,14 +1,17 @@
-import React, { ReactElement } from 'react'
-import Link from 'components/Link'
+import React, { FC } from 'react'
+import Link from '../Link'
 import './EtherscanLink.scss'
+
+type SizeProp = 'm' | 'l' | 'xl'
 
 interface EtherscanLinkProps {
   url: string
+  size?: SizeProp
 }
 
-const EtherscanLink = ({ url }: EtherscanLinkProps): ReactElement => {
+const EtherscanLink: FC<EtherscanLinkProps> = ({ url, size }) => {
   return (
-    <Link href={url} title="Etherscan" blank>
+    <Link href={url} description="Etherscan" blank className={size ? `my-size-${size}` : ''}>
       <div className="my-etherscanlink-img">
         <img src="/images/etherscan.svg" />
       </div>

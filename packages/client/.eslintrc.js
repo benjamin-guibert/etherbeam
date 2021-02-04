@@ -5,6 +5,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      tsx: true,
     },
   },
   settings: {
@@ -18,6 +19,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
+    // 'plugin:mdx/recommended',
   ],
   rules: {
     'react-hooks/rules-of-hooks': 'error',

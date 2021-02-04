@@ -1,0 +1,24 @@
+@use '../styles/resources/sizes';
+
+.my-list-h,
+.my-list-v {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -#{sizes.$spacer-xs};
+  padding: 0px;
+
+  .my-listitem {
+    margin: sizes.$spacer-xs;
+  }
+}
+
+.my-list {
+  &-h {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-v {
+    flex-direction: column;
+  }
+}

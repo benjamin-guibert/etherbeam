@@ -1,31 +1,29 @@
+import React, { FC } from 'react'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { ReactElement } from 'react'
 import './Icon.scss'
 
 type LabelBreakpointProp = 'xs' | 's' | 'm' | 'l'
+type SizeProp = 'm' | 'l' | 'xl'
 
 interface IconProps {
   icon: IconProp
   label?: string
   labelBreakpoint?: LabelBreakpointProp
+  size?: SizeProp
   className?: string
 }
 
-const Icon = ({ icon, label, labelBreakpoint, className }: IconProps): ReactElement => {
-  const getLabelClassName = (): string => {
-    const labelClassName = ['my-icon-label']
-    if (labelBreakpoint) labelClassName.push(`my-d-min-${labelBreakpoint}`)
-
-    return labelClassName.join(' ')
-  }
+const Icon: FC<IconProps> = ({ icon, label, labelBreakpoint, size, className }) => {
+  const classNames = ['my-icon', size ? `my-size-${size}` : '', className].join(' ')
+  const labelClassName = ['my-icon-label', labelBreakpoint ? `my-d-min-${labelBreakpoint}` : ''].join(' ')
 
   return (
-    <span className={['my-icon', className].join(' ')}>
-      <span className="my-icon-svg">
+    <span className={classNames}>
+      <span>
         <FontAwesomeIcon icon={icon} />
       </span>
-      {!!label && <span className={getLabelClassName()}>{label}</span>}
+      {!!label && <span className={labelClassName}>{label}</span>}
     </span>
   )
 }

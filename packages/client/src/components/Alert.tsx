@@ -1,15 +1,15 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import './Alert.scss'
 
-type AlertTypeProp = 'neutral' | 'primary' | 'secondary' | 'success' | 'danger'
+type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
 
 interface AlertProps {
-  type?: AlertTypeProp
+  color?: ColorProp
   children?: ReactNode
 }
 
-const Alert = ({ type = 'neutral', children }: AlertProps): ReactElement => {
-  return <div className={`my-alert my-color-${type}`}>{children}</div>
+const Alert: FC<AlertProps> = ({ color = 'light', children }) => {
+  return <div className={`my-alert my-${color}-bg`}>{children}</div>
 }
 
 export default Alert

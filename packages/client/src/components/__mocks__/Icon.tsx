@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 
-const Icon = (): ReactElement => {
+const Icon: FC = () => {
   return <span className="my-icon"></span>
 }
 

@@ -1,25 +1,25 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import { hot } from 'react-hot-loader'
 import { BrowserRouter } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 import Header from './Header'
-import TokensPage from 'layout/blockchain/TokensPage'
-import TokenPage from 'layout/blockchain/TokenPage'
+import TokensPageWrapper from './blockchain/TokensPageWrapper'
 import './App.scss'
 
-const App = (): ReactElement => {
+const App: FC = () => {
   return (
     <BrowserRouter>
       <div className="my-app">
         <Header />
+        <main className="my-page-main my-mw-s"></main>
         <Switch>
           <Route path="/" exact></Route>
           <Route path="/tokens" exact>
-            <TokensPage />
+            <TokensPageWrapper />
           </Route>
-          <Route path="/tokens/:address" exact>
+          {/* <Route path="/tokens/:address" exact>
             <TokenPage />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </BrowserRouter>

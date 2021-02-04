@@ -40,9 +40,9 @@ describe('<TokenAmount />', () => {
     })
   })
 
-  describe('Color', () => {
+  describe('Type', () => {
     beforeAll(() => {
-      component = shallow(<TokenAmount amount={BigNumber.from('1000000000000000000000')} color="success" />)
+      component = shallow(<TokenAmount amount={BigNumber.from('1000000000000000000000')} type="success" />)
     })
 
     it('should render', () => expect(component.find('Badge').prop('type')).toBe('success'))

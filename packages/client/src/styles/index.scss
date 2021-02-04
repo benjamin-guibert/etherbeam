@@ -1,9 +1,5 @@
 @use 'base';
 
-@use 'components/texts';
-@use 'components/tables';
-@use 'components/miscs';
-
-@use 'modules/blockchain';
+@use 'layout';
 
 @use 'states';

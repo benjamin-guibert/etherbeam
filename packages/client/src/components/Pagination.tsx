@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import PaginationItem from './PaginationItem'
 import './Pagination.scss'
+import List from './List'
 
 interface PaginationProps {
   total: number
@@ -11,7 +12,7 @@ interface PaginationProps {
 
 const ELLIPSIS_THRESHOLD_PAGES = 7
 
-const Pagination = ({ total, current, setCurrent, className }: PaginationProps): ReactElement => {
+const Pagination: FC<PaginationProps> = ({ total, current, setCurrent, className }) => {
   const displayEllipsis = total > ELLIPSIS_THRESHOLD_PAGES
   const pages = []
   Array.from({ length: total }).map((_, index) => {
@@ -19,7 +20,7 @@ const Pagination = ({ total, current, setCurrent, className }: PaginationProps):
     const isCurrent = page === current
     if (!displayEllipsis || [1, current - 1, current, current + 1, total].includes(page)) {
       pages.push(() => (
-        <PaginationItem page={page} onClick={() => setCurrent(page)} selected={isCurrent} disabled={isCurrent} />
+        <PaginationItem page={page} action={() => setCurrent(page)} selected={isCurrent} disabled={isCurrent} />
       ))
     } else if (page == current - 2 || page == current + 2) {
       pages.push(() => <PaginationItem page="ellipsis" disabled />)
@@ -28,11 +29,11 @@ const Pagination = ({ total, current, setCurrent, className }: PaginationProps):
 
   return (
     <nav>
-      <ul className={['my-pagination my-hlist', className].join(' ')}>
-        <PaginationItem page="first" onClick={() => setCurrent(1)} disabled={current === 1} />
+      <List horizontal className={['my-pagination', className].join(' ')}>
+        <PaginationItem page="first" action={() => setCurrent(1)} disabled={current === 1} />
         <PaginationItem
           page="previous"
-          onClick={() => setCurrent((previous) => previous - 1)}
+          action={() => setCurrent((previous) => previous - 1)}
           disabled={current === 1}
         />
         {pages.map((Page, index) => (
@@ -40,11 +41,11 @@ const Pagination = ({ total, current, setCurrent, className }: PaginationProps):
         ))}
         <PaginationItem
           page="next"
-          onClick={() => setCurrent((previous) => previous + 1)}
+          action={() => setCurrent((previous) => previous + 1)}
           disabled={current === total}
         />
-        <PaginationItem page="last" onClick={() => setCurrent(total)} disabled={current === total} />
-      </ul>
+        <PaginationItem page="last" action={() => setCurrent(total)} disabled={current === total} />
+      </List>
     </nav>
   )
 }

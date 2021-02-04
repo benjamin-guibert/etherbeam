@@ -1,31 +1,34 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import './Link.scss'
 
+type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
+
 interface LinkProps {
-  title?: string
-  href?: string
-  onClick?: (event: React.SyntheticEvent) => void
+  href: string
   blank?: boolean
+  color?: ColorProp
+  description?: string
+  noUnderline?: boolean
   active?: boolean
   disabled?: boolean
+  className?: string
   children?: ReactNode
 }
 
-const Link = ({ title, href, onClick, blank, active, disabled, children }: LinkProps): ReactElement => {
-  const onClickAction = (event: React.SyntheticEvent): void => {
-    if (disabled) return
-
-    event.stopPropagation()
-    onClick?.(event)
-  }
-
-  const onKeyUp = (event: React.KeyboardEvent<HTMLAnchorElement>): void => {
-    if (event.key == 'Enter') onClickAction(event)
-  }
-
+const Link: FC<LinkProps> = ({
+  href,
+  blank,
+  color = 'secondary',
+  description,
+  noUnderline,
+  active,
+  disabled,
+  className,
+  children,
+}) => {
   const getClassName = (): string => {
-    const classNames = ['my-link']
-    if (disabled) classNames.push('my-disabled')
+    const classNames = [noUnderline ? 'my-link' : 'my-ulink', `my-clickable my-${color}-fg`, className]
+    if (disabled) classNames.push('my-disabled-fg')
     if (active) classNames.push('my-active')
 
     return classNames.join(' ')
@@ -33,12 +36,10 @@ const Link = ({ title, href, onClick, blank, active, disabled, children }: LinkP
 
   return (
     <a
-      title={title}
+      title={description}
       className={getClassName()}
       target={blank ? '_blank' : null}
-      href={href && !disabled ? href : null}
-      onClick={onClickAction}
-      onKeyUp={onKeyUp}
+      href={!disabled ? href : null}
       tabIndex={!disabled ? 0 : null}
     >
       {children}

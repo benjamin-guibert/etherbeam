@@ -1,12 +1,12 @@
 import moment from 'moment'
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import './Time.scss'
 
 interface TimeProps {
   dateTime: Date
 }
 
-const Time = ({ dateTime }: TimeProps): ReactElement => {
+const Time: FC<TimeProps> = ({ dateTime }) => {
   return <span className="my-time">{moment(dateTime).format('HH:mm')}</span>
 }
 

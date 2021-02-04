@@ -7,4 +7,9 @@
     'header'
     'main'
     'footer';
+
+  &-main {
+    margin: sizes.$spacer sizes.$spacer-l;
+    position: relative;
+  }
 }

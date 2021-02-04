@@ -1,22 +1,26 @@
-import React, { ReactElement } from 'react'
-import { TokenPriceHistory } from 'libraries/ethereum/types'
+import React, { FC } from 'react'
+import { TokenPriceHistory as TokenPriceHistoryType } from '../../libraries/ethereum/types'
+import List from '../List'
+import ListItem from '../ListItem'
 import Difference from './Difference'
-import './TokenPriceHistory.scss'
+
+type SizeProp = 's' | 'm' | 'l' | 'xl'
 
 interface TokenPriceHistoryProps {
-  priceHistory: TokenPriceHistory[]
+  priceHistory: TokenPriceHistoryType[]
+  size?: SizeProp
   className?: string
 }
 
-const TokenPriceHistory = ({ priceHistory, className }: TokenPriceHistoryProps): ReactElement => {
+const TokenPriceHistory: FC<TokenPriceHistoryProps> = ({ priceHistory, size, className }) => {
   return (
-    <ul className={['my-tokenpricehistory my-hlist', className].join(' ')}>
+    <List horizontal className={['my-tokenpricehistory', className].join(' ')}>
       {priceHistory.map(({ time, ratio }, index) => (
-        <li key={index}>
-          <Difference time={time} ratio={ratio} />
-        </li>
+        <ListItem key={index}>
+          <Difference size={size} time={time} ratio={ratio} />
+        </ListItem>
       ))}
-    </ul>
+    </List>
   )
 }
 

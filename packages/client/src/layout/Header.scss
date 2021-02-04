@@ -2,27 +2,11 @@
 @use '../styles/resources/colors';
 
 .my-header {
-  font-size: sizes.$size-l;
-  background-color: colors.$bg-dark-2;
-  padding: sizes.$space-xs sizes.$space;
-
-  a,
-  a:visited {
-    display: flex;
-    align-items: center;
-    color: colors.$light;
-    padding: 0px sizes.$space-xs 0px 0px;
-  }
+  background-color: colors.$dark;
+  padding: sizes.$spacer-xs sizes.$spacer;
 
   &-title {
-    font-weight: bold;
-    font-style: italic;
-    margin-right: sizes.$space-s;
-
-    img {
-      width: sizes.$size-xl;
-      height: sizes.$size-xl;
-      margin: 0px 0px 0px sizes.$space-s;
-    }
+    padding: 0px;
+    margin-right: sizes.$spacer-xs;
   }
 }

@@ -1,0 +1,29 @@
+@use '../styles/resources/sizes';
+@use '../styles/resources/fonts';
+
+.my-button,
+.my-button-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: fonts.$primary;
+  font-size: sizes.$size;
+}
+
+.my-button {
+  display: inline-flex;
+  align-items: center;
+  border-style: solid;
+  border-width: sizes.$border;
+  border-radius: sizes.$border-radius-s;
+  padding: sizes.$spacer-s;
+  font-weight: bold;
+}
+
+.my-button-link {
+  border: 0px;
+  background-color: inherit;
+
+  &.my-active {
+    font-weight: bold;
+  }
+}
