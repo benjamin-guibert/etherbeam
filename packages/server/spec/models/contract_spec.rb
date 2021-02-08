@@ -39,7 +39,7 @@ describe Contract, type: :model do
     describe 'default' do
       subject { Contract.all }
 
-      it { is_expected.to have_attributes count: 4 }
+      it { is_expected.to have_attributes count: 5 }
       it { is_expected.to include addresses[0] }
       it { is_expected.to include addresses[1] }
     end

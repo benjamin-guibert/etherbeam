@@ -16,10 +16,10 @@ describe ContractsController, type: :controller do
 
     it { is_expected.to respond_with :ok }
 
-    it { expect(body).to have_attributes count: 3 }
+    it { expect(body).to have_attributes count: 4 }
 
     it do
-      expect(body[2]).to match(
+      expect(body[3]).to match(
         {
           'sanitized_hash' => contract.sanitized_hash,
           'address_hash' => contract.address_hash,

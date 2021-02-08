@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Pagination as PaginationType } from 'libraries/api'
 import Pagination from './Pagination'
 
@@ -8,10 +8,10 @@ interface PaginatedListProps {
   children?: ReactNode
 }
 
-const PaginatedList = ({ pagination, setPage, children }: PaginatedListProps): ReactElement => {
+const PaginatedList: FC<PaginatedListProps> = ({ pagination, setPage, children }) => {
   const { totalPages, currentPage } = pagination || {}
 
-  const PaginationComponent = (): ReactElement => (
+  const PaginationComponent: FC = () => (
     <>{totalPages > 1 && <Pagination total={totalPages} current={currentPage} setCurrent={setPage} />}</>
   )
 

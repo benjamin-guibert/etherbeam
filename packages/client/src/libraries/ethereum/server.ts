@@ -1,6 +1,6 @@
 import axios from 'axios'
 import compact from 'lodash/compact'
-import { HttpStatus, getPagination, PaginatedContent } from 'libraries/api'
+import { HttpStatus, getPagination, PaginatedContent } from '../api'
 import { Token, Transaction, USDC_HASH, WETH_HASH } from './types'
 import { TokenData, TransactionData } from './serverTypes'
 import { parseTokenData, parseTransactionData } from './serverParsers'

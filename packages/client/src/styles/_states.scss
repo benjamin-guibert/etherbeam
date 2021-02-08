@@ -5,127 +5,78 @@
 // Status
 
 .my-disabled {
-  cursor: unset;
-  color: colors.$fg-disabled;
+  &-fg,
+  &-fg:hover,
+  &-fg:active {
+    color: colors.$disabled-fg !important;
+  }
 
-  &:hover {
-    filter: none;
+  &-bg,
+  &-bg:hover,
+  &-bg:active {
+    background-color: colors.$disabled-bg !important;
+    color: colors.$light !important;
   }
 }
 
-.my-active {
-  color: lighten(colors.$secondary, percentage(colors.$variant-1));
-  font-weight: bold;
-}
+// Status
 
-// Colors
+// Clickables
 
-.my-color-neutral {
-  background-color: colors.$bg-light-1 !important;
-  border-color: colors.$bd-light-1 !important;
-  color: colors.$fg-light !important;
-}
+// .my-link,
+// .my-clickabletablerow,
+// .my-button {
+//   cursor: pointer;
 
-.my-color-primary {
-  background-color: colors.$bg-primary !important;
-  border-color: colors.$bd-primary !important;
-  color: colors.$fg-light !important;
-}
+//   &:hover {
+//     filter: brightness(colors.$lighter);
+//   }
 
-.my-color-secondary {
-  background-color: colors.$bg-secondary !important;
-  border-color: colors.$bd-secondary v;
-  color: colors.$fg-light !important;
-}
+//   &:active {
+//     filter: brightness(colors.$darker);
+//   }
 
-.my-color-success {
-  background-color: colors.$bg-success !important;
-  border-color: colors.$bd-success !important;
-  color: colors.$fg-dark !important;
-}
+//   &:focus {
+//     outline: 0px;
+//     box-shadow: 0px 0px 3px lighten(colors.$primary, percentage(colors.$variant-1));
+//   }
+// }
 
-.my-color-danger {
-  background-color: colors.$bg-danger !important;
-  border-color: colors.$bd-danger !important;
-  color: colors.$fg-dark !important;
-}
+// // Colors
 
-// Texts
+// .my-color-neutral {
+//   background-color: colors.$bg-light-1 ;
+//   border-color: colors.$bd-light-1 ;
+//   color: colors.$fg-light ;
+// }
 
-.my-text {
-  // Alignment
+// .my-color-primary {
+//   background-color: colors.$bg-primary ;
+//   border-color: colors.$bd-primary ;
+//   color: colors.$fg-light ;
+// }
 
-  &-left {
-    text-align: left;
-  }
+// .my-color-secondary {
+//   background-color: colors.$bg-secondary ;
+//   border-color: colors.$bd-secondary v;
+//   color: colors.$fg-light ;
+// }
 
-  &-center {
-    text-align: center;
-  }
+// .my-color-success {
+//   background-color: colors.$bg-success ;
+//   border-color: colors.$bd-success ;
+//   color: colors.$fg-dark ;
+// }
 
-  &-right {
-    text-align: left;
-  }
+// .my-color-danger {
+//   background-color: colors.$bg-danger ;
+//   border-color: colors.$bd-danger ;
+//   color: colors.$fg-dark ;
+// }
 
-  // Fonts
+//   // Fonts
 
-  &-monospace {
-    font-family: fonts.$monospace;
-  }
-}
-
-// Display
-
-.my-d {
-  &-min {
-    &-xs {
-      @media screen and (max-width: sizes.$breakpoint-w-xs) {
-        display: none;
-      }
-    }
-
-    &-s {
-      @media screen and (max-width: sizes.$breakpoint-w-s) {
-        display: none;
-      }
-    }
-
-    &-m {
-      @media screen and (max-width: sizes.$breakpoint-w-m) {
-        display: none;
-      }
-    }
-
-    &-l {
-      @media screen and (max-width: sizes.$breakpoint-w-l) {
-        display: none;
-      }
-    }
-  }
-
-  &-max {
-    &-xs {
-      @media screen and (min-width: sizes.$breakpoint-w-xs) {
-        display: none;
-      }
-    }
-
-    &-s {
-      @media screen and (min-width: sizes.$breakpoint-w-s) {
-        display: none;
-      }
-    }
-
-    &-m {
-      @media screen and (min-width: sizes.$breakpoint-w-m) {
-        display: none;
-      }
-    }
-
-    &-l {
-      @media screen and (min-width: sizes.$breakpoint-w-l) {
-        display: none;
-      }
-    }
-  }
-}
+//   &-monospace {
+//     font-family: fonts.$monospace;
+//   }
+// }

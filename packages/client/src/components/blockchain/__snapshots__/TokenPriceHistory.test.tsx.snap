@@ -2,11 +2,13 @@
 
 exports[`<TokenPriceHistory /> Default should match snapshot 1`] = `
 <ul
-  class="my-tokenpricehistory my-hlist "
+  class="my-list-h  "
 >
-  <li>
+  <li
+    class="my-listitem "
+  >
     <span
-      class="my-badge my-color-neutral "
+      class="my-badge my-light-bg  "
     >
       <span
         class="my-difference-prefix"
@@ -14,15 +16,17 @@ exports[`<TokenPriceHistory /> Default should match snapshot 1`] = `
         H
       </span>
       <span
-        class="my-amount"
+        class="my-difference-amount"
       >
         +0%
       </span>
     </span>
   </li>
-  <li>
+  <li
+    class="my-listitem "
+  >
     <span
-      class="my-badge my-color-success "
+      class="my-badge my-positive-bg  "
     >
       <span
         class="my-difference-prefix"
@@ -30,15 +34,17 @@ exports[`<TokenPriceHistory /> Default should match snapshot 1`] = `
         D
       </span>
       <span
-        class="my-amount"
+        class="my-difference-amount"
       >
         +50%
       </span>
     </span>
   </li>
-  <li>
+  <li
+    class="my-listitem "
+  >
     <span
-      class="my-badge my-color-danger "
+      class="my-badge my-negative-bg  "
     >
       <span
         class="my-difference-prefix"
@@ -46,7 +52,7 @@ exports[`<TokenPriceHistory /> Default should match snapshot 1`] = `
         W
       </span>
       <span
-        class="my-amount"
+        class="my-difference-amount"
       >
         -50%
       </span>

@@ -1,0 +1,12 @@
+@use '../../styles/resources/fonts';
+
+.my-tokenamount {
+  &-symbol {
+    font-family: fonts.$primary;
+    font-weight: bold;
+  }
+
+  &-amount {
+    font-family: fonts.$monospace;
+  }
+}

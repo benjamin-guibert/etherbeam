@@ -1,14 +1,16 @@
+$size-xs: 0.5em;
+$size-s: 0.75em;
 $size: 1em;
 $size-l: 1.25em;
 $size-xl: 2em;
 
-// Space
+// Spacers
 
-$space-xs: 4px;
-$space-s: 8px;
-$space: 16px;
-$space-l: 32px;
-$space-xl: 64px;
+$spacer-xs: 4px;
+$spacer-s: 8px;
+$spacer: 16px;
+$spacer-l: 32px;
+$spacer-xl: 64px;
 
 // Borders
 
@@ -16,6 +18,10 @@ $border: 1px;
 $border-radius-s: 4px;
 $border-radius: 8px;
 $border-radius-l: 16px;
+
+// Texts
+
+$letter-spacing: 0.05em;
 
 // Responsive breakpoints
 

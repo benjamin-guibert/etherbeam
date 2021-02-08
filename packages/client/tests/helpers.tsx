@@ -17,3 +17,12 @@ export const mockTradingViewWidget = (): void => {
     }
   })
 }
+
+export const mockFontAwesome = (): void => {
+  jest.mock('@fortawesome/react-fontawesome', () => {
+    return {
+      __esModule: true,
+      FontAwesomeIcon: () => <svg />,
+    }
+  })
+}

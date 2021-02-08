@@ -1,29 +1,32 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 import numeral from 'numeral'
-import { HistoryTime } from 'libraries/ethereum/types'
+import { HistoryTime } from '../../libraries/ethereum/types'
 import Badge from '../Badge'
 import './Difference.scss'
 
+type SizeProp = 's' | 'm' | 'l' | 'xl'
+
 interface DifferenceProps {
   ratio: number
-  time?: HistoryTime
+  time: HistoryTime
+  size?: SizeProp
 }
 
-const Difference = ({ ratio, time }: DifferenceProps): ReactElement => {
+const Difference: FC<DifferenceProps> = ({ ratio, time, size }) => {
   const getColor = () => {
     if (ratio > 1.01) {
-      return 'success'
+      return 'positive'
     } else if (ratio < 0.99) {
-      return 'danger'
+      return 'negative'
     } else {
-      return 'neutral'
+      return 'light'
     }
   }
 
   return (
-    <Badge type={getColor()}>
+    <Badge color={getColor()} size={size}>
       <span className="my-difference-prefix">{time.toUpperCase()}</span>
-      <span className="my-amount">{numeral(ratio - 1).format('+0%')}</span>
+      <span className="my-difference-amount">{numeral(ratio - 1).format('+0%')}</span>
     </Badge>
   )
 }

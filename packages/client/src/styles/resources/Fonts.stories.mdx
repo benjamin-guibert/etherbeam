@@ -1,0 +1,43 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks'
+
+<Meta title="Resources/Fonts" />
+
+<style>
+  @import
+  'https://fonts.googleapis.com/css2?family=Roboto+Slab:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap';
+  {`
+    .docblock-typeset {
+      color: #ffffff;
+    }
+  `}
+</style>
+
+# Fonts
+
+- `$primary`: Roboto
+- `$monospace`: Roboto Mono
+- `$serif`: Roboto Slab
+
+## Primary
+
+### Regular (400)
+
+<Typeset fontFamily="Roboto" fontSizes={['1em', '1.25em', '2em']} fontWeight={400} />
+
+### Bold (700)
+
+<Typeset fontFamily="Roboto" fontSizes={['1em', '1.25em', '2em']} fontWeight={700} />
+
+## Monospace
+
+<Typeset fontFamily="Roboto Mono" fontSizes={['1em', '1.25em', '2em']} />
+
+## Serif
+
+### Regular (400)
+
+<Typeset fontFamily="Roboto Slab" fontSizes={['1em', '1.25em', '2em']} fontWeight={400} />
+
+### Bold (700)
+
+<Typeset fontFamily="Roboto Slab" fontSizes={['1em', '1.25em', '2em']} fontWeight={700} />

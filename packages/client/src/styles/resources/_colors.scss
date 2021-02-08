@@ -1,47 +1,122 @@
 // Palette
 
-$dark: #222222;
-$light: #c2c2c2;
-$primary: #f5e48e;
-$secondary: #ebc699;
-$success: #59735b;
-$danger: #a22c29;
+// -- Theme
 
-// Variant
+$p-primary: #ffef9f;
+$p-secondary: #e58f65;
+$p-tertiary: #2e2f2f;
+$p-positive: #768948;
+$p-negative: #d05353;
 
-$variant-1: 0.05;
-$variant-2: 0.2;
-$lighter: percentage(1 + $variant-2);
-$darker: percentage(1 - $variant-2);
+// -- Grayscale
 
-// Base
+$p-white: #ffffff;
+$p-grayscale-01: #f5f5f5;
+$p-grayscale-02: #ebebeb;
+$p-grayscale-03: #e0e0e0;
+$p-grayscale-04: #d6d6d6;
+$p-grayscale-05: #cccccc;
+$p-grayscale-06: #c2c2c2;
+$p-grayscale-07: #b8b8b8;
+$p-grayscale-08: #adadad;
+$p-grayscale-09: #a3a3a3;
+$p-grayscale-10: #999999;
+$p-grayscale-11: #8f8f8f;
+$p-grayscale-12: #858585;
+$p-grayscale-13: #7a7a7a;
+$p-grayscale-14: #707070;
+$p-grayscale-15: #666666;
+$p-grayscale-16: #5c5c5c;
+$p-grayscale-17: #525252;
+$p-grayscale-18: #474747;
+$p-grayscale-19: #3d3d3d;
+$p-grayscale-20: #333333;
+$p-grayscale-21: #292929;
+$p-grayscale-22: #1f1f1f;
+$p-grayscale-23: #141414;
+$p-grayscale-24: #0a0a0a;
+$p-black: #000000;
 
-$bg-dark-1: darken($dark, percentage($variant-1));
-$bg-dark-2: $dark;
-$bg-dark-3: lighten($dark, percentage($variant-1));
-$bd-dark-1: darken($dark, percentage($variant-2));
-$bd-dark-2: darken($dark, percentage($variant-1));
-$bd-dark-3: $dark;
-$fg-dark: $light;
+// -- Variants
 
-$bg-light-1: darken($light, percentage($variant-1));
-$bg-light-2: $light;
-$bg-light-3: lighten($light, percentage($variant-1));
-$bd-light-1: darken($light, percentage($variant-2));
-$bd-light-2: darken($light, percentage($variant-1));
-$bd-light-3: $light;
-$fg-light: darken($dark, percentage($variant-1));
+$p-primary-d2: #ffe250;
+$p-primary-d1: #ffe875;
+$p-primary-l1: #fff2b1;
+$p-primary-l2: #fff4bb;
 
-$bg-primary: $primary;
-$bd-primary: darken($primary, percentage($variant-1));
+$p-secondary-d2: #dc6a31;
+$p-secondary-d1: #e07c4a;
+$p-secondary-l1: #eaa785;
+$p-secondary-l2: #edb294;
 
-$bg-secondary: $secondary;
-$bd-secondary: darken($secondary, percentage($variant-1));
+$p-tertiary-d2: #242525;
+$p-tertiary-d1: #292a2a;
+$p-tertiary-l1: #575959;
+$p-tertiary-l2: #6c6e6e;
 
-$bg-success: $success;
-$bd-success: darken($success, percentage($variant-1));
+$p-positive-d2: #5f6f3a;
+$p-positive-d1: #6a7b41;
+$p-positive-l1: #96ac61;
+$p-positive-l2: #a3b675;
 
-$bg-danger: $danger;
-$bd-danger: darken($danger, percentage($variant-1));
+$p-negative-d2: #b93333;
+$p-negative-d1: #ca3c3c;
+$p-negative-l1: #d97575;
+$p-negative-l2: #de8686;
 
-$fg-disabled: darken($light, percentage($variant-2));
+// Functional
+
+$background: $p-tertiary-d2;
+$disabled-bg: $p-grayscale-15;
+$disabled-fg: $p-grayscale-07;
+
+// -- Dark
+
+$dark-border: $p-grayscale-23;
+$dark-action: $p-tertiary-d1;
+$dark: $p-tertiary;
+$dark-active: $p-tertiary-l1;
+$dark-hover: $p-tertiary-l1;
+$dark-alt: $p-tertiary-l2;
+
+// -- Light
+
+$light-border: $p-grayscale-06;
+$light-action: $p-grayscale-04;
+$light: $p-grayscale-02;
+$light-active: $p-grayscale-01;
+$light-hover: $p-grayscale-01;
+
+// -- Primary
+
+$primary-border: $p-primary-d2;
+$primary-action: $p-primary-d1;
+$primary: $p-primary;
+$primary-active: $p-primary-l1;
+$primary-hover: $p-primary-l1;
+
+// -- Secondary
+
+$secondary-border: $p-secondary-d2;
+$secondary-action: $p-secondary-d1;
+$secondary: $p-secondary;
+$secondary-active: $p-secondary-l1;
+$secondary-hover: $p-secondary-l1;
+
+// -- Positive
+
+$positive-border: $p-positive-d2;
+$positive-action: $p-positive-d1;
+$positive: $p-positive;
+$positive-active: $p-positive-l1;
+$positive-hover: $p-positive-l1;
+$positive-alt: $p-positive-l2;
+
+// -- Negative
+
+$negative-border: $p-negative-d2;
+$negative-action: $p-negative-d1;
+$negative: $p-negative;
+$negative-active: $p-negative-l1;
+$negative-hover: $p-negative-l1;
+$negative-alt: $p-negative-l2;

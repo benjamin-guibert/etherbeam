@@ -17,10 +17,10 @@ describe TokensController, type: :controller do
 
     it { is_expected.to respond_with :ok }
 
-    it { expect(body).to have_attributes count: 2 }
+    it { expect(body).to have_attributes count: 3 }
 
     it do
-      expect(body[1]).to match(
+      expect(body[2]).to match(
         {
           'sanitized_hash' => token.sanitized_hash,
           'address_hash' => token.address_hash,

@@ -12,6 +12,7 @@
     "test": "lerna run test --stream"
   },
   "devDependencies": {
+    "eslint-plugin-mdx": "^1.8.2",
     "husky": "^4.3.0",
     "lerna": "^3.22.1"
   }

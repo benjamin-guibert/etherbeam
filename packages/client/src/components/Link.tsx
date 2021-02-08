@@ -1,31 +1,55 @@
-import React, { ReactElement, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import Icon from './Icon'
 import './Link.scss'
 
+type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
+type SizeProp = 'm' | 'l' | 'xl'
+type LabelBreakpointProp = 'xs' | 's' | 'm' | 'l'
+
 interface LinkProps {
-  title?: string
-  href?: string
-  onClick?: (event: React.SyntheticEvent) => void
+  href: string
+  label?: string
+  icon?: IconProp
+  description?: string
   blank?: boolean
+  color?: ColorProp
+  size?: SizeProp
+  button?: boolean
+  noUnderline?: boolean
+  labelBreakpoint?: LabelBreakpointProp
   active?: boolean
   disabled?: boolean
+  className?: string
   children?: ReactNode
 }
 
-const Link = ({ title, href, onClick, blank, active, disabled, children }: LinkProps): ReactElement => {
-  const onClickAction = (event: React.SyntheticEvent): void => {
-    if (disabled) return
-
-    event.stopPropagation()
-    onClick?.(event)
-  }
-
-  const onKeyUp = (event: React.KeyboardEvent<HTMLAnchorElement>): void => {
-    if (event.key == 'Enter') onClickAction(event)
-  }
-
+const Link: FC<LinkProps> = ({
+  href,
+  label,
+  icon,
+  description,
+  blank,
+  color = 'secondary',
+  size,
+  button,
+  noUnderline,
+  labelBreakpoint,
+  active,
+  disabled,
+  className,
+  children,
+}) => {
   const getClassName = (): string => {
-    const classNames = ['my-link']
-    if (disabled) classNames.push('my-disabled')
+    const classNames = ['my-clickable', className]
+    if (button) {
+      classNames.push(`my-link-button my-${color}-bg`)
+    } else {
+      classNames.push(noUnderline ? 'my-link' : 'my-ulink')
+      classNames.push(`my-${color}-fg`)
+    }
+    if (size) classNames.push(`my-size-${size}`)
+    if (disabled) classNames.push('my-disabled-fg')
     if (active) classNames.push('my-active')
 
     return classNames.join(' ')
@@ -33,15 +57,24 @@ const Link = ({ title, href, onClick, blank, active, disabled, children }: LinkP
 
   return (
     <a
-      title={title}
+      title={description}
       className={getClassName()}
       target={blank ? '_blank' : null}
-      href={href && !disabled ? href : null}
-      onClick={onClickAction}
-      onKeyUp={onKeyUp}
+      href={!disabled ? href : null}
       tabIndex={!disabled ? 0 : null}
     >
-      {children}
+      {children ? (
+        children
+      ) : icon ? (
+        <Icon
+          icon={icon}
+          iconColor={color as 'dark' | 'positive' | 'negative'}
+          labelBreakpoint={labelBreakpoint}
+          label={label}
+        />
+      ) : (
+        <span>{label}</span>
+      )}
     </a>
   )
 }

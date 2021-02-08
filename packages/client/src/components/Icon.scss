@@ -1,19 +1,22 @@
 @use '../styles/resources/sizes';
+@use '../styles/resources/colors';
 
 .my-icon {
   display: inline-flex;
   align-items: center;
 
-  // &-svg svg {
-  //   display: inline-block;
-  //   overflow: visible;
-  //   font-size: inherit;
-  //   width: 1em !important;
-  //   height: 1em !important;
-  //   vertical-align: -0.2em;
-  // }
-
   &-label {
-    padding-left: sizes.$space-s;
+    padding-left: sizes.$spacer-s;
+  }
+
+  &-dark {
+    color: colors.$dark-alt;
+  }
+  &-positive {
+    color: colors.$positive-alt;
+  }
+
+  &-negative {
+    color: colors.$negative-alt;
   }
 }

@@ -1,5 +1,4 @@
-import React, { ReactElement } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { FC } from 'react'
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
@@ -8,46 +7,54 @@ import {
   faEllipsisH,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons'
-import Link from './Link'
+import ListItem from './ListItem'
+import Button from './Button'
 
 type PageProp = 'first' | 'previous' | 'ellipsis' | 'next' | 'last' | number
 
 interface PaginationItemProps {
   page: PageProp
-  onClick?: () => void
+  action?: () => void
   selected?: boolean
   disabled?: boolean
 }
 
-const PaginationItem = ({ page, onClick, selected, disabled }: PaginationItemProps): ReactElement => {
-  const getProps = (): { title: string; icon: IconDefinition } => {
+const PaginationItem: FC<PaginationItemProps> = ({ page, action, selected, disabled }) => {
+  const getProps = (): { description: string; icon: IconDefinition } => {
     switch (page) {
       case 'first':
-        return { title: 'First page', icon: faAngleDoubleLeft }
+        return { description: 'First page', icon: faAngleDoubleLeft }
       case 'previous':
-        return { title: 'Previous page', icon: faAngleLeft }
+        return { description: 'Previous page', icon: faAngleLeft }
       case 'ellipsis':
-        return { title: null, icon: faEllipsisH }
+        return { description: null, icon: faEllipsisH }
       case 'next':
-        return { title: 'Next page', icon: faAngleRight }
+        return { description: 'Next page', icon: faAngleRight }
       case 'last':
-        return { title: 'Last page', icon: faAngleDoubleRight }
+        return { description: 'Last page', icon: faAngleDoubleRight }
       default:
         return {
-          title: `Page ${page}`,
+          description: `Page ${page}`,
           icon: null,
         }
     }
   }
 
-  const { title, icon } = getProps()
+  const { description, icon } = getProps()
 
   return (
-    <li>
-      <Link title={title} onClick={onClick} disabled={disabled} active={selected}>
-        {typeof page === 'number' ? page : <FontAwesomeIcon icon={icon} />}
-      </Link>
-    </li>
+    <ListItem>
+      <Button
+        link
+        color="secondary"
+        description={description}
+        action={action}
+        label={typeof page === 'number' && page.toString()}
+        icon={typeof page !== 'number' && icon}
+        disabled={disabled}
+        active={selected}
+      />
+    </ListItem>
   )
 }
 

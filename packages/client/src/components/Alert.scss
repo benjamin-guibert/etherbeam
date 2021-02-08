@@ -1,8 +1,8 @@
 @use '../styles/resources/sizes';
 
 .my-alert {
-  margin: sizes.$space-s 0px;
-  padding: sizes.$space-s;
-  border: sizes.$border solid;
+  border-width: sizes.$border;
+  border-style: solid;
   border-radius: sizes.$border-radius;
+  padding: sizes.$spacer-s;
 }

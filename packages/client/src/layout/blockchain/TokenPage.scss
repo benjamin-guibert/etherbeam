@@ -4,19 +4,20 @@
 
 .my-tokenpage {
   &-subheader {
+    display: flex;
     justify-content: space-between;
   }
 
-  &-links li {
-    padding-left: 0px !important;
-  }
-
-  &-price {
-    color: colors.$fg-disabled;
-    font-size: sizes.$size-l;
+  &-links {
+    display: inline-flex;
   }
 
   &-history {
-    margin: sizes.$space-s 0px !important;
+    display: inline-flex;
+    margin-left: sizes.$spacer-s;
   }
+
+  // &-actions {
+  //   justify-content: center;
+  // }
 }

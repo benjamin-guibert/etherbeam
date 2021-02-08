@@ -2,7 +2,7 @@
 
 exports[`<Alert /> Default should match snapshot 1`] = `
 <div
-  class="my-alert my-color-neutral"
+  class="my-alert my-light-bg"
 >
   Alert.
 </div>

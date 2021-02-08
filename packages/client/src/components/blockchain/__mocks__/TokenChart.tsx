@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { FC } from 'react'
 
-const TokenChart = (): ReactElement => {
+const TokenChart: FC = () => {
   return <div></div>
 }
 

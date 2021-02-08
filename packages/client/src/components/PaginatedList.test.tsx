@@ -4,6 +4,7 @@ import PaginatedList from './PaginatedList'
 
 describe('<PaginatedList />', () => {
   const setPage = jest.fn()
+  const content = 'Content'
 
   let component: ReactWrapper
 
@@ -14,7 +15,7 @@ describe('<PaginatedList />', () => {
           setPage={setPage}
           pagination={{ currentPage: 1, itemsPerPage: 10, totalItems: 100, totalPages: 10 }}
         >
-          Content.
+          {content}
         </PaginatedList>
       )
     })
@@ -39,7 +40,7 @@ describe('<PaginatedList />', () => {
           setPage={setPage}
           pagination={{ currentPage: 1, itemsPerPage: 10, totalItems: 10, totalPages: 1 }}
         >
-          Content.
+          {content}
         </PaginatedList>
       )
     })

@@ -1,0 +1,27 @@
+@use '../styles/resources/sizes';
+@use '../styles/resources/colors';
+@use '../styles/resources/fonts';
+
+.my-button,
+.my-button-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: fonts.$primary;
+  font-size: sizes.$size;
+  padding: sizes.$spacer-xs;
+  min-height: sizes.$size-xl;
+}
+
+.my-button,
+.my-link-button {
+  border-style: solid;
+  border-width: sizes.$border;
+  border-radius: sizes.$border-radius-s;
+  font-weight: bold;
+
+  .my-icon {
+    &.my-positive {
+      color: colors.$positive-action;
+    }
+  }
+}

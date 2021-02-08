@@ -1,28 +1,61 @@
 import { Token } from 'libraries/ethereum/types'
-import React, { ReactElement } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { AmountPrintOptions, printEtherAmount, printTokenAmount } from './helpers'
 import { BigNumber } from 'ethers'
 import Badge from '../Badge'
+import './TokenAmount.scss'
 
-type TokenAmountColorProp = 'neutral' | 'primary' | 'secondary' | 'success' | 'danger'
+const ETH_SYMBOL = 'ETH'
+
+type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
+type SizeProp = 's' | 'm' | 'l' | 'xl'
 
 interface TokenAmountProps {
   amount: BigNumber
   token?: Token
-  color?: TokenAmountColorProp
+  color?: ColorProp
+  size?: SizeProp
   amountPrintOptions?: AmountPrintOptions
+  noSymbol?: boolean
+  noBadge?: boolean
+  className?: string
 }
 
-const TokenAmount = ({ amount, token, color, amountPrintOptions }: TokenAmountProps): ReactElement => {
-  const printedAmount = token
-    ? printTokenAmount(amount, token, amountPrintOptions)
-    : printEtherAmount(amount, amountPrintOptions)
+const TokenAmount: FC<TokenAmountProps> = ({
+  amount,
+  token,
+  color = 'light',
+  size,
+  amountPrintOptions,
+  noSymbol,
+  noBadge,
+  className,
+}) => {
+  const getPrintedAmount = () => {
+    if (!amount) return '--'
+
+    return token ? printTokenAmount(amount, token, amountPrintOptions) : printEtherAmount(amount, amountPrintOptions)
+  }
+
+  const renderAmount = (content: ReactNode) => {
+    if (noBadge) return <span className={className}>{content}</span>
+
+    return (
+      <Badge color={color} size={size} className={className}>
+        {content}
+      </Badge>
+    )
+  }
 
   return (
-    <Badge type={color}>
-      <span className="my-symbol">{token ? token.symbol : 'ETH'}</span>
-      <span className="my-amount"> {printedAmount}</span>
-    </Badge>
+    <>
+      {renderAmount(
+        <>
+          {!noSymbol && <span className="my-tokenamount-symbol">{token ? token.symbol : ETH_SYMBOL}</span>}
+          <span className="my-tokenamount-amount"> {getPrintedAmount()}</span>
+        </>
+      )}
+    </>
   )
 }
 

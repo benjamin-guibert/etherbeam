@@ -1,7 +1,13 @@
 @use '../../styles/resources/fonts';
 @use '../../styles/resources/sizes';
 
-.my-difference-prefix {
-  font-weight: bold;
-  padding-right: sizes.$space-s;
+.my-difference {
+  &-prefix {
+    font-weight: bold;
+    padding-right: sizes.$spacer-s;
+  }
+
+  &-amount {
+    font-family: fonts.$monospace;
+  }
 }

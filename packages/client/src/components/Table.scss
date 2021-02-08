@@ -1,0 +1,83 @@
+@use '../styles/resources/sizes';
+@use '../styles/resources/colors';
+
+.my-table {
+  border-collapse: collapse;
+  border-style: solid;
+  border-width: sizes.$border;
+  width: 100%;
+  padding: sizes.$spacer;
+
+  th {
+    letter-spacing: sizes.$letter-spacing;
+  }
+
+  th,
+  td {
+    border-style: solid;
+    border-width: sizes.$border;
+    padding: sizes.$spacer-s;
+  }
+
+  // &-primary {
+  //   background-color: colors.$bg-primary;
+  //   border-color: colors.$bd-primary;
+  //   color: colors.$fg-light;
+
+  // }
+
+  // &-secondary {
+  //   background-color: colors.$bg-secondary;
+  //   border-color: colors.$bd-secondary;
+  //   color: colors.$fg-light;
+
+  //   th,
+  //   td {
+  //     border-color: colors.$bd-secondary;
+  //   }
+  // }
+
+  // &-dark {
+  //   background-color: colors.$bg-dark;
+  //   border-color: colors.$bd-dark;
+  //   color: colors.$fg-dark;
+
+  //   th,
+  //   td {
+  //     border-color: colors.$bd-dark;
+  //   }
+  // }
+
+  // &-light {
+  //   background-color: colors.$bg-light;
+  //   border-color: colors.$bd-light;
+  //   color: colors.$fg-light;
+
+  //   th,
+  //   td {
+  //     border-color: colors.$bd-light;
+  //   }
+  // }
+
+  // &-positive {
+  //   background-color: colors.$bg-positive;
+  //   border-color: colors.$bd-positive;
+  //   color: colors.$fg-dark;
+
+  //   th,
+  //   td {
+  //     border-color: colors.$bd-positive;
+  //   }
+  // }
+
+  // &-negative {
+  //   background-color: colors.$bg-negative;
+  //   border-color: colors.$bd-negative;
+  //   color: colors.$fg-dark;
+
+  //   th,
+  //   td {
+  //     border-color: colors.$bd-negative;
+  //   }
+  // }
+}

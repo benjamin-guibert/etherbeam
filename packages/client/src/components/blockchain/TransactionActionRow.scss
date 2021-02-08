@@ -1,0 +1,46 @@
+@use '../../styles/resources/colors';
+@use '../../styles/resources/sizes';
+
+.my-transactionactionrow {
+  td {
+    padding: sizes.$spacer-xs sizes.$spacer-s !important;
+  }
+
+  &-action {
+    display: flex;
+    align-items: center;
+  }
+
+  &-icon {
+    margin-right: sizes.$spacer-s;
+  }
+
+  &-unknown,
+  &-approval,
+  &-transfer {
+    background-color: colors.$dark;
+    border-color: colors.$dark-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$dark-alt;
+    }
+  }
+
+  &-buy {
+    background-color: colors.$positive;
+    border-color: colors.$positive-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$positive-alt;
+    }
+  }
+
+  &-sell {
+    background-color: colors.$negative;
+    border-color: colors.$negative-border;
+
+    .my-transactionactionrow-icon {
+      color: colors.$negative-alt;
+    }
+  }
+}

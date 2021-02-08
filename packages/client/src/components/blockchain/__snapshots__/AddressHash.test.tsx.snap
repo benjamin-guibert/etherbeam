@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddressHash /> Default should match snapshot 1`] = `
+<span
+  class="my-addresshash"
+>
+  0x0000000000000000000000000000000000000111
+</span>
+`;

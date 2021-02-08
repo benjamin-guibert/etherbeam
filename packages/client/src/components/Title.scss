@@ -1,0 +1,19 @@
+@use '../styles/resources/sizes';
+
+.my-title {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-style: italic;
+  font-size: sizes.$size-xl;
+  height: 100%;
+
+  &-label {
+    font-size: sizes.$size-s;
+  }
+
+  &-img {
+    width: sizes.$size;
+    height: sizes.$size;
+  }
+}

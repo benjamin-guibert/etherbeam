@@ -1,62 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TokenPage /> Default should match snapshot 1`] = `
-<main
-  class="my-page my-mw-s"
->
-  <h1
-    class="my-page-header"
-  >
+Array [
+  <h1>
     Token
-  </h1>
+  </h1>,
   <h2
-    class="my-page-subheader my-tokenpage-subheader"
+    class="my-tokenpage-subheader"
   >
-    <nav>
-      <ul
-        class="my-tokenpage-links my-hlist"
-      />
-    </nav>
-    <div>
-      <span
-        class="my-d-min-m"
-      >
-        <a
-          class="my-link"
-          href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
-          tabindex="0"
-          target="_blank"
-        >
-          <span
-            class="my-address-hash"
-          >
-            0x0000000000000000000000000000000000000111
-          </span>
-        </a>
-      </span>
-      <span
-        class="my-d-max-m"
-      >
-        <a
-          class="my-link"
-          href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
-          tabindex="0"
-          target="_blank"
-        >
-          <span
-            class="my-address-hash"
-          >
-            0x0000...0111
-          </span>
-        </a>
-      </span>
-    </div>
-  </h2>
-  <section
-    class="my-tokenpage-price"
-  >
+    <ul
+      class="my-list-h  my-tokenpage-links"
+    />
     <span
-      class="my-tokenpage-price-symbol my-d-min-xs"
+      class="my-d-min-m"
+    >
+      <a
+        class="my-clickable  my-link my-secondary-fg"
+        href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        tabindex="0"
+        target="_blank"
+      >
+        <span
+          class="my-addresshash"
+        >
+          0x0000000000000000000000000000000000000111
+        </span>
+      </a>
+    </span>
+    <span
+      class="my-d-max-m"
+    >
+      <a
+        class="my-clickable  my-link my-secondary-fg"
+        href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        tabindex="0"
+        target="_blank"
+      >
+        <span
+          class="my-addresshash"
+        >
+          0x0000...0111
+        </span>
+      </a>
+    </span>
+  </h2>,
+  <section>
+    <span
+      class="my-d-min-xs my-disabled-fg my-size-l"
     >
       <span
         class="my-symbol"
@@ -70,25 +60,27 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
       </span>
     </span>
     <span
-      class="my-badge my-color-primary "
+      class="my-badge my-light-bg my-size-l "
     >
       <span
-        class="my-symbol"
+        class="my-tokenamount-symbol"
       >
         ETH
       </span>
       <span
-        class="my-amount"
+        class="my-tokenamount-amount"
       >
          NaN
       </span>
     </span>
     <ul
-      class="my-tokenpricehistory my-hlist my-tokenpage-history"
+      class="my-list-h  my-tokenpage-history"
     >
-      <li>
+      <li
+        class="my-listitem "
+      >
         <span
-          class="my-badge my-color-success "
+          class="my-badge my-positive-bg my-size-m "
         >
           <span
             class="my-difference-prefix"
@@ -96,15 +88,17 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             H
           </span>
           <span
-            class="my-amount"
+            class="my-difference-amount"
           >
             +100%
           </span>
         </span>
       </li>
-      <li>
+      <li
+        class="my-listitem "
+      >
         <span
-          class="my-badge my-color-danger "
+          class="my-badge my-negative-bg my-size-m "
         >
           <span
             class="my-difference-prefix"
@@ -112,15 +106,17 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             D
           </span>
           <span
-            class="my-amount"
+            class="my-difference-amount"
           >
             -50%
           </span>
         </span>
       </li>
-      <li>
+      <li
+        class="my-listitem "
+      >
         <span
-          class="my-badge my-color-danger "
+          class="my-badge my-negative-bg my-size-m "
         >
           <span
             class="my-difference-prefix"
@@ -128,15 +124,17 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             W
           </span>
           <span
-            class="my-amount"
+            class="my-difference-amount"
           >
             -75%
           </span>
         </span>
       </li>
-      <li>
+      <li
+        class="my-listitem "
+      >
         <span
-          class="my-badge my-color-neutral "
+          class="my-badge my-light-bg my-size-m "
         >
           <span
             class="my-difference-prefix"
@@ -144,15 +142,17 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             M
           </span>
           <span
-            class="my-amount"
+            class="my-difference-amount"
           >
             +0%
           </span>
         </span>
       </li>
-      <li>
+      <li
+        class="my-listitem "
+      >
         <span
-          class="my-badge my-color-success "
+          class="my-badge my-positive-bg my-size-m "
         >
           <span
             class="my-difference-prefix"
@@ -160,57 +160,112 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             Y
           </span>
           <span
-            class="my-amount"
+            class="my-difference-amount"
           >
             +300%
           </span>
         </span>
       </li>
     </ul>
-  </section>
+  </section>,
   <section>
     <div />
-  </section>
+  </section>,
   <section>
-    <h3>
-      Actions
-    </h3>
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Action
-          </th>
-          <th>
-            Time
-          </th>
-          <th
-            class="my-d-min-xs"
+    <ul
+      class="my-list-h my-list-center "
+    >
+      <li
+        class="my-listitem "
+      >
+        <a
+          class="my-clickable  my-link-button my-positive-bg my-size-l"
+          href="https://app.uniswap.org/#/swap?outputCurrency=0x0000000000000000000000000000000000000111"
+          tabindex="0"
+          target="_blank"
+        >
+          <span
+            class="my-icon  "
           >
-            Holder
-          </th>
-          <th />
-        </tr>
-      </thead>
-      <tbody />
-    </table>
-  </section>
-</main>
+            <span
+              class="my-icon-positive "
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-plus-circle fa-w-16 "
+                data-icon="plus-circle"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="my-icon-label "
+            >
+              Buy
+            </span>
+          </span>
+        </a>
+      </li>
+      <li
+        class="my-listitem "
+      >
+        <a
+          class="my-clickable  my-link-button my-negative-bg my-size-l"
+          href="https://app.uniswap.org/#/swap?inputCurrency=0x0000000000000000000000000000000000000111&"
+          tabindex="0"
+          target="_blank"
+        >
+          <span
+            class="my-icon  "
+          >
+            <span
+              class="my-icon-negative "
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-minus-circle fa-w-16 "
+                data-icon="minus-circle"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zM124 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H124z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <span
+              class="my-icon-label "
+            >
+              Sell
+            </span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </section>,
+]
 `;
 
-exports[`<TokenPage /> Default should match snapshot 2`] = `
-<main
-  class="my-page my-mw-s"
->
-  <h1
-    class="my-page-header"
-  >
-    Unknown token
-  </h1>
+exports[`<TokenPage /> Loading should match snapshot 1`] = `
+<h1>
   <div
-    class="my-alert my-color-danger"
+    class="my-loader"
   >
-    The token '0x0000000000000000000000000000000000000111' is unknown.
+    <div
+      class="my-loader-dots"
+    />
   </div>
-</main>
+</h1>
 `;

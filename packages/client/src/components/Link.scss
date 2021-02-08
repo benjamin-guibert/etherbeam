@@ -1,20 +1,20 @@
-@use '../styles/resources/colors';
-@use '../styles/resources/sizes';
+.my-ulink:hover {
+  text-decoration: underline;
+
+  &.my-disabled-fg {
+    text-decoration: inherit;
+  }
+}
 
 .my-link,
-.my-link:visited {
-  cursor: pointer;
-  color: colors.$secondary;
-  text-decoration: inherit;
-  padding: sizes.$space-xs;
-}
+.my-button-link,
+.my-ulink {
+  display: inline-flex;
+  align-items: center;
+  border: 0px;
+  background-color: inherit;
 
-.my-link:hover {
-  filter: brightness(colors.$lighter);
-}
-
-.my-link:focus,
-.my-clickabletr:focus {
-  outline: 0px;
-  box-shadow: 0px 0px 3px lighten(colors.$primary, percentage(colors.$variant-1));
+  &.my-active {
+    font-weight: bold;
+  }
 }

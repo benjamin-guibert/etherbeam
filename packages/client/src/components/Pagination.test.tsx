@@ -16,12 +16,6 @@ describe('<Pagination />', () => {
       component = mount(<Pagination total={6} current={5} setCurrent={setCurrent} />)
     })
 
-    it('should render', () => {
-      const ul = component.find('ul')
-      expect(ul.hasClass('my-pagination')).toBeTruthy()
-      expect(ul.hasClass('my-hlist')).toBeTruthy()
-    })
-
     it('should render items', () => {
       const items = component.find('PaginationItem')
       expect(items).toHaveLength(10)
@@ -71,12 +65,7 @@ describe('<Pagination />', () => {
       component = mount(<Pagination total={6} current={5} setCurrent={setCurrent} className="my-class" />)
     })
 
-    it('should render', () => {
-      const ul = component.find('ul')
-      expect(ul.hasClass('my-pagination')).toBeTruthy()
-      expect(ul.hasClass('my-hlist')).toBeTruthy()
-      expect(ul.hasClass('my-class')).toBeTruthy()
-    })
+    it('should render', () => expect(component.find('List').at(0).hasClass('my-class')).toBeTruthy())
   })
 
   describe('On click', () => {
@@ -90,7 +79,7 @@ describe('<Pagination />', () => {
         component = mount(<Pagination total={10} current={5} setCurrent={setCurrent} />)
 
         act(() => {
-          component.find('PaginationItem').at(0).find('a').simulate('click')
+          component.find('PaginationItem').at(0).find('Button').simulate('click')
           component.update()
         })
       })
@@ -123,7 +112,7 @@ describe('<Pagination />', () => {
         component = mount(<Pagination total={10} current={5} setCurrent={setCurrent} />)
 
         act(() => {
-          component.find('PaginationItem').at(1).find('a').simulate('click')
+          component.find('PaginationItem').at(1).find('Button').simulate('click')
           component.update()
         })
       })
@@ -160,7 +149,7 @@ describe('<Pagination />', () => {
         component = mount(<Pagination total={10} current={3} setCurrent={setCurrent} />)
 
         act(() => {
-          component.find('PaginationItem').at(3).find('a').simulate('click')
+          component.find('PaginationItem').at(3).find('Button').simulate('click')
           component.update()
         })
       })
@@ -195,7 +184,7 @@ describe('<Pagination />', () => {
         component = mount(<Pagination total={10} current={5} setCurrent={setCurrent} />)
 
         act(() => {
-          component.find('PaginationItem').at(9).find('a').simulate('click')
+          component.find('PaginationItem').at(9).find('Button').simulate('click')
           component.update()
         })
       })
@@ -232,7 +221,7 @@ describe('<Pagination />', () => {
         component = mount(<Pagination total={10} current={5} setCurrent={setCurrent} />)
 
         act(() => {
-          component.find('PaginationItem').at(8).find('a').simulate('click')
+          component.find('PaginationItem').at(8).find('Button').simulate('click')
           component.update()
         })
       })

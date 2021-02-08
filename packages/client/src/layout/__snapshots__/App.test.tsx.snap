@@ -9,36 +9,45 @@ exports[`<App /> should match snapshot 1`] = `
   >
     <nav>
       <ul
-        class="my-hlist"
+        class="my-list-h  "
       >
         <li
-          class="my-header-title"
+          class="my-listitem "
         >
           <a
-            class="my-link"
+            class="my-clickable my-header-title my-link my-light-fg"
             href="/"
             tabindex="0"
           >
-            <img
-              src="/images/ethereum.png"
-            />
-            <span>
-              Etherbeam
+            <span
+              class="my-title"
+            >
+              <img
+                class="my-title-img"
+                src="/images/ethereum.png"
+              />
+              <span
+                class="my-title-label"
+              >
+                Etherbeam
+              </span>
             </span>
           </a>
         </li>
-        <li>
+        <li
+          class="my-listitem "
+        >
           <a
-            class="my-link"
+            class="my-clickable  my-link my-light-fg"
             href="/tokens"
             tabindex="0"
             title="Tokens"
           >
             <span
-              class="my-icon "
+              class="my-icon  "
             >
               <span
-                class="my-icon-svg"
+                class="my-icon-light "
               >
                 <svg
                   aria-hidden="true"
@@ -57,7 +66,7 @@ exports[`<App /> should match snapshot 1`] = `
                 </svg>
               </span>
               <span
-                class="my-icon-label"
+                class="my-icon-label my-d-min-s"
               >
                 Tokens
               </span>
@@ -67,5 +76,8 @@ exports[`<App /> should match snapshot 1`] = `
       </ul>
     </nav>
   </header>
+  <main
+    class="my-app-main"
+  />
 </div>
 `;
