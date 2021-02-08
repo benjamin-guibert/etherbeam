@@ -30,12 +30,6 @@ describe('<TokenPriceHistory />', () => {
       component = shallow(<TokenPriceHistory priceHistory={priceHistory} />)
     })
 
-    it('should render list', () => {
-      const ul = component.find('ul')
-      expect(ul.hasClass('my-tokenpricehistory')).toBeTruthy()
-      expect(ul.hasClass('my-hlist')).toBeTruthy()
-    })
-
     it('should render items', () => {
       const items = component.find('Difference')
       expect(items).toHaveLength(3)
@@ -51,11 +45,6 @@ describe('<TokenPriceHistory />', () => {
       component = shallow(<TokenPriceHistory priceHistory={priceHistory} className="my-class" />)
     })
 
-    it('should render list', () => {
-      const ul = component.find('ul')
-      expect(ul.hasClass('my-tokenpricehistory')).toBeTruthy()
-      expect(ul.hasClass('my-hlist')).toBeTruthy()
-      expect(ul.hasClass('my-class')).toBeTruthy()
-    })
+    it('should render list', () => expect(component.find('List').hasClass('my-class')).toBeTruthy())
   })
 })

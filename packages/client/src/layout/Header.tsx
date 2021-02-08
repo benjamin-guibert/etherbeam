@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import Link from '../components/Link'
-import Icon from '../components/Icon'
 import Title from '../components/Title'
 import List from '../components/List'
 import ListItem from '../components/ListItem'
@@ -18,9 +17,15 @@ const Header: FC = () => {
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="/tokens" color="light" description="Tokens" noUnderline>
-              <Icon icon={faCoins} label="Tokens" labelBreakpoint="s" />
-            </Link>
+            <Link
+              href="/tokens"
+              color="light"
+              label="Tokens"
+              icon={faCoins}
+              description="Tokens"
+              noUnderline
+              labelBreakpoint="s"
+            />
           </ListItem>
         </List>
       </nav>

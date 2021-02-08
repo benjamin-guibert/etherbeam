@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> Default should match snapshot 1`] = `
+Array [
+  "Content",
+  <table
+    class="my-table my-dark-bg"
+  />,
+]
+`;

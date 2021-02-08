@@ -143,7 +143,7 @@ const TransactionActionRow: FC<TransactionActionRowProps> = ({ action }) => {
         <Time dateTime={dateTime} />
       </td>
       <td className="my-d-min-xs my-text-center">
-        <Address address={holder} short />
+        <Address address={holder} short color="light" />
       </td>
       <td className="my-text-center">
         <EtherscanLink url={url} size="l" />

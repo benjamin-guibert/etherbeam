@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Switch, Route } from 'react-router-dom'
 import Header from './Header'
 import TokensPageWrapper from './blockchain/TokensPageWrapper'
+import TokenPageWrapper from './blockchain/TokenPageWrapper'
 import './App.scss'
 
 const App: FC = () => {
@@ -11,16 +12,17 @@ const App: FC = () => {
     <BrowserRouter>
       <div className="my-app">
         <Header />
-        <main className="my-page-main my-mw-s"></main>
-        <Switch>
-          <Route path="/" exact></Route>
-          <Route path="/tokens" exact>
-            <TokensPageWrapper />
-          </Route>
-          {/* <Route path="/tokens/:address" exact>
-            <TokenPage />
-          </Route> */}
-        </Switch>
+        <main className="my-app-main">
+          <Switch>
+            <Route path="/" exact></Route>
+            <Route path="/tokens" exact>
+              <TokensPageWrapper />
+            </Route>
+            <Route path="/tokens/:address" exact>
+              <TokenPageWrapper />
+            </Route>
+          </Switch>
+        </main>
       </div>
     </BrowserRouter>
   )

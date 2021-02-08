@@ -1,4 +1,5 @@
 @use '../styles/resources/sizes';
+@use '../styles/resources/colors';
 
 .my-icon {
   display: inline-flex;
@@ -6,5 +7,16 @@
 
   &-label {
     padding-left: sizes.$spacer-s;
+  }
+
+  &-dark {
+    color: colors.$dark-alt;
+  }
+  &-positive {
+    color: colors.$positive-alt;
+  }
+
+  &-negative {
+    color: colors.$negative-alt;
   }
 }

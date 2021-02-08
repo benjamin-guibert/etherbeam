@@ -10,6 +10,28 @@ import { BigNumber } from 'ethers'
 import Table from '../Table'
 import TransactionActionRow from './TransactionActionRow'
 
+const action = {
+  index: 0,
+  transaction: {
+    address: {
+      hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
+      type: AddressType.Transaction,
+      url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
+    },
+    status: TransactionStatus.Validated,
+    dateTime: new Date(2020, 4, 5, 11, 22, 33),
+    blockNumber: 1000,
+    gas: null,
+  },
+  type: TransactionActionType.Unknown,
+  direction: TransactionActionDirection.Buy,
+  holder: {
+    hash: '0x0000000000000000000000000000000000000222',
+    type: AddressType.Unknown,
+    url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
+  },
+}
+
 export default {
   title: 'Components/Blockchain/TransactionActionRow',
   component: TransactionActionRow,
@@ -23,27 +45,7 @@ export default {
     ),
   ],
   args: {
-    action: {
-      index: 0,
-      transaction: {
-        address: {
-          hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
-          type: AddressType.Transaction,
-          url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
-        },
-        status: TransactionStatus.Validated,
-        dateTime: new Date(2020, 4, 5, 11, 22, 33),
-        blockNumber: 1000,
-        gas: null,
-      },
-      type: TransactionActionType.Unknown,
-      direction: TransactionActionDirection.Buy,
-      holder: {
-        hash: '0x0000000000000000000000000000000000000222',
-        type: AddressType.Unknown,
-        url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
-      },
-    },
+    action,
   },
 } as Meta
 

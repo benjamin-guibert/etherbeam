@@ -51,3 +51,6 @@ export const Default = Template.bind({})
 
 export const Horizontal = Template.bind({})
 Horizontal.args = { horizontal: true }
+
+export const Center = Template.bind({})
+Center.args = { horizontal: true, center: true }

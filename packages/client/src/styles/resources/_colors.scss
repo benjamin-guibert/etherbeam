@@ -42,22 +42,27 @@ $p-black: #000000;
 $p-primary-d2: #ffe250;
 $p-primary-d1: #ffe875;
 $p-primary-l1: #fff2b1;
+$p-primary-l2: #fff4bb;
 
 $p-secondary-d2: #dc6a31;
 $p-secondary-d1: #e07c4a;
 $p-secondary-l1: #eaa785;
+$p-secondary-l2: #edb294;
 
 $p-tertiary-d2: #242525;
 $p-tertiary-d1: #292a2a;
 $p-tertiary-l1: #575959;
+$p-tertiary-l2: #6c6e6e;
 
 $p-positive-d2: #5f6f3a;
 $p-positive-d1: #6a7b41;
 $p-positive-l1: #96ac61;
+$p-positive-l2: #a3b675;
 
 $p-negative-d2: #b93333;
 $p-negative-d1: #ca3c3c;
 $p-negative-l1: #d97575;
+$p-negative-l2: #de8686;
 
 // Functional
 
@@ -72,6 +77,7 @@ $dark-action: $p-tertiary-d1;
 $dark: $p-tertiary;
 $dark-active: $p-tertiary-l1;
 $dark-hover: $p-tertiary-l1;
+$dark-alt: $p-tertiary-l2;
 
 // -- Light
 
@@ -79,7 +85,7 @@ $light-border: $p-grayscale-06;
 $light-action: $p-grayscale-04;
 $light: $p-grayscale-02;
 $light-active: $p-grayscale-01;
-$light-hover: $p-white;
+$light-hover: $p-grayscale-01;
 
 // -- Primary
 
@@ -104,6 +110,7 @@ $positive-action: $p-positive-d1;
 $positive: $p-positive;
 $positive-active: $p-positive-l1;
 $positive-hover: $p-positive-l1;
+$positive-alt: $p-positive-l2;
 
 // -- Negative
 
@@ -112,3 +119,4 @@ $negative-action: $p-negative-d1;
 $negative: $p-negative;
 $negative-active: $p-negative-l1;
 $negative-hover: $p-negative-l1;
+$negative-alt: $p-negative-l2;

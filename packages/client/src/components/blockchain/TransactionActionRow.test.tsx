@@ -2,7 +2,7 @@ import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
 import { createTokenAction } from '../../../tests/fixtures/ethereum'
 import { TransactionActionDirection, TransactionActionType } from 'libraries/ethereum/types'
-import TransactionActionItem from './TransactionActionRow'
+import TransactionActionRow from './TransactionActionRow'
 
 describe('<TransactionActionRow />', () => {
   let component: ShallowWrapper
@@ -11,14 +11,14 @@ describe('<TransactionActionRow />', () => {
     const action = createTokenAction(TransactionActionType.Unknown)
 
     beforeAll(() => {
-      component = shallow(<TransactionActionItem action={action} />)
+      component = shallow(<TransactionActionRow action={action} />)
     })
 
     it('should render row', () =>
-      expect(component.find('tr').hasClass('my-transactionactionitem-unknown')).toBeTruthy())
+      expect(component.find('TableRow').hasClass('my-transactionactionrow-unknown')).toBeTruthy())
 
     it('should render time', () => expect(component.find('Time').prop('dateTime')).toBe(action.transaction.dateTime))
-    it('should render address', () => expect(component.find('Address').prop('address')).toBe(action.holder))
+    it('should render address', () => expect(component.find('AddressItem').prop('address')).toBe(action.holder))
     it('should render Etherscan link', () =>
       expect(component.find('EtherscanLink').prop('url')).toBe(action.transaction.address.url))
 
@@ -29,11 +29,11 @@ describe('<TransactionActionRow />', () => {
     const action = createTokenAction(TransactionActionType.Approval)
 
     beforeAll(() => {
-      component = shallow(<TransactionActionItem action={action} />)
+      component = shallow(<TransactionActionRow action={action} />)
     })
 
     it('should render row', () =>
-      expect(component.find('tr').hasClass('my-transactionactionitem-approval')).toBeTruthy())
+      expect(component.find('TableRow').hasClass('my-transactionactionrow-approval')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -42,11 +42,11 @@ describe('<TransactionActionRow />', () => {
     const action = createTokenAction(TransactionActionType.Transfer)
 
     beforeAll(() => {
-      component = shallow(<TransactionActionItem action={action} />)
+      component = shallow(<TransactionActionRow action={action} />)
     })
 
     it('should render row', () =>
-      expect(component.find('tr').hasClass('my-transactionactionitem-transfer')).toBeTruthy())
+      expect(component.find('TableRow').hasClass('my-transactionactionrow-transfer')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -55,10 +55,11 @@ describe('<TransactionActionRow />', () => {
     const action = createTokenAction(TransactionActionType.Swap, TransactionActionDirection.Buy)
 
     beforeAll(() => {
-      component = shallow(<TransactionActionItem action={action} />)
+      component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () => expect(component.find('tr').hasClass('my-transactionactionitem-buy')).toBeTruthy())
+    it('should render row', () =>
+      expect(component.find('TableRow').hasClass('my-transactionactionrow-buy')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -67,10 +68,11 @@ describe('<TransactionActionRow />', () => {
     const action = createTokenAction(TransactionActionType.Swap, TransactionActionDirection.Sell)
 
     beforeAll(() => {
-      component = shallow(<TransactionActionItem action={action} />)
+      component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () => expect(component.find('tr').hasClass('my-transactionactionitem-sell')).toBeTruthy())
+    it('should render row', () =>
+      expect(component.find('TableRow').hasClass('my-transactionactionrow-sell')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })

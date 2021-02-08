@@ -18,7 +18,9 @@ const TokenRow: FC<TokenRowProps> = ({ token, goToTokenPage }) => {
       <td>{name}</td>
       <td>
         <TokenAmount amount={price} noBadge noSymbol />
-        <TokenPriceHistory size="s" className="my-tokenrow-pricehistory" priceHistory={priceHistory} />
+        {!!priceHistory?.length && (
+          <TokenPriceHistory size="s" className="my-tokenrow-pricehistory" priceHistory={priceHistory} />
+        )}
       </td>
       <td className="my-d-min-xs my-text-center">
         <AddressItem address={token} short noFlag />

@@ -14,23 +14,18 @@ describe('<Alert />', () => {
     it('should render', () => {
       const div = component.find('div').at(0)
       expect(div.hasClass('my-alert')).toBeTruthy()
-      expect(div.hasClass('my-color-neutral')).toBeTruthy()
+      expect(div.hasClass('my-light-bg')).toBeTruthy()
       expect(div.prop('children')).toBe(content)
     })
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 
-  describe('Type', () => {
+  describe('Color', () => {
     beforeAll(() => {
-      component = shallow(<Alert type="primary">{content}</Alert>)
+      component = shallow(<Alert color="primary">{content}</Alert>)
     })
 
-    it('should render', () => {
-      const div = component.find('div').at(0)
-      expect(div.hasClass('my-alert')).toBeTruthy()
-      expect(div.hasClass('my-color-primary')).toBeTruthy()
-      expect(div.prop('children')).toBe(content)
-    })
+    it('should render', () => expect(component.find('div').at(0).hasClass('my-primary-bg')).toBeTruthy())
   })
 })

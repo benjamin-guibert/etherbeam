@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { faHome, faFileAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faFileAlt, IconDefinition, faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons'
 import {
   faGithub,
   faLinkedin,
@@ -10,9 +10,9 @@ import {
   faDiscord,
 } from '@fortawesome/free-brands-svg-icons'
 import { Token, TransactionActionType } from '../../libraries/ethereum/types'
+import { getUniswapTradeUrl } from '../../components/blockchain/helpers'
 import Alert from '../../components/Alert'
 import Link from '../../components/Link'
-import Icon from '../../components/Icon'
 import Loader from '../../components/Loader'
 import List from '../../components/List'
 import ListItem from '../../components/ListItem'
@@ -20,20 +20,19 @@ import AddressItem from '../../components/blockchain/AddressItem'
 import TokenAmount from '../../components/blockchain/TokenAmount'
 import TokenPriceHistory from '../../components/blockchain/TokenPriceHistory'
 import TokenChart from '../../components/blockchain/TokenChart'
+import TransactionActionList from '../../components/blockchain/TransactionActionList'
 import './TokenPage.scss'
 
 interface IconLinkProps {
   url: string
-  title: string
   icon: IconDefinition
+  description: string
 }
 
-const IconLink: FC<IconLinkProps> = ({ url, title, icon }) => {
+const IconLink: FC<IconLinkProps> = ({ url, icon, description }) => {
   return (
     <ListItem>
-      <Link href={url} description={title} blank noUnderline>
-        <Icon icon={icon} />
-      </Link>
+      <Link href={url} icon={icon} description={description} blank />
     </ListItem>
   )
 }
@@ -46,6 +45,7 @@ interface TokenPageProps {
 
 const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
   const {
+    hash,
     name,
     symbol,
     website,
@@ -68,22 +68,22 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
       <h1>
         {token && name}
         {!token && loading && <Loader type="dots" />}
-        {!token && !loading && 'Unknown token'}
+        {!token && !loading && !!alert && 'Unknown token'}
       </h1>
 
       {token && (
         <>
           <h2 className="my-tokenpage-subheader">
             <List horizontal className="my-tokenpage-links">
-              {website && <IconLink url={website} title="Website" icon={faHome} />}
-              {whitepaper && <IconLink url={whitepaper} title="Whitepaper" icon={faFileAlt} />}
-              {github && <IconLink url={github} title="Github" icon={faGithub} />}
-              {linkedin && <IconLink url={linkedin} title="LinkedIn" icon={faLinkedin} />}
-              {facebook && <IconLink url={facebook} title="Facebook" icon={faFacebook} />}
-              {reddit && <IconLink url={reddit} title="Reddit" icon={faReddit} />}
-              {twitter && <IconLink url={twitter} title="Twitter" icon={faTwitter} />}
-              {telegram && <IconLink url={telegram} title="Telegram" icon={faTelegram} />}
-              {discord && <IconLink url={discord} title="Discord" icon={faDiscord} />}
+              {website && <IconLink url={website} description="Website" icon={faHome} />}
+              {whitepaper && <IconLink url={whitepaper} description="Whitepaper" icon={faFileAlt} />}
+              {github && <IconLink url={github} description="Github" icon={faGithub} />}
+              {linkedin && <IconLink url={linkedin} description="LinkedIn" icon={faLinkedin} />}
+              {facebook && <IconLink url={facebook} description="Facebook" icon={faFacebook} />}
+              {reddit && <IconLink url={reddit} description="Reddit" icon={faReddit} />}
+              {twitter && <IconLink url={twitter} description="Twitter" icon={faTwitter} />}
+              {telegram && <IconLink url={telegram} description="Telegram" icon={faTelegram} />}
+              {discord && <IconLink url={discord} description="Discord" icon={faDiscord} />}
             </List>
             <>
               <AddressItem className="my-d-min-m" address={token} noFlag />
@@ -103,56 +103,42 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
           <section>
             <TokenChart symbol={symbol} height={300} />
           </section>
+          <section>
+            <List horizontal center>
+              <ListItem>
+                <Link
+                  href={getUniswapTradeUrl(null, hash)}
+                  icon={faPlusCircle}
+                  label="Buy"
+                  color="positive"
+                  size="l"
+                  button
+                  blank
+                />
+              </ListItem>
+              <ListItem>
+                <Link
+                  href={getUniswapTradeUrl(hash, null)}
+                  icon={faMinusCircle}
+                  label="Sell"
+                  color="negative"
+                  size="l"
+                  button
+                  blank
+                />
+              </ListItem>
+            </List>
+          </section>
+          {!!filteredActions?.length && (
+            <section>
+              <h3>Actions</h3>
+              <TransactionActionList actions={filteredActions} />
+            </section>
+          )}
         </>
       )}
       {!token && !!alert && <Alert color="negative">{alert}</Alert>}
     </>
-    // <Page title={name || 'Unknown token'} titleLoading={!name && !alert}>
-    //   {!!alert && <Alert type="danger">{alert}</Alert>}
-    //   {token && (
-    //     <>
-    //       <h2 className="my-page-subheader my-tokenpage-subheader">
-    //         <nav>
-    //           <ul className="my-tokenpage-links my-hlist">
-    //             {website && <IconLink url={website} title="Website" icon={faHome} />}
-    //             {whitepaper && <IconLink url={whitepaper} title="Whitepaper" icon={faFileAlt} />}
-    //             {github && <IconLink url={github} title="Github" icon={faGithub} />}
-    //             {linkedin && <IconLink url={linkedin} title="LinkedIn" icon={faLinkedin} />}
-    //             {facebook && <IconLink url={facebook} title="Facebook" icon={faFacebook} />}
-    //             {reddit && <IconLink url={reddit} title="Reddit" icon={faReddit} />}
-    //             {twitter && <IconLink url={twitter} title="Twitter" icon={faTwitter} />}
-    //             {telegram && <IconLink url={telegram} title="Telegram" icon={faTelegram} />}
-    //             {discord && <IconLink url={discord} title="Discord" icon={faDiscord} />}
-    //           </ul>
-    //         </nav>
-    //         <div>
-    //           <Address className="my-d-min-m" address={token} noFlag />
-    //           <Address className="my-d-max-m" address={token} noFlag short />
-    //         </div>
-    //       </h2>
-    //       {price && (
-    //         <section className="my-tokenpage-price">
-    //           <span className="my-tokenpage-price-symbol my-d-min-xs">
-    //             <span className="my-symbol">{symbol}</span>
-    //             <span className="my-amount"> 1 = </span>
-    //           </span>
-    //           <TokenAmount amount={price} type="primary" />
-    //           <TokenPriceHistory priceHistory={priceHistory} className="my-tokenpage-history" />
-    //         </section>
-    //       )}
-    //       <section className="my-tokenpage-actions my-hlist">
-    //         <Button>Buy</Button>
-    //         <Button>Sell</Button>
-    //       </section>
-    //       <section>
-    //         <TokenChart symbol={symbol} height={300} />
-    //       </section>
-    //       <section>
-    //         <TransactionActionList actions={filteredActions} />
-    //       </section>
-    //     </>
-    //   )}
-    // </Page>
   )
 }
 

@@ -3,7 +3,7 @@ import { Pagination } from '../../libraries/api'
 import { TransactionAction } from '../../libraries/ethereum/types'
 import Table from '../Table'
 import PaginatedList from '../PaginatedList'
-import TransactionActionRow from 'components/blockchain/TransactionActionRow'
+import TransactionActionRow from './TransactionActionRow'
 
 const ACTIONS_PER_PAGE = 20
 
@@ -23,26 +23,23 @@ const TransactionActionsList: FC<TransactionActionsListProps> = ({ actions }) =>
   const currentPageActions = actions.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 
   return (
-    <>
-      <h3>Actions</h3>
-      <PaginatedList pagination={pagination} setPage={setPage}>
-        <Table>
-          <thead>
-            <tr>
-              <th>Action</th>
-              <th>Time</th>
-              <th className="my-d-min-xs">Holder</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentPageActions.map((action, index) => (
-              <TransactionActionRow key={index} action={action} />
-            ))}
-          </tbody>
-        </Table>
-      </PaginatedList>
-    </>
+    <PaginatedList pagination={pagination} setPage={setPage}>
+      <Table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Time</th>
+            <th className="my-d-min-xs">Holder</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentPageActions.map((action, index) => (
+            <TransactionActionRow key={index} action={action} />
+          ))}
+        </tbody>
+      </Table>
+    </PaginatedList>
   )
 }
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Default should match snapshot 1`] = `
+<button
+  class="my-button my-light-bg my-clickable"
+>
+  <span
+    class=""
+  >
+    Label
+  </span>
+</button>
+`;

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
-import { AddressType, Token } from '../../libraries/ethereum/types'
+import { AddressType } from '../../libraries/ethereum/types'
 import TokenAmount from './TokenAmount'
 
 const amount = BigNumber.from('1234567890000000000000')
-const token: Token = {
+const token = {
   hash: '0x0000000000000000000000000000000000000111',
   type: AddressType.Token,
   label: 'Token (TKN)',

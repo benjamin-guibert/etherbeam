@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Title /> Default should match snapshot 1`] = `
+<span
+  class="my-title"
+>
+  <img
+    class="my-title-img"
+    src="/images/ethereum.png"
+  />
+  <span
+    class="my-title-label"
+  >
+    Etherbeam
+  </span>
+</span>
+`;

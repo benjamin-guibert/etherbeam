@@ -1,33 +1,40 @@
 import * as React from 'react'
-import { render } from 'enzyme'
-import TransactionActionList from './TransactionActionList'
-import { createTokenAction } from '../../../tests/fixtures/ethereum'
+import { shallow, ShallowWrapper } from 'enzyme'
 import { TransactionActionType } from 'libraries/ethereum/types'
+import { createTokenAction } from '../../../tests/fixtures/ethereum'
+import TransactionActionList from './TransactionActionList'
 
 describe('<TransactionActionList />', () => {
-  let component: unknown
+  let component: ShallowWrapper
 
   describe('Default', () => {
     const actions = [
       createTokenAction(TransactionActionType.Transfer),
       createTokenAction(TransactionActionType.Transfer),
-      createTokenAction(TransactionActionType.Transfer),
     ]
 
     beforeAll(() => {
-      component = render(<TransactionActionList actions={actions} />)
+      component = shallow(<TransactionActionList actions={actions} />)
     })
 
-    it('should match snapshot', () => expect(component).toMatchSnapshot())
+    it('should render rows', () => {
+      const rows = component.find('TransactionActionRow')
+      expect(rows.length).toBe(2)
+      expect(rows.at(0).prop('action')).toBe(actions[0])
+    })
+
+    it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 
   describe('Empty', () => {
     const actions = []
 
     beforeAll(() => {
-      component = render(<TransactionActionList actions={actions} />)
+      component = shallow(<TransactionActionList actions={actions} />)
     })
 
-    it('should match snapshot', () => expect(component).toMatchSnapshot())
+    it('should not render rows', () => expect(component.find('TransactionActionRow').length).toBe(0))
+
+    it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 })

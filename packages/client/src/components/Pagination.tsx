@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import PaginationItem from './PaginationItem'
-import './Pagination.scss'
 import List from './List'
 
 interface PaginationProps {
@@ -29,7 +28,7 @@ const Pagination: FC<PaginationProps> = ({ total, current, setCurrent, className
 
   return (
     <nav>
-      <List horizontal className={['my-pagination', className].join(' ')}>
+      <List horizontal center className={className}>
         <PaginationItem page="first" action={() => setCurrent(1)} disabled={current === 1} />
         <PaginationItem
           page="previous"

@@ -2,7 +2,7 @@
 
 exports[`<EtherscanLink /> Default should match snapshot 1`] = `
 <a
-  class="my-link"
+  class="my-clickable  my-ulink my-secondary-fg"
   href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
   tabindex="0"
   target="_blank"

@@ -2,7 +2,7 @@
 
 exports[`<Difference /> Neutral should match snapshot 1`] = `
 <span
-  class="my-badge my-color-neutral "
+  class="my-badge my-light-bg  "
 >
   <span
     class="my-difference-prefix"
@@ -10,7 +10,7 @@ exports[`<Difference /> Neutral should match snapshot 1`] = `
     H
   </span>
   <span
-    class="my-amount"
+    class="my-difference-amount"
   >
     +0%
   </span>

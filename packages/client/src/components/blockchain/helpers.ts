@@ -5,6 +5,7 @@ import { AddressType, Token } from '../../libraries/ethereum/types'
 
 const ETH_DECIMALS = 18
 const MAX_DECIMALS = 13
+const UNISWAP_SWAP_URL = 'https://app.uniswap.org/#/swap'
 
 export interface AmountPrintOptions {
   forceDecimals?: boolean
@@ -48,4 +49,10 @@ export const getAddressTypeIcon = (type: AddressType): IconDefinition => {
     default:
       return null
   }
+}
+
+export const getUniswapTradeUrl = (inputHash: string, outputHash: string): string => {
+  return `${UNISWAP_SWAP_URL}?${inputHash ? `inputCurrency=${inputHash}&` : ''}${
+    outputHash ? `outputCurrency=${outputHash}` : ''
+  }`
 }

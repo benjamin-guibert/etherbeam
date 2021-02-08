@@ -2,47 +2,131 @@ import React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import { clearMocks } from '../../tests/helpers'
+import Table from './Table'
 import TableRow from './TableRow'
 
 describe('<TableRow />', () => {
-  const onClick = jest.fn()
+  const action = jest.fn()
+  const content = <td></td>
+  const className = 'my-class'
 
   let component: ReactWrapper
 
   describe('Default', () => {
     beforeAll(() => {
-      clearMocks()
       component = mount(
-        <table>
+        <Table>
           <tbody>
-            <TableRow action={onClick}>
-              <td></td>
-            </TableRow>
+            <TableRow>{content}</TableRow>
           </tbody>
-        </table>
+        </Table>
       )
     })
 
     it('should render', () => {
       const tr = component.find('tr')
-      expect(tr.hasClass('my-clickabletablerow')).toBeTruthy()
-      expect(tr.find('td').exists()).toBeTruthy()
+      expect(tr.prop('tabIndex')).toBeNull()
+      expect(tr.prop('children')).toBe(content)
+      expect(tr.hasClass('my-dark-bg')).toBeTruthy()
     })
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 
+  describe('Color', () => {
+    beforeAll(() => {
+      component = mount(
+        <Table>
+          <tbody>
+            <TableRow color="primary">{content}</TableRow>
+          </tbody>
+        </Table>
+      )
+    })
+
+    it('should render', () => expect(component.find('tr').hasClass('my-primary-bg')).toBeTruthy())
+  })
+
+  describe('Clickable', () => {
+    beforeAll(() => {
+      component = mount(
+        <Table>
+          <tbody>
+            <TableRow clickable action={action}>
+              {content}
+            </TableRow>
+          </tbody>
+        </Table>
+      )
+    })
+
+    it('should render', () => {
+      const tr = component.find('tr')
+      expect(tr.prop('tabIndex')).toBe(0)
+      expect(tr.hasClass('my-clickable')).toBeTruthy()
+    })
+  })
+
+  describe('Active', () => {
+    beforeAll(() => {
+      component = mount(
+        <Table>
+          <tbody>
+            <TableRow active>{content}</TableRow>
+          </tbody>
+        </Table>
+      )
+    })
+
+    it('should render', () => expect(component.find('tr').hasClass('my-active')).toBeTruthy())
+  })
+
+  describe('Disabled', () => {
+    beforeAll(() => {
+      component = mount(
+        <Table>
+          <tbody>
+            <TableRow clickable action={action} disabled>
+              {content}
+            </TableRow>
+          </tbody>
+        </Table>
+      )
+    })
+
+    it('should render', () => {
+      const tr = component.find('tr')
+      expect(tr.prop('tabIndex')).toBeNull()
+      expect(tr.hasClass('my-disabled-fg')).toBeTruthy()
+    })
+  })
+
+  describe('Class', () => {
+    beforeAll(() => {
+      component = mount(
+        <Table>
+          <tbody>
+            <TableRow className={className}>{content}</TableRow>
+          </tbody>
+        </Table>
+      )
+    })
+
+    it('should render', () => expect(component.find('tr').hasClass('my-class')).toBeTruthy())
+  })
+
   describe('On click', () => {
     beforeAll(() => {
       clearMocks()
+
       component = mount(
-        <table>
+        <Table>
           <tbody>
-            <TableRow action={onClick}>
-              <td></td>
+            <TableRow clickable action={action}>
+              {content}
             </TableRow>
           </tbody>
-        </table>
+        </Table>
       )
 
       act(() => {
@@ -51,20 +135,20 @@ describe('<TableRow />', () => {
       })
     })
 
-    it('should call onClick', () => expect(onClick).toBeCalledTimes(1))
+    it('should call action', () => expect(action).toBeCalledTimes(1))
   })
 
   describe('On key up (enter)', () => {
     beforeAll(() => {
       clearMocks()
       component = mount(
-        <table>
+        <Table>
           <tbody>
-            <TableRow action={onClick}>
-              <td></td>
+            <TableRow clickable action={action}>
+              {content}
             </TableRow>
           </tbody>
-        </table>
+        </Table>
       )
 
       act(() => {
@@ -73,20 +157,20 @@ describe('<TableRow />', () => {
       })
     })
 
-    it('should call onClick', () => expect(onClick).toBeCalledTimes(1))
+    it('should call action', () => expect(action).toBeCalledTimes(1))
   })
 
   describe('On key up (other)', () => {
     beforeAll(() => {
       clearMocks()
       component = mount(
-        <table>
+        <Table>
           <tbody>
-            <TableRow action={onClick}>
-              <td></td>
+            <TableRow clickable action={action}>
+              {content}
             </TableRow>
           </tbody>
-        </table>
+        </Table>
       )
 
       act(() => {
@@ -95,6 +179,6 @@ describe('<TableRow />', () => {
       })
     })
 
-    it('should not call onClick', () => expect(onClick).toBeCalledTimes(0))
+    it('should not call action', () => expect(action).toBeCalledTimes(0))
   })
 })

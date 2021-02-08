@@ -1,168 +1,121 @@
 import React from 'react'
-import { mount, ReactWrapper } from 'enzyme'
-import { act } from 'react-dom/test-utils'
-import { clearMocks } from '../../tests/helpers'
+import { shallow, ShallowWrapper } from 'enzyme'
+import { clearMocks, mockFontAwesome } from '../../tests/helpers'
 import Link from './Link'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+
+mockFontAwesome()
 
 describe('<Link />', () => {
-  const onClick = jest.fn()
+  const description = 'Description'
+  const label = 'Label'
+  const icon = faExclamationCircle
+  const href = '/href'
+  const className = 'my-class'
 
-  let component: ReactWrapper
+  let component: ShallowWrapper
 
   describe('Default', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" href="/href" onClick={onClick}>
-          Link
-        </Link>
-      )
+      component = shallow(<Link href={href} label={label} />)
     })
 
     it('should render', () => {
       const a = component.find('a')
-      expect(a.prop('title')).toBe('Title')
-      expect(a.prop('href')).toBe('/href')
-      expect(a.prop('target')).toBe(null)
+      expect(a.prop('href')).toBe(href)
       expect(a.prop('tabIndex')).toBe(0)
-      expect(a.prop('children')).toBe('Link')
-      expect(a.hasClass('my-link')).toBeTruthy()
-      expect(a.hasClass('my-active')).toBeFalsy()
-      expect(a.hasClass('my-disabled')).toBeFalsy()
+      expect(a.hasClass('my-ulink')).toBeTruthy()
+      expect(a.hasClass('my-secondary-fg')).toBeTruthy()
     })
+
+    it('should render icon', () => expect(component.find('span').at(0).prop('children')).toBe(label))
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 
-  describe('On click', () => {
+  describe('Icon', () => {
     beforeAll(() => {
-      clearMocks()
-
-      component = mount(
-        <Link title="Title" onClick={onClick}>
-          Link
-        </Link>
-      )
-
-      act(() => {
-        component.find('a').simulate('click')
-        component.update()
-      })
+      component = shallow(<Link href={href} label={label} icon={icon} />)
     })
 
-    it('should call onClick', () => expect(onClick).toBeCalledTimes(1))
+    it('should render icon', () => {
+      const icon = component.find('Icon')
+      expect(icon.prop('icon')).toBeDefined()
+      expect(icon.prop('label')).toBe(label)
+    })
   })
 
-  describe('On key up (enter)', () => {
+  describe('Custom', () => {
     beforeAll(() => {
-      clearMocks()
-
-      component = mount(
-        <Link title="Title" onClick={onClick}>
-          Link
-        </Link>
-      )
-
-      act(() => {
-        component.find('a').simulate('keyUp', { key: 'Enter' })
-        component.update()
-      })
+      component = shallow(<Link href={href}>{label}</Link>)
     })
 
-    it('should call onClick', () => expect(onClick).toBeCalledTimes(1))
+    it('should render items', () => expect(component.find('a').prop('children')).toContain(label))
   })
 
-  describe('On key up (other)', () => {
+  describe('Description', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" onClick={onClick}>
-          Link
-        </Link>
-      )
-
-      act(() => {
-        component.find('a').simulate('keyUp', { key: 'a' })
-        component.update()
-      })
+      component = shallow(<Link href={href} label={label} description={description} />)
     })
 
-    it('should not call onClick', () => expect(onClick).toBeCalledTimes(0))
+    it('should render', () => expect(component.find('a').prop('title')).toBe(description))
   })
 
   describe('Blank', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" href="/href" onClick={onClick} blank>
-          Link
-        </Link>
-      )
+      component = shallow(<Link href={href} label={label} blank />)
     })
 
     it('should render', () => expect(component.find('a').prop('target')).toBe('_blank'))
+  })
+
+  describe('No underline', () => {
+    beforeAll(() => {
+      clearMocks()
+
+      component = shallow(<Link href={href} label={label} noUnderline />)
+    })
+
+    it('should render', () => expect(component.find('a').hasClass('my-link')).toBeTruthy())
   })
 
   describe('Active', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" href="/href" onClick={onClick} active>
-          Link
-        </Link>
-      )
+      component = shallow(<Link href={href} label={label} active />)
     })
 
-    it('should render', () => {
-      const a = component.find('a')
-      expect(a.prop('tabIndex')).toBe(0)
-      expect(a.hasClass('my-link')).toBeTruthy()
-      expect(a.hasClass('my-active')).toBeTruthy()
-      expect(a.hasClass('my-disabled')).toBeFalsy()
-    })
+    it('should render', () => expect(component.find('a').hasClass('my-active')).toBeTruthy())
   })
 
   describe('Disabled', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" href="/href" onClick={onClick} disabled>
-          Link
-        </Link>
-      )
+      component = shallow(<Link href={href} label={label} disabled />)
     })
 
     it('should render', () => {
       const a = component.find('a')
       expect(a.prop('tabIndex')).toBeNull()
-      expect(a.hasClass('my-link')).toBeTruthy()
-      expect(a.hasClass('my-active')).toBeFalsy()
-      expect(a.hasClass('my-disabled')).toBeTruthy()
+      expect(a.hasClass('my-disabled-fg')).toBeTruthy()
     })
   })
 
-  describe('Active & disabled', () => {
+  describe('Class', () => {
     beforeAll(() => {
       clearMocks()
 
-      component = mount(
-        <Link title="Title" href="/href" onClick={onClick} active disabled>
-          Link
-        </Link>
-      )
+      component = shallow(<Link href={href} label={label} className={className} />)
     })
 
-    it('should render', () => {
-      const a = component.find('a')
-      expect(a.prop('tabIndex')).toBeNull()
-      expect(a.hasClass('my-link')).toBeTruthy()
-      expect(a.hasClass('my-active')).toBeTruthy()
-      expect(a.hasClass('my-disabled')).toBeTruthy()
-    })
+    it('should render', () => expect(component.find('a').hasClass(className)).toBeTruthy())
   })
 })

@@ -2,7 +2,7 @@
 
 exports[`<Badge /> Default should match snapshot 1`] = `
 <span
-  class="my-badge my-color-neutral my-class"
+  class="my-badge my-light-bg  "
 >
   Content.
 </span>

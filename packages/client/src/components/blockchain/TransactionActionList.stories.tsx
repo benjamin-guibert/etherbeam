@@ -6,46 +6,11 @@ import {
   TransactionActionType,
   TransactionStatus,
 } from '../../libraries/ethereum/types'
-import Table from '../Table'
+import { BigNumber } from 'ethers'
 import TransactionActionList from './TransactionActionList'
 
-export default {
-  title: 'Components/Blockchain/TransactionActionList',
-  component: TransactionActionList,
-  args: {
-    action: {
-      index: 0,
-      transaction: {
-        address: {
-          hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
-          type: AddressType.Transaction,
-          url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
-        },
-        status: TransactionStatus.Validated,
-        dateTime: new Date(2020, 4, 5, 11, 22, 33),
-        blockNumber: 1000,
-        gas: null,
-      },
-      type: TransactionActionType.Unknown,
-      direction: TransactionActionDirection.Buy,
-      holder: {
-        hash: '0x0000000000000000000000000000000000000222',
-        type: AddressType.Unknown,
-        url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
-      },
-    },
-  },
-} as Meta
-
-const Template = (args) => <TransactionActionRow {...args} />
-
-export const Default = Template.bind({})
-
-export const Unknown = Template.bind({})
-
-export const Approval = Template.bind({})
-Approval.args = {
-  action: {
+const actions = [
+  {
     index: 0,
     transaction: {
       address: {
@@ -58,19 +23,58 @@ Approval.args = {
       blockNumber: 1000,
       gas: null,
     },
-    type: TransactionActionType.Approval,
+    type: TransactionActionType.Swap,
     direction: TransactionActionDirection.Buy,
     holder: {
       hash: '0x0000000000000000000000000000000000000222',
       type: AddressType.Unknown,
       url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
     },
+    toAddress: {
+      hash: '0x0000000000000000000000000000000000000111',
+      type: AddressType.Token,
+      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
+      label: 'Token (TKN)',
+      name: 'Token',
+      symbol: 'TKN',
+      decimals: 18,
+    },
+    fromAmount: BigNumber.from('123456789000000000'),
+    toAmount: BigNumber.from('1234567890000000000'),
   },
-}
-
-export const Transfer = Template.bind({})
-Transfer.args = {
-  action: {
+  {
+    index: 0,
+    transaction: {
+      address: {
+        hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
+        type: AddressType.Transaction,
+        url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
+      },
+      status: TransactionStatus.Validated,
+      dateTime: new Date(2020, 4, 5, 11, 22, 33),
+      blockNumber: 1000,
+      gas: null,
+    },
+    type: TransactionActionType.Swap,
+    direction: TransactionActionDirection.Sell,
+    holder: {
+      hash: '0x0000000000000000000000000000000000000222',
+      type: AddressType.Unknown,
+      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
+    },
+    fromAddress: {
+      hash: '0x0000000000000000000000000000000000000111',
+      type: AddressType.Token,
+      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
+      label: 'Token (TKN)',
+      name: 'Token',
+      symbol: 'TKN',
+      decimals: 18,
+    },
+    fromAmount: BigNumber.from('1234567890000000000'),
+    toAmount: BigNumber.from('123456789000000000'),
+  },
+  {
     index: 0,
     transaction: {
       address: {
@@ -106,76 +110,16 @@ Transfer.args = {
       url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000333',
     },
   },
-}
+]
 
-export const Buy = Template.bind({})
-Buy.args = {
-  action: {
-    index: 0,
-    transaction: {
-      address: {
-        hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
-        type: AddressType.Transaction,
-        url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
-      },
-      status: TransactionStatus.Validated,
-      dateTime: new Date(2020, 4, 5, 11, 22, 33),
-      blockNumber: 1000,
-      gas: null,
-    },
-    type: TransactionActionType.Swap,
-    direction: TransactionActionDirection.Buy,
-    holder: {
-      hash: '0x0000000000000000000000000000000000000222',
-      type: AddressType.Unknown,
-      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
-    },
-    toAddress: {
-      hash: '0x0000000000000000000000000000000000000111',
-      type: AddressType.Token,
-      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
-      label: 'Token (TKN)',
-      name: 'Token',
-      symbol: 'TKN',
-      decimals: 18,
-    },
-    fromAmount: BigNumber.from('123456789000000000'),
-    toAmount: BigNumber.from('1234567890000000000'),
+export default {
+  title: 'Components/Blockchain/TransactionActionList',
+  component: TransactionActionList,
+  args: {
+    actions,
   },
-}
+} as Meta
 
-export const Sell = Template.bind({})
-Sell.args = {
-  action: {
-    index: 0,
-    transaction: {
-      address: {
-        hash: '0x0000000000000000000000000000000000000000000000000000000000000001',
-        type: AddressType.Transaction,
-        url: 'https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001',
-      },
-      status: TransactionStatus.Validated,
-      dateTime: new Date(2020, 4, 5, 11, 22, 33),
-      blockNumber: 1000,
-      gas: null,
-    },
-    type: TransactionActionType.Swap,
-    direction: TransactionActionDirection.Sell,
-    holder: {
-      hash: '0x0000000000000000000000000000000000000222',
-      type: AddressType.Unknown,
-      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000222',
-    },
-    fromAddress: {
-      hash: '0x0000000000000000000000000000000000000111',
-      type: AddressType.Token,
-      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
-      label: 'Token (TKN)',
-      name: 'Token',
-      symbol: 'TKN',
-      decimals: 18,
-    },
-    fromAmount: BigNumber.from('1234567890000000000'),
-    toAmount: BigNumber.from('123456789000000000'),
-  },
-}
+const Template = (args) => <TransactionActionList {...args} />
+
+export const Default = Template.bind({})

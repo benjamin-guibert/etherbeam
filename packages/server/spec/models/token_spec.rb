@@ -46,7 +46,7 @@ describe Token, type: :model do
     describe 'default' do
       subject { Token.all }
 
-      it { is_expected.to have_attributes count: 2 }
+      it { is_expected.to have_attributes count: 3 }
       it { is_expected.to include addresses[0] }
     end
   end

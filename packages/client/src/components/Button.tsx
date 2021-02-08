@@ -1,35 +1,41 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import Icon from './Icon'
 import './Button.scss'
 
 type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
+type SizeProp = 'm' | 'l' | 'xl'
+type LabelBreakpointProp = 'xs' | 's' | 'm' | 'l'
 
 interface ButtonProps {
-  description?: string
   action?: () => void
+  label?: string
+  icon?: IconProp
+  description?: string
   color?: ColorProp
+  size?: SizeProp
   link?: boolean
+  labelBreakpoint?: LabelBreakpointProp
   active?: boolean
   disabled?: boolean
   className?: string
-  children?: ReactNode
 }
 
 const Button: FC<ButtonProps> = ({
   action,
+  label,
+  icon,
   description,
   color = 'light',
+  size,
   link,
+  labelBreakpoint,
   active,
   disabled,
   className,
-  children,
 }) => {
   const getClassName = (): string => {
-    const classNames = [
-      link ? 'my-button-link' : 'my-button',
-      link ? `my-${color}-fg` : `my-${color}-bg`,
-      'my-clickable',
-    ]
+    const classNames = [link ? `my-button-link my-${color}-fg` : `my-button my-${color}-bg`, 'my-clickable']
     if (disabled) {
       if (!link) classNames.push('my-disabled-bg')
       classNames.push('my-disabled-fg')
@@ -42,7 +48,17 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button className={getClassName()} title={description} onClick={action} disabled={disabled}>
-      {children}
+      {icon ? (
+        <Icon
+          icon={icon}
+          iconColor={color as 'dark' | 'positive' | 'negative'}
+          labelBreakpoint={labelBreakpoint}
+          label={label}
+          size={size}
+        />
+      ) : (
+        <span className={size ? `my-size-${size}` : ''}>{label}</span>
+      )}
     </button>
   )
 }

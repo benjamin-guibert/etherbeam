@@ -14,7 +14,7 @@ describe('<EtherscanLink />', () => {
     it('should render', () => {
       const link = component.find('Link')
       expect(link.prop('href')).toBe(url)
-      expect(link.prop('title')).toBe('Etherscan')
+      expect(link.prop('description')).toBe('Etherscan')
       expect(link.prop('blank')).toBeTruthy()
 
       const div = link.find('div')
@@ -23,5 +23,16 @@ describe('<EtherscanLink />', () => {
     })
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
+  })
+
+  describe('Size', () => {
+    beforeAll(() => {
+      component = shallow(<EtherscanLink url={url} size="l" />)
+    })
+
+    it('should render', () => {
+      const link = component.find('Link')
+      expect(link.hasClass('my-size-l')).toBeTruthy()
+    })
   })
 })

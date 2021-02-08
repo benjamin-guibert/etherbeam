@@ -11,7 +11,7 @@ describe('<Difference />', () => {
       component = shallow(<Difference time={HistoryTime.Hour} ratio={1} />)
     })
 
-    it('should render badge', () => expect(component.find('Badge').prop('type')).toBe('neutral'))
+    it('should render badge', () => expect(component.find('Badge').prop('color')).toBe('light'))
 
     it('should render prefix', () => {
       const span = component.find('Badge').find('span').at(0)
@@ -21,7 +21,7 @@ describe('<Difference />', () => {
 
     it('should render amount', () => {
       const span = component.find('Badge').find('span').at(1)
-      expect(span.hasClass('my-amount')).toBeTruthy()
+      expect(span.hasClass('my-difference-amount')).toBeTruthy()
       expect(span.prop('children')).toBe('+0%')
     })
 
@@ -33,7 +33,7 @@ describe('<Difference />', () => {
       component = shallow(<Difference time={HistoryTime.Hour} ratio={1.75} />)
     })
 
-    it('should render badge', () => expect(component.find('Badge').prop('type')).toBe('success'))
+    it('should render badge', () => expect(component.find('Badge').prop('color')).toBe('positive'))
 
     it('should render amount', () => expect(component.find('Badge').find('span').at(1).prop('children')).toBe('+75%'))
   })
@@ -43,7 +43,7 @@ describe('<Difference />', () => {
       component = shallow(<Difference time={HistoryTime.Hour} ratio={0.75} />)
     })
 
-    it('should render badge', () => expect(component.find('Badge').prop('type')).toBe('danger'))
+    it('should render badge', () => expect(component.find('Badge').prop('color')).toBe('negative'))
 
     it('should render amount', () => expect(component.find('Badge').find('span').at(1).prop('children')).toBe('-25%'))
   })

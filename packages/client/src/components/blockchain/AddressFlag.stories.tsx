@@ -4,16 +4,18 @@ import { Meta } from '@storybook/react/types-6-0'
 import { AddressType } from '../../libraries/ethereum/types'
 import AddressFlag from './AddressFlag'
 
+const address = {
+  hash: '0x0000000000000000000000000000000000000111',
+  label: 'Address',
+  type: AddressType.Unknown,
+  url: null,
+}
+
 export default {
   title: 'Components/Blockchain/AddressFlag',
   component: AddressFlag,
   args: {
-    address: {
-      hash: '0x0000000000000000000000000000000000000111',
-      label: 'Address',
-      type: AddressType.Unknown,
-      url: null,
-    },
+    address,
   },
 } as Meta
 

@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers'
 import { createToken } from '../../../tests/fixtures/ethereum'
-import { printEtherAmount, printTokenAmount, shortenAddress } from './helpers'
+import { getUniswapTradeUrl, printEtherAmount, printTokenAmount, shortenAddress } from './helpers'
 
 describe('Print Ether amount', () => {
   const amount = BigNumber.from('1234567890000000000000')
@@ -45,14 +45,6 @@ describe('Print Ether amount', () => {
     })
 
     it('should return', () => expect(result).toBe('1,234,567,890,000'))
-  })
-
-  describe('Symbol', () => {
-    beforeAll(() => {
-      result = printEtherAmount(amount, { withSymbol: true })
-    })
-
-    it('should return', () => expect(result).toBe('ETH 1,234.56789'))
   })
 
   describe('Null', () => {
@@ -102,14 +94,6 @@ describe('Print Token amount', () => {
     it('should return', () => expect(result).toBe('1,234.56789000'))
   })
 
-  describe('Symbol', () => {
-    beforeAll(() => {
-      result = printTokenAmount(amount, token, { withSymbol: true })
-    })
-
-    it('should return', () => expect(result).toBe('TKN 1,234.56789'))
-  })
-
   describe('Low value', () => {
     beforeAll(() => {
       result = printTokenAmount(BigNumber.from('1234567890000000'), token)
@@ -134,4 +118,39 @@ describe('Shorten address', () => {
     result = shortenAddress('0x1234567890000000000000000000000123456789')
   })
   it('should return', () => expect(result).toBe('0x1234...6789'))
+})
+
+describe('Get Uniswap trade URL', () => {
+  let result: string
+
+  describe('Input', () => {
+    beforeAll(() => {
+      result = getUniswapTradeUrl('0x0000000000000000000000000000000000000111', null)
+    })
+
+    it('should return', () =>
+      expect(result).toBe('https://app.uniswap.org/#/swap?inputCurrency=0x0000000000000000000000000000000000000111&'))
+  })
+  describe('Output', () => {
+    beforeAll(() => {
+      result = getUniswapTradeUrl(null, '0x0000000000000000000000000000000000000222')
+    })
+
+    it('should return', () =>
+      expect(result).toBe('https://app.uniswap.org/#/swap?outputCurrency=0x0000000000000000000000000000000000000222'))
+  })
+
+  describe('Input output', () => {
+    beforeAll(() => {
+      result = getUniswapTradeUrl(
+        '0x0000000000000000000000000000000000000111',
+        '0x0000000000000000000000000000000000000222'
+      )
+    })
+
+    it('should return', () =>
+      expect(result).toBe(
+        'https://app.uniswap.org/#/swap?inputCurrency=0x0000000000000000000000000000000000000111&outputCurrency=0x0000000000000000000000000000000000000222'
+      ))
+  })
 })

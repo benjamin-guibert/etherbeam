@@ -4,16 +4,18 @@ import { Meta } from '@storybook/react/types-6-0'
 import { AddressType } from '../../libraries/ethereum/types'
 import AddressItem from './AddressItem'
 
+const address = {
+  hash: '0x0000000000000000000000000000000000000111',
+  label: null,
+  type: AddressType.Unknown,
+  url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
+}
+
 export default {
   title: 'Components/Blockchain/AddressItem',
   component: AddressItem,
   args: {
-    address: {
-      hash: '0x0000000000000000000000000000000000000111',
-      label: null,
-      type: AddressType.Unknown,
-      url: 'https://etherscan.io/address/0x0000000000000000000000000000000000000111',
-    },
+    address,
   },
 } as Meta
 

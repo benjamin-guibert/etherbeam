@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
@@ -45,9 +44,16 @@ const PaginationItem: FC<PaginationItemProps> = ({ page, action, selected, disab
 
   return (
     <ListItem>
-      <Button link color="secondary" description={description} action={action} disabled={disabled} active={selected}>
-        {typeof page === 'number' ? page : <FontAwesomeIcon icon={icon} />}
-      </Button>
+      <Button
+        link
+        color="secondary"
+        description={description}
+        action={action}
+        label={typeof page === 'number' && page.toString()}
+        icon={typeof page !== 'number' && icon}
+        disabled={disabled}
+        active={selected}
+      />
     </ListItem>
   )
 }

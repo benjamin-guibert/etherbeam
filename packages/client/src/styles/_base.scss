@@ -407,25 +407,25 @@ h3 {
   &-min {
     &-xs {
       @media screen and (max-width: sizes.$breakpoint-w-xs) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-s {
       @media screen and (max-width: sizes.$breakpoint-w-s) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-m {
       @media screen and (max-width: sizes.$breakpoint-w-m) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-l {
       @media screen and (max-width: sizes.$breakpoint-w-l) {
-        display: none;
+        display: none !important;
       }
     }
   }
@@ -433,25 +433,25 @@ h3 {
   &-max {
     &-xs {
       @media screen and (min-width: sizes.$breakpoint-w-xs) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-s {
       @media screen and (min-width: sizes.$breakpoint-w-s) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-m {
       @media screen and (min-width: sizes.$breakpoint-w-m) {
-        display: none;
+        display: none !important;
       }
     }
 
     &-l {
       @media screen and (min-width: sizes.$breakpoint-w-l) {
-        display: none;
+        display: none !important;
       }
     }
   }

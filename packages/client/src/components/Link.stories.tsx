@@ -1,6 +1,5 @@
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
-import Icon from './Icon'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import Link from './Link'
 
@@ -9,8 +8,8 @@ export default {
   component: Link,
   args: {
     href: 'javascript:',
+    label: 'Link',
     description: 'Description',
-    children: 'Link',
   },
 } as Meta
 
@@ -25,16 +24,12 @@ Dark.parameters = {
     default: 'Light',
   },
 }
-
 export const Light = Template.bind({})
 Light.args = { color: 'light' }
-
 export const Primary = Template.bind({})
 Primary.args = { color: 'primary' }
-
 export const Secondary = Template.bind({})
 Secondary.args = { color: 'secondary' }
-
 export const Positive = Template.bind({})
 Positive.args = { color: 'positive' }
 Positive.parameters = {
@@ -42,7 +37,6 @@ Positive.parameters = {
     default: 'Light',
   },
 }
-
 export const Negative = Template.bind({})
 Negative.args = { color: 'negative' }
 Negative.parameters = {
@@ -51,17 +45,32 @@ Negative.parameters = {
   },
 }
 
+export const Medium = Template.bind({})
+Medium.args = { size: 'm' }
+export const Large = Template.bind({})
+Large.args = { size: 'l' }
+export const ExtraLarge = Template.bind({})
+ExtraLarge.args = { size: 'xl' }
+
+export const Button = Template.bind({})
+Button.args = { button: true }
+
 export const NoUnderline = Template.bind({})
 NoUnderline.args = { noUnderline: true }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
-  noUnderline: true,
-  children: <Icon icon={faExclamationCircle} label="Icon" />,
+export const Icon = Template.bind({})
+Icon.args = {
+  icon: faExclamationCircle,
 }
 
-export const WithImage = Template.bind({})
-WithImage.args = {
+export const IconNoLabel = Template.bind({})
+IconNoLabel.args = {
+  icon: faExclamationCircle,
+  label: null,
+}
+
+export const CustomContent = Template.bind({})
+CustomContent.args = {
   noUnderline: true,
   children: (
     <>
