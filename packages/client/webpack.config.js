@@ -39,9 +39,6 @@ module.exports = () => {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: 'ts-loader',
-          options: {
-            configFile: 'tsconfig.webpack.json',
-          },
         },
         {
           test: /\.s?[ac]ss$/,
