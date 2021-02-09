@@ -40,7 +40,7 @@ const TokenList: FC<TokenListProps> = ({ tokens, goToTokenPage, loading }) => {
       <tbody>
         {loading && !tokens?.length && <LoaderRow />}
         {!!tokens?.length &&
-          tokens.map((token, index) => <TokenRow token={token} goToTokenPage={goToTokenPage} key={index} />)}
+          tokens.map((token) => <TokenRow token={token} goToTokenPage={goToTokenPage} key={token.hash} />)}
       </tbody>
     </Table>
   )

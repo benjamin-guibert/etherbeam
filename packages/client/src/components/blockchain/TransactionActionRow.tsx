@@ -91,37 +91,37 @@ const TransactionActionRow: FC<TransactionActionRowProps> = ({ action }) => {
     holder,
   } = action
 
-  const getProps = (): { rowClassName: string; icon: IconProp; Action: ReactElement } => {
+  const getProps = (): { color: string; icon: IconProp; Action: ReactElement } => {
     switch (type) {
       case TransactionActionType.Approval:
         return {
-          rowClassName: 'my-transactionactionrow my-transactionactionrow-approval',
+          color: 'dark',
           icon: faCheckCircle,
           Action: <ApprovalAction />,
         }
       case TransactionActionType.Transfer:
         return {
-          rowClassName: 'my-transactionactionrow my-transactionactionrow-transfer',
+          color: 'dark',
           icon: faArrowAltCircleRight,
           Action: <TransferAction action={action} />,
         }
       case TransactionActionType.Swap:
         if (direction == TransactionActionDirection.Buy) {
           return {
-            rowClassName: 'my-transactionactionrow my-transactionactionrow-buy',
+            color: 'positive',
             icon: faPlusCircle,
             Action: <BuyAction action={action} />,
           }
         } else {
           return {
-            rowClassName: 'my-transactionactionrow my-transactionactionrow-sell',
+            color: 'negative',
             icon: faMinusCircle,
             Action: <SellAction action={action} />,
           }
         }
       default: {
         return {
-          rowClassName: 'my-transactionactionrow my-transactionactionrow-unknown',
+          color: 'dark',
           icon: faQuestionCircle,
           Action: <UnknownAction />,
         }
@@ -129,13 +129,13 @@ const TransactionActionRow: FC<TransactionActionRowProps> = ({ action }) => {
     }
   }
 
-  const { rowClassName, icon, Action } = getProps()
+  const { color, icon, Action } = getProps()
 
   return (
-    <TableRow className={rowClassName}>
+    <TableRow className={`my-transactionactionrow my-${color}-bg`}>
       <td>
         <div className="my-transactionactionrow-action">
-          <Icon className="my-transactionactionrow-icon" icon={icon} size="xl" />
+          <Icon className="my-transactionactionrow-icon my-alt" icon={icon} size="xl" />
           <span>{Action}</span>
         </div>
       </td>

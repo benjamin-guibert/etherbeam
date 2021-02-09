@@ -16,7 +16,7 @@ exports[`<Pagination /> Default should match snapshot 1`] = `
           class="my-icon  "
         >
           <span
-            class="my-icon-secondary "
+            class=" "
           >
             <svg
               aria-hidden="true"
@@ -48,7 +48,7 @@ exports[`<Pagination /> Default should match snapshot 1`] = `
           class="my-icon  "
         >
           <span
-            class="my-icon-secondary "
+            class=" "
           >
             <svg
               aria-hidden="true"
@@ -165,7 +165,7 @@ exports[`<Pagination /> Default should match snapshot 1`] = `
           class="my-icon  "
         >
           <span
-            class="my-icon-secondary "
+            class=" "
           >
             <svg
               aria-hidden="true"
@@ -197,7 +197,7 @@ exports[`<Pagination /> Default should match snapshot 1`] = `
           class="my-icon  "
         >
           <span
-            class="my-icon-secondary "
+            class=" "
           >
             <svg
               aria-hidden="true"

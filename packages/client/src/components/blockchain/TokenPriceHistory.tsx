@@ -15,8 +15,8 @@ interface TokenPriceHistoryProps {
 const TokenPriceHistory: FC<TokenPriceHistoryProps> = ({ priceHistory, size, className }) => {
   return (
     <List horizontal className={className}>
-      {priceHistory.map(({ time, ratio }, index) => (
-        <ListItem key={index}>
+      {priceHistory.map(({ time, ratio }) => (
+        <ListItem key={time}>
           <Difference size={size} time={time} ratio={ratio} />
         </ListItem>
       ))}

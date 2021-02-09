@@ -188,7 +188,7 @@ Array [
             class="my-icon  "
           >
             <span
-              class="my-icon-positive "
+              class=" my-alt"
             >
               <svg
                 aria-hidden="true"
@@ -227,7 +227,7 @@ Array [
             class="my-icon  "
           >
             <span
-              class="my-icon-negative "
+              class=" my-alt"
             >
               <svg
                 aria-hidden="true"

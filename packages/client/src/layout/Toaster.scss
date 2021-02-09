@@ -1,0 +1,9 @@
+@use '../styles/resources/sizes';
+
+.my-toaster {
+  flex-direction: column-reverse;
+  position: fixed;
+  align-items: flex-end;
+  top: 0px;
+  right: sizes.$spacer;
+}
