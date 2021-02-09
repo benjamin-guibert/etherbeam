@@ -49,13 +49,7 @@ const Button: FC<ButtonProps> = ({
   return (
     <button className={getClassName()} title={description} onClick={action} disabled={disabled}>
       {icon ? (
-        <Icon
-          icon={icon}
-          iconColor={color as 'dark' | 'positive' | 'negative'}
-          labelBreakpoint={labelBreakpoint}
-          label={label}
-          size={size}
-        />
+        <Icon icon={icon} iconAlt={!link} labelBreakpoint={labelBreakpoint} label={label} size={size} />
       ) : (
         <span className={size ? `my-size-${size}` : ''}>{label}</span>
       )}

@@ -1,0 +1,51 @@
+@use '../styles/resources/sizes';
+@use '../styles/resources/colors';
+
+.my-toast {
+  display: inline-flex;
+  position: relative;
+  top: sizes.$spacer;
+  align-items: center;
+  border-width: sizes.$border;
+  border-style: solid;
+  border-radius: sizes.$border-radius;
+  box-shadow: sizes.$spacer-xs sizes.$spacer-xs sizes.$spacer-s colors.$shadow;
+  opacity: 1;
+  animation: fadein 0.5s;
+  padding: 0px sizes.$spacer-xs;
+
+  &-content {
+    display: inline-block;
+    padding: sizes.$spacer-s;
+  }
+
+  &-icon {
+    display: inline-block;
+    padding: sizes.$spacer-xs;
+  }
+
+  &-hidden {
+    opacity: 0;
+    animation: fadeout 0.5s;
+  }
+}
+
+@keyframes fadein {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: sizes.$spacer;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

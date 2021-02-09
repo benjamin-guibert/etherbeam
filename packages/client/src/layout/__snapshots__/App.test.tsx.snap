@@ -47,7 +47,7 @@ exports[`<App /> should match snapshot 1`] = `
               class="my-icon  "
             >
               <span
-                class="my-icon-light "
+                class=" "
               >
                 <svg
                   aria-hidden="true"
@@ -78,6 +78,9 @@ exports[`<App /> should match snapshot 1`] = `
   </header>
   <main
     class="my-app-main"
+  />
+  <ul
+    class="my-list-v  my-toaster"
   />
 </div>
 `;

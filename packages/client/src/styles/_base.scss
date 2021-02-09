@@ -28,6 +28,11 @@
     border-color: colors.$dark-border;
     color: colors.$light;
 
+    &.my-alt,
+    .my-alt {
+      color: colors.$dark-alt;
+    }
+
     th,
     td {
       border-color: colors.$dark-border;
@@ -244,6 +249,11 @@
     border-color: colors.$positive-border;
     color: colors.$light;
 
+    &.my-alt,
+    .my-alt {
+      color: colors.$positive-alt;
+    }
+
     th,
     td {
       border-color: colors.$positive-border;
@@ -298,6 +308,11 @@
     background-color: colors.$negative;
     border-color: colors.$negative-border;
     color: colors.$light;
+
+    &.my-alt,
+    .my-alt {
+      color: colors.$negative-alt;
+    }
 
     th,
     td {

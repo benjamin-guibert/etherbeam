@@ -52,15 +52,6 @@ describe('<Icon />', () => {
     it('should render', () => expect(component.find('span').at(0).hasClass('my-size-l')).toBeTruthy())
   })
 
-  describe('Icon color', () => {
-    beforeAll(() => {
-      component = shallow(<Icon icon={icon} iconColor="positive" />)
-    })
-
-    it('should render', () =>
-      expect(component.find('span').at(1).find('span').at(0).hasClass('my-icon-positive')).toBeTruthy())
-  })
-
   describe('Icon size', () => {
     beforeAll(() => {
       component = shallow(<Icon icon={icon} iconSize="l" />)

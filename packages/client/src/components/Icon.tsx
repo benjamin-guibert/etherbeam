@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Icon.scss'
 
 type LabelBreakpointProp = 'xs' | 's' | 'm' | 'l'
-type ColorProp = 'dark' | 'positive' | 'negative'
 type SizeProp = 'm' | 'l' | 'xl'
 
 interface IconProps {
@@ -12,14 +11,14 @@ interface IconProps {
   label?: string
   labelBreakpoint?: LabelBreakpointProp
   size?: SizeProp
-  iconColor?: ColorProp
   iconSize?: SizeProp
+  iconAlt?: boolean
   className?: string
 }
 
-const Icon: FC<IconProps> = ({ icon, label, labelBreakpoint, size, iconColor, iconSize, className }) => {
+const Icon: FC<IconProps> = ({ icon, label, labelBreakpoint, size, iconSize, iconAlt, className }) => {
   const classNames = ['my-icon', size ? `my-size-${size}` : '', className].join(' ')
-  const iconClassName = [iconColor ? `my-icon-${iconColor}` : '', iconSize ? `my-size-${iconSize}` : ''].join(' ')
+  const iconClassName = [iconSize ? `my-size-${iconSize}` : '', iconAlt ? 'my-alt' : ''].join(' ')
   const labelClassName = ['my-icon-label', labelBreakpoint ? `my-d-min-${labelBreakpoint}` : ''].join(' ')
 
   return (

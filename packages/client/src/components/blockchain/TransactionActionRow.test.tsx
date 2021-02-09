@@ -14,8 +14,7 @@ describe('<TransactionActionRow />', () => {
       component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () =>
-      expect(component.find('TableRow').hasClass('my-transactionactionrow-unknown')).toBeTruthy())
+    it('should render row', () => expect(component.find('TableRow').hasClass('my-dark-bg')).toBeTruthy())
 
     it('should render time', () => expect(component.find('Time').prop('dateTime')).toBe(action.transaction.dateTime))
     it('should render address', () => expect(component.find('AddressItem').prop('address')).toBe(action.holder))
@@ -32,8 +31,7 @@ describe('<TransactionActionRow />', () => {
       component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () =>
-      expect(component.find('TableRow').hasClass('my-transactionactionrow-approval')).toBeTruthy())
+    it('should render row', () => expect(component.find('TableRow').hasClass('my-dark-bg')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -45,8 +43,7 @@ describe('<TransactionActionRow />', () => {
       component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () =>
-      expect(component.find('TableRow').hasClass('my-transactionactionrow-transfer')).toBeTruthy())
+    it('should render row', () => expect(component.find('TableRow').hasClass('my-dark-bg')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -58,8 +55,7 @@ describe('<TransactionActionRow />', () => {
       component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () =>
-      expect(component.find('TableRow').hasClass('my-transactionactionrow-buy')).toBeTruthy())
+    it('should render row', () => expect(component.find('TableRow').hasClass('my-positive-bg')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
@@ -71,8 +67,7 @@ describe('<TransactionActionRow />', () => {
       component = shallow(<TransactionActionRow action={action} />)
     })
 
-    it('should render row', () =>
-      expect(component.find('TableRow').hasClass('my-transactionactionrow-sell')).toBeTruthy())
+    it('should render row', () => expect(component.find('TableRow').hasClass('my-negative-bg')).toBeTruthy())
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })

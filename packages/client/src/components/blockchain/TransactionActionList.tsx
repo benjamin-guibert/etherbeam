@@ -34,8 +34,8 @@ const TransactionActionsList: FC<TransactionActionsListProps> = ({ actions }) =>
           </tr>
         </thead>
         <tbody>
-          {currentPageActions.map((action, index) => (
-            <TransactionActionRow key={index} action={action} />
+          {currentPageActions.map((action) => (
+            <TransactionActionRow key={action.transaction.address.hash} action={action} />
           ))}
         </tbody>
       </Table>

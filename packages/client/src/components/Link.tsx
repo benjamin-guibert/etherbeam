@@ -66,12 +66,7 @@ const Link: FC<LinkProps> = ({
       {children ? (
         children
       ) : icon ? (
-        <Icon
-          icon={icon}
-          iconColor={color as 'dark' | 'positive' | 'negative'}
-          labelBreakpoint={labelBreakpoint}
-          label={label}
-        />
+        <Icon icon={icon} labelBreakpoint={labelBreakpoint} label={label} iconAlt={button} />
       ) : (
         <span>{label}</span>
       )}

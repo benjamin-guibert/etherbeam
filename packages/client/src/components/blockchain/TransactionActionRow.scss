@@ -14,33 +14,4 @@
   &-icon {
     margin-right: sizes.$spacer-s;
   }
-
-  &-unknown,
-  &-approval,
-  &-transfer {
-    background-color: colors.$dark;
-    border-color: colors.$dark-border;
-
-    .my-transactionactionrow-icon {
-      color: colors.$dark-alt;
-    }
-  }
-
-  &-buy {
-    background-color: colors.$positive;
-    border-color: colors.$positive-border;
-
-    .my-transactionactionrow-icon {
-      color: colors.$positive-alt;
-    }
-  }
-
-  &-sell {
-    background-color: colors.$negative;
-    border-color: colors.$negative-border;
-
-    .my-transactionactionrow-icon {
-      color: colors.$negative-alt;
-    }
-  }
 }

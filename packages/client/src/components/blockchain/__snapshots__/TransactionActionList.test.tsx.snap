@@ -22,14 +22,14 @@ exports[`<TransactionActionList /> Default should match snapshot 1`] = `
   </thead>
   <tbody>
     <tr
-      class="my-dark-bg my-transactionactionrow my-transactionactionrow-transfer"
+      class="my-dark-bg my-transactionactionrow my-dark-bg"
     >
       <td>
         <div
           class="my-transactionactionrow-action"
         >
           <span
-            class="my-icon my-size-xl my-transactionactionrow-icon"
+            class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
           >
             <span
               class=" "
@@ -190,14 +190,14 @@ exports[`<TransactionActionList /> Default should match snapshot 1`] = `
       </td>
     </tr>
     <tr
-      class="my-dark-bg my-transactionactionrow my-transactionactionrow-transfer"
+      class="my-dark-bg my-transactionactionrow my-dark-bg"
     >
       <td>
         <div
           class="my-transactionactionrow-action"
         >
           <span
-            class="my-icon my-size-xl my-transactionactionrow-icon"
+            class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
           >
             <span
               class=" "

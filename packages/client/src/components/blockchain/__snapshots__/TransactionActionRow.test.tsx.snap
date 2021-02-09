@@ -2,14 +2,14 @@
 
 exports[`<TransactionActionRow /> Approval should match snapshot 1`] = `
 <tr
-  class="my-dark-bg my-transactionactionrow my-transactionactionrow-approval"
+  class="my-dark-bg my-transactionactionrow my-dark-bg"
 >
   <td>
     <div
       class="my-transactionactionrow-action"
     >
       <span
-        class="my-icon my-size-xl my-transactionactionrow-icon"
+        class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
       >
         <span
           class=" "
@@ -116,14 +116,14 @@ exports[`<TransactionActionRow /> Approval should match snapshot 1`] = `
 
 exports[`<TransactionActionRow /> Buy should match snapshot 1`] = `
 <tr
-  class="my-dark-bg my-transactionactionrow my-transactionactionrow-buy"
+  class="my-dark-bg my-transactionactionrow my-positive-bg"
 >
   <td>
     <div
       class="my-transactionactionrow-action"
     >
       <span
-        class="my-icon my-size-xl my-transactionactionrow-icon"
+        class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
       >
         <span
           class=" "
@@ -260,14 +260,14 @@ exports[`<TransactionActionRow /> Buy should match snapshot 1`] = `
 
 exports[`<TransactionActionRow /> Default should match snapshot 1`] = `
 <tr
-  class="my-dark-bg my-transactionactionrow my-transactionactionrow-unknown"
+  class="my-dark-bg my-transactionactionrow my-dark-bg"
 >
   <td>
     <div
       class="my-transactionactionrow-action"
     >
       <span
-        class="my-icon my-size-xl my-transactionactionrow-icon"
+        class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
       >
         <span
           class=" "
@@ -374,14 +374,14 @@ exports[`<TransactionActionRow /> Default should match snapshot 1`] = `
 
 exports[`<TransactionActionRow /> Sell should match snapshot 1`] = `
 <tr
-  class="my-dark-bg my-transactionactionrow my-transactionactionrow-sell"
+  class="my-dark-bg my-transactionactionrow my-negative-bg"
 >
   <td>
     <div
       class="my-transactionactionrow-action"
     >
       <span
-        class="my-icon my-size-xl my-transactionactionrow-icon"
+        class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
       >
         <span
           class=" "
@@ -518,14 +518,14 @@ exports[`<TransactionActionRow /> Sell should match snapshot 1`] = `
 
 exports[`<TransactionActionRow /> Transfer should match snapshot 1`] = `
 <tr
-  class="my-dark-bg my-transactionactionrow my-transactionactionrow-transfer"
+  class="my-dark-bg my-transactionactionrow my-dark-bg"
 >
   <td>
     <div
       class="my-transactionactionrow-action"
     >
       <span
-        class="my-icon my-size-xl my-transactionactionrow-icon"
+        class="my-icon my-size-xl my-transactionactionrow-icon my-alt"
       >
         <span
           class=" "

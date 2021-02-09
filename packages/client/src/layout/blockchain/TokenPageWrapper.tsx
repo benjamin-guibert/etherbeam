@@ -1,16 +1,22 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { Token } from '../../libraries/ethereum/types'
 import { fetchToken } from '../../libraries/ethereum/server'
+import { ToastType } from '../toaster-helper'
 import TokenPage from './TokenPage'
 
-const FETCH_TOKEN_INTERVAL = 30 * 1000
+const FETCH_TOKEN_INTERVAL = 10 * 1000
 
 interface TokenPageParams {
   address: string
 }
 
-const TokenPageWrapper: FC = () => {
+interface TokenPageWrapperProps {
+  addToast: (toast: ToastType) => void
+}
+
+const TokenPageWrapper: FC<TokenPageWrapperProps> = ({ addToast }) => {
+  const addToastRef = useRef<(toast: ToastType) => void>(addToast)
   const [token, setToken] = useState<Token>(undefined)
   const [loading, setLoading] = useState<boolean>(false)
   const [alert, setAlert] = useState<string>(null)
@@ -18,14 +24,15 @@ const TokenPageWrapper: FC = () => {
 
   useEffect(() => {
     const getToken = async (): Promise<void> => {
+      setLoading(true)
       fetchToken(addressParam, 'actions')
         .then((fetchedToken) => {
-          setLoading(true)
           if (!fetchedToken) return setAlert(`This token is unknown.`)
 
           setToken(fetchedToken)
+          setLoading(false)
         })
-        .finally(() => setLoading(false))
+        .catch(() => addToastRef.current({ type: 'error', content: 'Error while fetching token.' }))
     }
     const startFetchingToken = async (): Promise<void> => {
       await getToken()
