@@ -2,12 +2,12 @@ import React, { FC } from 'react'
 import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 
 interface TokenChartProps {
-  symbol: string
+  pair: string
   width?: number
   height?: number
 }
 
-const TokenChart: FC<TokenChartProps> = ({ symbol, width, height }) => {
+const TokenChart: FC<TokenChartProps> = ({ pair, width, height }) => {
   const classNames = ['my-shadow', (!width && 'w-100') || '', (!height && 'h-100') || ''].join(' ')
   const style = {
     width: !!width ? `${width}px` : null,
@@ -17,7 +17,7 @@ const TokenChart: FC<TokenChartProps> = ({ symbol, width, height }) => {
   return (
     <div className={classNames} style={style}>
       <TradingViewWidget
-        symbol={`UNISWAP:${symbol}WETH`}
+        symbol={`UNISWAP:${pair}`}
         interval={60}
         timezone="Europe/Paris"
         theme={Themes.DARK}

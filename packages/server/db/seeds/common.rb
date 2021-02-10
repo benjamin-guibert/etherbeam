@@ -21,6 +21,7 @@ Token.create!(
   name: 'USD Coin',
   symbol: 'USDC',
   decimals: 6,
+  chart_pair: 'USDCWETH',
   website: 'https://www.centre.io/',
   whitepaper: 'https://www.centre.io/pdfs/centre-whitepaper.pdf',
   github: 'https://github.com/centrehq'

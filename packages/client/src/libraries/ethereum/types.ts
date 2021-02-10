@@ -63,6 +63,7 @@ export interface Token extends Address {
   description?: string
   symbol: string
   decimals: number
+  chartPair?: string
   price?: BigNumber
   priceHistory: TokenPriceHistory[]
   website?: string

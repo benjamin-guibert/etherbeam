@@ -10,7 +10,7 @@ class TokensController < ApplicationController
     render json: @tokens,
            root: false,
            status: :ok,
-           only: %i[sanitized_hash address_hash label abi name symbol decimals],
+           only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair],
            methods: %i[price price_1h price_1h_ratio price_1d price_1d_ratio price_1w price_1w_ratio price_1m
                        price_1m_ratio price_1y price_1y_ratio]
   end

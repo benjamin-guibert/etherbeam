@@ -6,7 +6,7 @@ module TokensConcern
     render  json: @token,
             root: false,
             status: :ok,
-            only: %i[sanitized_hash address_hash label abi name symbol decimals website whitepaper github
+            only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair website whitepaper github
                      linkedin facebook reddit twitter telegram discord],
             methods: %i[price price_1h price_1h_ratio price_1d price_1d_ratio price_1w price_1w_ratio price_1m
                         price_1m_ratio price_1y price_1y_ratio]
@@ -16,7 +16,7 @@ module TokensConcern
     render  json: @token,
             root: false,
             status: :ok,
-            only: %i[sanitized_hash address_hash label abi name symbol decimals website whitepaper github
+            only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair website whitepaper github
                      linkedin facebook reddit twitter telegram discord],
             methods: %i[price price_1h price_1h_ratio price_1d price_1d_ratio price_1w price_1w_ratio price_1m
                         price_1m_ratio price_1y price_1y_ratio],

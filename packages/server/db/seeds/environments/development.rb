@@ -7,6 +7,7 @@ Token.create!(
   name: 'Uniswap',
   symbol: 'UNI',
   decimals: 18,
+  chart_pair: 'UNIWETH',
   website: 'https://uniswap.org/',
   twitter: 'https://twitter.com/UniswapProtocol',
   discord: 'https://discord.com/invite/XErMcTq'

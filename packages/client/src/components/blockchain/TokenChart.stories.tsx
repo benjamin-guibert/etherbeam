@@ -6,7 +6,7 @@ export default {
   title: 'Components/Blockchain/TokenChart',
   component: TokenChart,
   args: {
-    symbol: 'UNI',
+    pair: 'UNIWETH',
     height: 300,
   },
 } as Meta

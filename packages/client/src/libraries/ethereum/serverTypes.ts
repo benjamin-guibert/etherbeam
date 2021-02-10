@@ -22,6 +22,7 @@ export interface TokenData extends AddressData {
   name: string
   symbol: string
   decimals: number
+  chart_pair?: string
   description?: string
   price?: string
   price_1h?: string
