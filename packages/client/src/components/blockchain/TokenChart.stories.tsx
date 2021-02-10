@@ -14,3 +14,6 @@ export default {
 const Template = (args) => <TokenChart {...args} />
 
 export const Default = Template.bind({})
+
+export const NoPair = Template.bind({})
+NoPair.args = { pair: null }

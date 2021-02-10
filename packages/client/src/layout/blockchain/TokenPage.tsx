@@ -12,6 +12,7 @@ import {
 import { Token, TransactionActionType } from '../../libraries/ethereum/types'
 import { getUniswapTradeUrl } from '../../components/blockchain/helpers'
 import Alert from '../../components/Alert'
+import Block from '../../components/Block'
 import Link from '../../components/Link'
 import Loader from '../../components/Loader'
 import List from '../../components/List'
@@ -31,8 +32,8 @@ interface IconLinkProps {
 
 const IconLink: FC<IconLinkProps> = ({ url, icon, description }) => {
   return (
-    <ListItem>
-      <Link href={url} icon={icon} description={description} blank />
+    <ListItem className="my-tokenpage-link">
+      <Link href={url} icon={icon} description={description} blank size="l" />
     </ListItem>
   )
 }
@@ -64,82 +65,89 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
   } = token || {}
   const filteredActions = actions?.filter((action) => action.type != TransactionActionType.Approval)
 
+  const Links: FC = () => {
+    return (
+      <List horizontal>
+        {website && <IconLink url={website} description="Website" icon={faHome} />}
+        {whitepaper && <IconLink url={whitepaper} description="Whitepaper" icon={faFileAlt} />}
+        {github && <IconLink url={github} description="Github" icon={faGithub} />}
+        {linkedin && <IconLink url={linkedin} description="LinkedIn" icon={faLinkedin} />}
+        {facebook && <IconLink url={facebook} description="Facebook" icon={faFacebook} />}
+        {reddit && <IconLink url={reddit} description="Reddit" icon={faReddit} />}
+        {twitter && <IconLink url={twitter} description="Twitter" icon={faTwitter} />}
+        {telegram && <IconLink url={telegram} description="Telegram" icon={faTelegram} />}
+        {discord && <IconLink url={discord} description="Discord" icon={faDiscord} />}
+      </List>
+    )
+  }
+
+  const TradeActions: FC = () => {
+    return (
+      <Block>
+        <List horizontal center>
+          <ListItem>
+            <Link
+              href={getUniswapTradeUrl(null, hash)}
+              icon={faPlusCircle}
+              label="Buy"
+              color="primary"
+              size="l"
+              button
+              blank
+            />
+          </ListItem>
+          <ListItem>
+            <Link
+              href={getUniswapTradeUrl(hash, null)}
+              icon={faMinusCircle}
+              label="Sell"
+              color="primary"
+              size="l"
+              button
+              blank
+            />
+          </ListItem>
+        </List>
+      </Block>
+    )
+  }
+
   return (
     <>
-      <h1>
-        {token && name}
-        {!token && loading && <Loader type="dots" />}
-        {!token && !loading && !!alert && 'Unknown token'}
-      </h1>
+      <div>
+        <Block className="my-tokenpage-main">
+          <div className="my-tokenpage-details">
+            <div>
+              {token && <h1>{name}</h1>}
+              {!token && !loading && !!alert && <h1>Unknown token</h1>}
+              {token && (
+                <>
+                  <Links />
+                  <AddressItem className="my-d-min-m" address={token} noFlag />
+                  <AddressItem className="my-d-max-m" address={token} noFlag short />
+                  <Block>
+                    <span className="my-d-min-xs my-disabled-fg my-size-l">{symbol} 1 = </span>
+                    <TokenAmount amount={price} size="l" />
+                  </Block>
+                  <Block>{!!priceHistory?.length && <TokenPriceHistory priceHistory={priceHistory} size="m" />}</Block>
+                </>
+              )}
+            </div>
+            {token && <TradeActions />}
+          </div>
+          <div className="my-tokenpage-chart my-d-min-s">
+            <TokenChart pair={chartPair} height={300} />
+          </div>
+        </Block>
 
-      {token && (
-        <>
-          <h2 className="my-tokenpage-subheader">
-            <List horizontal className="my-tokenpage-links">
-              {website && <IconLink url={website} description="Website" icon={faHome} />}
-              {whitepaper && <IconLink url={whitepaper} description="Whitepaper" icon={faFileAlt} />}
-              {github && <IconLink url={github} description="Github" icon={faGithub} />}
-              {linkedin && <IconLink url={linkedin} description="LinkedIn" icon={faLinkedin} />}
-              {facebook && <IconLink url={facebook} description="Facebook" icon={faFacebook} />}
-              {reddit && <IconLink url={reddit} description="Reddit" icon={faReddit} />}
-              {twitter && <IconLink url={twitter} description="Twitter" icon={faTwitter} />}
-              {telegram && <IconLink url={telegram} description="Telegram" icon={faTelegram} />}
-              {discord && <IconLink url={discord} description="Discord" icon={faDiscord} />}
-            </List>
-            <>
-              <AddressItem className="my-d-min-m" address={token} noFlag />
-              <AddressItem className="my-d-max-m" address={token} noFlag short />
-            </>
-          </h2>
+        {!!filteredActions?.length && (
           <section>
-            <span className="my-d-min-xs my-disabled-fg my-size-l">
-              <span className="my-symbol">{symbol}</span>
-              <span className="my-amount"> 1 = </span>
-            </span>
-            <TokenAmount amount={price} size="l" />
-            {!!priceHistory?.length && (
-              <TokenPriceHistory priceHistory={priceHistory} size="m" className="my-tokenpage-history" />
-            )}
+            <h3>Actions</h3>
+            <TransactionActionList actions={filteredActions} />
           </section>
-          {chartPair && (
-            <section>
-              <TokenChart pair={chartPair} height={300} />
-            </section>
-          )}
-          <section>
-            <List horizontal center>
-              <ListItem>
-                <Link
-                  href={getUniswapTradeUrl(null, hash)}
-                  icon={faPlusCircle}
-                  label="Buy"
-                  color="positive"
-                  size="l"
-                  button
-                  blank
-                />
-              </ListItem>
-              <ListItem>
-                <Link
-                  href={getUniswapTradeUrl(hash, null)}
-                  icon={faMinusCircle}
-                  label="Sell"
-                  color="negative"
-                  size="l"
-                  button
-                  blank
-                />
-              </ListItem>
-            </List>
-          </section>
-          {!!filteredActions?.length && (
-            <section>
-              <h3>Actions</h3>
-              <TransactionActionList actions={filteredActions} />
-            </section>
-          )}
-        </>
-      )}
+        )}
+      </div>
+      {!token && loading && <Loader type="dots" />}
       {!token && !!alert && <Alert color="negative">{alert}</Alert>}
     </>
   )

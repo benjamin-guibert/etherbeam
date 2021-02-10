@@ -1,23 +1,33 @@
 @use '../../styles/resources/sizes';
-@use '../../styles/resources/fonts';
-@use '../../styles/resources/colors';
 
 .my-tokenpage {
-  &-subheader {
+  &-main {
     display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-details {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
   }
 
-  &-links {
-    display: inline-flex;
+  &-link {
+    margin: 0px !important;
   }
 
-  &-history {
-    display: inline-flex;
-    margin-left: sizes.$spacer-s;
+  &-chart {
+    flex-basis: 100%;
   }
 
-  // &-actions {
-  //   justify-content: center;
-  // }
+  @media screen and (min-width: sizes.$breakpoint-w-s) {
+    &-details {
+      flex-basis: 50%;
+    }
+
+    &-chart {
+      flex-basis: 50%;
+    }
+  }
 }

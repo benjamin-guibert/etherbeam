@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Block /> Default should match snapshot 1`] = `
+<div
+  class="my-block "
+>
+  Content.
+</div>
+`;
