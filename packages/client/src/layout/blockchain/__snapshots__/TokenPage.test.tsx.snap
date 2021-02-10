@@ -257,7 +257,7 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="my-tokenpage-chart"
+      class="my-tokenpage-chart my-d-min-s"
     >
       <div />
     </div>
@@ -277,7 +277,7 @@ Array [
         <div />
       </div>
       <div
-        class="my-tokenpage-chart"
+        class="my-tokenpage-chart my-d-min-s"
       >
         <div />
       </div>
