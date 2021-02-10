@@ -1,5 +1,17 @@
+@use 'resources/colors';
+@use 'resources/fonts';
+@use 'resources/sizes';
+
 @use 'base';
-
-@use 'layout';
-
 @use 'states';
+
+html,
+head,
+body {
+  background-color: colors.$background;
+  color: colors.$light;
+  font-family: fonts.$primary;
+  font-size: sizes.$size;
+  height: 100%;
+  margin: 0px;
+}

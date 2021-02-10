@@ -1,0 +1,5 @@
+@use '../styles/resources/sizes';
+
+.my-block {
+  margin: sizes.$spacer 0px;
+}

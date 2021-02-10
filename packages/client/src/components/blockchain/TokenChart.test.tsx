@@ -43,6 +43,15 @@ describe('<TokenChart />', () => {
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
   })
 
+  describe('No pair', () => {
+    beforeAll(() => {
+      component = shallow(<TokenChart pair={null} />)
+    })
+
+    it('should render div', () =>
+      expect(component.find('div').at(0).hasClass('my-tokenchart-unavailable')).toBeTruthy())
+  })
+
   describe('With width', () => {
     beforeAll(() => {
       component = shallow(<TokenChart pair="UNIWETH" width={200} />)
@@ -67,7 +76,7 @@ describe('<TokenChart />', () => {
     })
   })
 
-  describe('With width', () => {
+  describe('With width height', () => {
     beforeAll(() => {
       component = shallow(<TokenChart pair="UNIWETH" width={200} height={200} />)
     })

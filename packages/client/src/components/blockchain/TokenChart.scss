@@ -1,0 +1,13 @@
+@use '../../styles/resources/colors';
+@use '../../styles/resources/sizes';
+
+.my-tokenchart-unavailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: colors.$disabled-fg;
+  font-size: sizes.$size-xl;
+  font-weight: bold;
+  font-style: italic;
+}
