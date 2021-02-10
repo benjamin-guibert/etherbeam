@@ -20,7 +20,7 @@ describe('<TokenChart />', () => {
 
   describe('Default', () => {
     beforeAll(() => {
-      component = shallow(<TokenChart symbol="UNI" />)
+      component = shallow(<TokenChart pair="UNIWETH" />)
     })
 
     it('should render div', () => {
@@ -45,7 +45,7 @@ describe('<TokenChart />', () => {
 
   describe('With width', () => {
     beforeAll(() => {
-      component = shallow(<TokenChart symbol="UNI" width={200} />)
+      component = shallow(<TokenChart pair="UNIWETH" width={200} />)
     })
 
     it('should render div', () => {
@@ -57,7 +57,7 @@ describe('<TokenChart />', () => {
 
   describe('With height', () => {
     beforeAll(() => {
-      component = shallow(<TokenChart symbol="UNI" height={200} />)
+      component = shallow(<TokenChart pair="UNIWETH" height={200} />)
     })
 
     it('should render div', () => {
@@ -69,7 +69,7 @@ describe('<TokenChart />', () => {
 
   describe('With width', () => {
     beforeAll(() => {
-      component = shallow(<TokenChart symbol="UNI" width={200} height={200} />)
+      component = shallow(<TokenChart pair="UNIWETH" width={200} height={200} />)
     })
 
     it('should render div', () => {

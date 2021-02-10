@@ -241,6 +241,7 @@ describe('Parse token data', () => {
     description: 'Token description.',
     symbol: 'TKN',
     decimals: 18,
+    chart_pair: 'TKNWETH',
     price: '2000',
     price_1h: '1000',
     price_1h_ratio: 2.0,
@@ -279,6 +280,7 @@ describe('Parse token data', () => {
       description: 'Token description.',
       symbol: 'TKN',
       decimals: 18,
+      chartPair: 'TKNWETH',
       price: BigNumber.from('2000'),
       priceHistory: [
         { time: HistoryTime.Hour, price: BigNumber.from('1000'), ratio: 2.0 },

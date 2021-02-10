@@ -48,6 +48,7 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
     hash,
     name,
     symbol,
+    chartPair,
     website,
     whitepaper,
     github,
@@ -100,9 +101,11 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
               <TokenPriceHistory priceHistory={priceHistory} size="m" className="my-tokenpage-history" />
             )}
           </section>
-          <section>
-            <TokenChart symbol={symbol} height={300} />
-          </section>
+          {chartPair && (
+            <section>
+              <TokenChart pair={chartPair} height={300} />
+            </section>
+          )}
           <section>
             <List horizontal center>
               <ListItem>
