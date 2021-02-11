@@ -100,6 +100,26 @@ describe BlockTransaction, type: :model do
     end
   end
 
+  describe 'scope' do
+    describe 'trashable' do
+      let(:block_transactions) do
+        [
+          create(:block_transaction, datetime: 3.weeks.ago),
+          create(:block_transaction, datetime: 2.days.ago),
+          create(:block_transaction, datetime: 2.hours.ago)
+        ]
+      end
+
+      before { block_transactions }
+
+      subject { BlockTransaction.trashable }
+
+      it { is_expected.to have_attributes count: 2 }
+      it { is_expected.to include block_transactions[0] }
+      it { is_expected.to include block_transactions[1] }
+    end
+  end
+
   describe 'callback' do
     describe 'before validation' do
       describe '#sanitize_address_hash' do

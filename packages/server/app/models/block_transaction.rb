@@ -59,6 +59,7 @@ class BlockTransaction < ApplicationRecord
              transaction_method_logs: { parameters: { addresses: :address } })
   }
   scope :with_actions, -> { includes(:transaction_actions) }
+  scope :trashable, -> { where('datetime <= ?', 1.day.ago) }
 
   # Callbacks
 
