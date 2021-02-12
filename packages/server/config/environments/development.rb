@@ -37,4 +37,6 @@ Rails.application.configure do
 
   config.hosts = [IPAddr.new('0.0.0.0/0'), IPAddr.new('::/0'),
                   'localhost', 'server', 'etherbeam-server']
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

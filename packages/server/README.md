@@ -10,7 +10,11 @@
 
 ## Built With
 
-[Ruby on Rails](https://rubyonrails.org) | [PostgreSQL](https://www.postgresql.org) | [Docker](https://www.docker.com) | [RSpec](https://rspec.info) | [Factory Bot](https://github.com/thoughtbot/factory_bot) | [Shoulda Matchers](https://matchers.shoulda.io) | [Rubocop](https://rubocop.org) | [whenever](https://github.com/javan/whenever) | [Pagy](https://github.com/ddnexus/pagy)
+[Ruby on Rails](https://rubyonrails.org) | [PostgreSQL](https://www.postgresql.org) | [Docker](https://www.docker.com) |
+[RSpec](https://rspec.info) | [Factory Bot](https://github.com/thoughtbot/factory_bot) |
+[Shoulda Matchers](https://matchers.shoulda.io) | [Rubocop](https://rubocop.org) |
+[whenever](https://github.com/javan/whenever) | [Devise](https://github.com/heartcombo/devise) |
+[Devise Token Auth](https://github.com/lynndylanhurley/devise_token_auth) [Pagy](https://github.com/ddnexus/pagy)
 
 ## Usage
 
