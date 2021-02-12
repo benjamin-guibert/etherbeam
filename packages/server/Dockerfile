@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
+RUN bundle install --path vendor/cache
 COPY . /app
 COPY ./config/database.docker.yml ./config/database.yml
 
