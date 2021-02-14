@@ -6,6 +6,7 @@ env:
   CLIENT_PATH: packages/client
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
