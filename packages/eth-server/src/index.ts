@@ -66,13 +66,13 @@ useEthereum()
         })
       },
       (error: Error) => {
-        displayFatalError(error)
-
         // unsubscribeFromPendingTransactions(data)
         unsubscribeFromNewBlocks(data)
         stopFetchingTransactionReceipts(data)
         stopFetchingTokenPrices(data)
         logOut(data.serverData)
+
+        displayFatalError(error)
       }
     )
   })
