@@ -15,7 +15,7 @@ const axiosClient = axios.create({
 })
 
 export const fetchTokens = async (): Promise<Token[]> => {
-  const { data } = await axiosClient.get<TokenData[]>('tokens')
+  const { data } = await axiosClient.get<TokenData[]>('contract_tokens')
   const ignoredHashes = [WETH_HASH, USDC_HASH]
 
   return compact(data.map((token) => (!ignoredHashes.includes(token.address_hash) ? parseTokenData(token) : null)))
@@ -26,7 +26,7 @@ export const fetchToken = async (address: string, withList?: 'actions'): Promise
     validateStatus: (status: number) => [HttpStatus.Ok, HttpStatus.NotFound].includes(status),
   }
 
-  const { data } = await axiosClient.get<TokenData>(`tokens/${address}?list=${withList || ''}`, config)
+  const { data } = await axiosClient.get<TokenData>(`contract_tokens/${address}?list=${withList || ''}`, config)
 
   return data ? parseTokenData(data) : null
 }

@@ -36,7 +36,7 @@ describe('Fetch tokens', () => {
 
   it('should call API', () => {
     expect(axiosGetMock).toBeCalledTimes(1)
-    expect(axiosGetMock.mock.calls[0][0]).toBe('tokens')
+    expect(axiosGetMock.mock.calls[0][0]).toBe('contract_tokens')
   })
 
   it('should return', () => {
@@ -79,7 +79,7 @@ describe('Fetch token', () => {
 
     it('should call API', () => {
       expect(axiosGetMock).toBeCalledTimes(1)
-      expect(axiosGetMock.mock.calls[0][0]).toBe('tokens/0x0000000000000000000000000000000000000111?list=')
+      expect(axiosGetMock.mock.calls[0][0]).toBe('contract_tokens/0x0000000000000000000000000000000000000111?list=')
     })
   })
 
@@ -97,7 +97,9 @@ describe('Fetch token', () => {
 
     it('should call API', () => {
       expect(axiosGetMock).toBeCalledTimes(1)
-      expect(axiosGetMock.mock.calls[0][0]).toBe('tokens/0x0000000000000000000000000000000000000111?list=actions')
+      expect(axiosGetMock.mock.calls[0][0]).toBe(
+        'contract_tokens/0x0000000000000000000000000000000000000111?list=actions'
+      )
     })
   })
 

@@ -135,9 +135,7 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
             </div>
             {token && <TradeActions />}
           </div>
-          <div className="my-tokenpage-chart my-d-min-s">
-            <TokenChart pair={chartPair} height={300} />
-          </div>
+          <div className="my-tokenpage-chart my-d-min-s">{token && <TokenChart pair={chartPair} height={300} />}</div>
         </Block>
 
         {!!filteredActions?.length && (
