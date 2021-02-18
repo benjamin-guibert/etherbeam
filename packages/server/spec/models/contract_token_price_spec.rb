@@ -30,6 +30,42 @@ describe ContractTokenPrice, type: :model do
     end
   end
 
+  describe 'scope' do
+    describe '#trashable' do
+      let(:token_prices) do
+        [
+          create(:contract_token_price, datetime: 6.days.ago.beginning_of_day + 1.hour),
+          create(:contract_token_price, datetime: 6.days.ago.beginning_of_day + 10.hours),
+          create(:contract_token_price, datetime: 6.days.ago.beginning_of_day + 20.hours),
+          create(:contract_token_price, datetime: 5.days.ago.beginning_of_day + 1.hour),
+          create(:contract_token_price, datetime: 5.days.ago.beginning_of_day + 10.hours),
+          create(:contract_token_price, datetime: 5.days.ago.beginning_of_day + 20.hours),
+          create(:contract_token_price, datetime: 2.days.ago.beginning_of_day + 1.hour),
+          create(:contract_token_price, datetime: 2.days.ago.beginning_of_day + 10.hours),
+          create(:contract_token_price, datetime: 2.days.ago.beginning_of_day + 20.hours),
+          create(:contract_token_price, datetime: 1.days.ago.beginning_of_day + 1.hour),
+          create(:contract_token_price, datetime: 1.days.ago.beginning_of_day + 10.hours),
+          create(:contract_token_price, datetime: 1.days.ago.beginning_of_day + 20.hours),
+          create(:contract_token_price, datetime: DateTime.now.beginning_of_day + 1.hour),
+          create(:contract_token_price, datetime: DateTime.now.beginning_of_day + 10.hours),
+          create(:contract_token_price, datetime: DateTime.now.beginning_of_day + 20.hours)
+        ]
+      end
+
+      before { token_prices }
+
+      subject { ContractTokenPrice.trashable }
+
+      it { is_expected.to have_attributes count: 6 }
+      it { is_expected.to include token_prices[1] }
+      it { is_expected.to include token_prices[2] }
+      it { is_expected.to include token_prices[4] }
+      it { is_expected.to include token_prices[5] }
+      it { is_expected.to include token_prices[7] }
+      it { is_expected.to include token_prices[8] }
+    end
+  end
+
   describe 'method' do
     describe '#before_datetime' do
       let(:prices) do
