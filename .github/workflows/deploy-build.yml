@@ -71,7 +71,9 @@ jobs:
     name: Deploy Ethereum Server build
     runs-on: ubuntu-latest
     environment: development
-    needs: deploy-base
+    needs:
+      - deploy-base
+      - deploy-server
 
     steps:
       - name: Checkout the repository
