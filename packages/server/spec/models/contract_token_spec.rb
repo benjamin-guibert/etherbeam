@@ -2,13 +2,13 @@
 
 require 'rails_helper'
 
-describe Token, type: :model do
+describe ContractToken, type: :model do
   describe 'association' do
     it { is_expected.to have_many(:prices).dependent(:destroy) }
   end
 
   describe 'validation' do
-    subject { create :token }
+    subject { create :contract_token }
 
     it { is_expected.to be_valid }
 
@@ -35,7 +35,7 @@ describe Token, type: :model do
   describe 'scope' do
     let(:addresses) do
       [
-        create(:token),
+        create(:contract_token),
         create(:contract),
         create(:address, :wallet)
       ]
@@ -44,7 +44,7 @@ describe Token, type: :model do
     before { addresses }
 
     describe 'default' do
-      subject { Token.all }
+      subject { ContractToken.all }
 
       it { is_expected.to have_attributes count: 3 }
       it { is_expected.to include addresses[0] }
@@ -56,7 +56,7 @@ describe Token, type: :model do
       describe '#set_type' do
         it { is_expected.to callback(:set_type).before(:validation) }
 
-        subject { create :token }
+        subject { create :contract_token }
 
         it { is_expected.to have_attributes address_type: 'token' }
       end
@@ -69,13 +69,13 @@ describe Token, type: :model do
 
       context 'when prices exist' do
         let(:token) do
-          token = create(:token)
-          create :token_price, datetime: 2.days.ago, price: 4_000, token: token
-          create :token_price, datetime: 2.hours.ago, price: 1_000, token: token
-          create :token_price, datetime: 2.months.ago, price: 2_000, token: token
-          create :token_price, datetime: 2.minutes.ago, price: 2_000, token: token
-          create :token_price, datetime: 2.years.ago, price: 500, token: token
-          create :token_price, datetime: 2.weeks.ago, price: 8_000, token: token
+          token = create(:contract_token)
+          create :contract_token_price, datetime: 2.days.ago, price: 4_000, contract_token: token
+          create :contract_token_price, datetime: 2.hours.ago, price: 1_000, contract_token: token
+          create :contract_token_price, datetime: 2.months.ago, price: 2_000, contract_token: token
+          create :contract_token_price, datetime: 2.minutes.ago, price: 2_000, contract_token: token
+          create :contract_token_price, datetime: 2.years.ago, price: 500, contract_token: token
+          create :contract_token_price, datetime: 2.weeks.ago, price: 8_000, contract_token: token
 
           token
         end
@@ -99,8 +99,8 @@ describe Token, type: :model do
 
       context 'when no new price' do
         let(:token) do
-          token = create(:token)
-          create :token_price, datetime: 30.minutes.ago, price: 2_000, token: token
+          token = create(:contract_token)
+          create :contract_token_price, datetime: 30.minutes.ago, price: 2_000, contract_token: token
 
           token
         end
@@ -123,7 +123,7 @@ describe Token, type: :model do
       end
 
       context 'when no price exists' do
-        let(:token) { create(:token) }
+        let(:token) { create(:contract_token) }
 
         it do
           is_expected.to have_attributes(

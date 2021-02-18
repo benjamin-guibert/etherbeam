@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-EXPOSED_HEADERS = %w[Current-Page Page-Items Total-Pages Total-Count].freeze
+EXPOSED_HEADERS = %w[access-token expiry token-type uid client Current-Page Page-Items Total-Pages Total-Count].freeze
 EXPOSED_METHODS = %i[get post patch put delete options].freeze
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do

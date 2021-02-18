@@ -2,9 +2,12 @@
 
 class BlockTransactionsController < ApplicationController
   include BlockTransactionsConcern
+  include SessionsConcern
   include HashHelper
   include TokenActionHelper
   include Pagy::Backend
+
+  around_action :authenticate_eth_server!, only: :save
 
   def index
     case params[:status]

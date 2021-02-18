@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-class TokensController < ApplicationController
-  include TokensConcern
+class ContractTokensController < ApplicationController
+  include ContractTokensConcern
   include HashHelper
 
   def index
-    @tokens = Token.with_prices
+    @contract_tokens = ContractToken.with_prices
 
-    render json: @tokens,
+    render json: @contract_tokens,
            root: false,
            status: :ok,
            only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair],
@@ -16,29 +16,29 @@ class TokensController < ApplicationController
   end
 
   def show
-    if sanitized_hash == sanitize_hash(Token::WETH_HASH) then show_weth
+    if sanitized_hash == sanitize_hash(ContractToken::WETH_HASH) then show_weth
     elsif params[:list] == 'actions' then show_with_actions
     else
       show_token
     end
 
-    return head :not_found unless @token
+    return head :not_found unless @contract_token
   end
 
   def show_token
-    @token = Token.with_prices.find_by_sanitized_hash(sanitized_hash)
+    @contract_token = ContractToken.with_prices.find_by_sanitized_hash(sanitized_hash)
 
-    render_token if @token
+    render_token if @contract_token
   end
 
   def show_with_actions
-    @token = Token.with_prices.with_actions.find_by_sanitized_hash(sanitized_hash)
+    @contract_token = ContractToken.with_prices.with_actions.find_by_sanitized_hash(sanitized_hash)
 
-    render_token_with_actions if @token
+    render_token_with_actions if @contract_token
   end
 
   def show_weth
-    @token = Token.find_by_address_hash(Token::WETH_HASH)
+    @contract_token = ContractToken.find_by_address_hash(ContractToken::WETH_HASH)
 
     render_token
   end

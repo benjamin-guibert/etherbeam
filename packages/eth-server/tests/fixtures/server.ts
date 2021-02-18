@@ -1,6 +1,22 @@
+import { AxiosInstance } from 'axios'
 import { sanitizeHash } from 'libraries/helpers'
+import { ServerData } from 'libraries/server'
 import { ContractData, TokenData, TransactionData } from 'libraries/severTypes'
 import { ContractType, TransactionStatus } from 'libraries/types'
+
+export const createServerData = (): ServerData => {
+  return {
+    axiosClient: ({
+      get: jest.fn(),
+      post: jest.fn(),
+      put: jest.fn(),
+      defaults: {
+        headers: {},
+      },
+    } as unknown) as AxiosInstance,
+    authToken: null,
+  }
+}
 
 export const createContractData = (hash = '0x0A00000000000000000000000000000000000111'): ContractData => {
   return {

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class Token < Contract
+class ContractToken < Contract
   WETH_HASH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
 
   # Associations
 
   has_many  :prices,
             -> { order(datetime: :desc) },
-            class_name: 'TokenPrice',
-            inverse_of: :token,
+            class_name: 'ContractTokenPrice',
+            inverse_of: :contract_token,
             dependent: :destroy
 
   # Validations

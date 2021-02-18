@@ -3,17 +3,19 @@ default: &default
   encoding: unicode
   host: localhost
   username: postgres
-  password: password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: etherbeam_dev
+  password: password
 
 test:
   <<: *default
   database: etherbeam_test
+  password: password
 
 production:
   <<: *default
   database: etherbeam
+  password: <%= Rails.application.secrets[:database_password] %>

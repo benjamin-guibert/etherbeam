@@ -1,7 +1,7 @@
-import { Transaction, TransactionStatus } from 'libraries/types'
-import { parseWeb3Transaction, parseWeb3TransactionReceipt } from 'libraries/web3Parsers'
-import { createEthereumData } from '../../fixtures/libraries/ethereum'
-import { createWeb3Transaction, createWeb3TransactionReceipt } from '../../../tests/fixtures/libraries/web3'
+import { Transaction, TransactionStatus } from './types'
+import { parseWeb3Transaction, parseWeb3TransactionReceipt } from './web3Parsers'
+import { createEthereumData } from '../../tests/fixtures/ethereum'
+import { createWeb3Transaction, createWeb3TransactionReceipt } from '../../tests/fixtures/web3'
 import Web3 from 'web3'
 import { EthereumData } from 'libraries/ethereum'
 

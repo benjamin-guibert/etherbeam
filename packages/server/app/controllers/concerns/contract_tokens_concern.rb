@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # rubocop:disable Metrics/MethodLength
-module TokensConcern
+module ContractTokensConcern
   def render_token
-    render  json: @token,
+    render  json: @contract_token,
             root: false,
             status: :ok,
             only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair website whitepaper github
@@ -13,7 +13,7 @@ module TokensConcern
   end
 
   def render_token_with_actions
-    render  json: @token,
+    render  json: @contract_token,
             root: false,
             status: :ok,
             only: %i[sanitized_hash address_hash label abi name symbol decimals chart_pair website whitepaper github

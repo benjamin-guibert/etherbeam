@@ -3,7 +3,7 @@
 class CreateTables < ActiveRecord::Migration[6.0] # rubocop:disable Metrics/ClassLength
   def change
     create_addresses_table
-    create_token_prices_table
+    create_contract_token_prices_table
     create_block_transactions_table
     create_transaction_methods_table
     create_transaction_method_parameters_table
@@ -24,6 +24,7 @@ class CreateTables < ActiveRecord::Migration[6.0] # rubocop:disable Metrics/Clas
       t.string :name
       t.string :symbol
       t.integer :decimals
+      t.string :chart_pair
       t.string :website
       t.string :whitepaper
       t.string :github
@@ -37,9 +38,9 @@ class CreateTables < ActiveRecord::Migration[6.0] # rubocop:disable Metrics/Clas
     end
   end
 
-  def create_token_prices_table
-    create_table :token_prices do |t|
-      t.belongs_to :token, foreign_key: { to_table: :addresses }, null: false
+  def create_contract_token_prices_table
+    create_table :contract_token_prices do |t|
+      t.belongs_to :contract_token, foreign_key: { to_table: :addresses }, null: false
       t.datetime :datetime, null: false
       t.decimal :price, null: false
     end

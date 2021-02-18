@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include DeviseTokenAuth::Concerns::SetUserByToken
+
   after_action { pagy_headers_merge(@pagy) if @pagy }
 
   def first_last_headers(first, last)

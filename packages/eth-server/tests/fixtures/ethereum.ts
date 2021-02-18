@@ -1,13 +1,12 @@
-// import { Block, Contract, ContractType, Token, Transaction, TransactionStatus } from 'libraries/types'
-// import { BigNumber } from 'ethers'
-
 import { EthereumData } from 'libraries/ethereum'
 import { sanitizeHash } from 'libraries/helpers'
 import { ContractType, Transaction, TransactionStatus, Token, Contract } from 'libraries/types'
 import Web3 from 'web3'
+import { createServerData } from './server'
 
 export const createEthereumData = (): EthereumData => {
   return {
+    serverData: createServerData(),
     web3: ({
       eth: {
         getBlock: jest.fn(),

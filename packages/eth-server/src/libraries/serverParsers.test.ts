@@ -1,9 +1,9 @@
-import { parseContractData, parseTokenData, parseTransactionToData } from 'libraries/serverParsers'
-import { TransactionData } from 'libraries/severTypes'
-import { Contract, ContractType, LogType, Token, TransactionStatus } from 'libraries/types'
+import { parseContractData, parseTokenData, parseTransactionToData } from './serverParsers'
+import { TransactionData } from './severTypes'
+import { Contract, ContractType, LogType, Token, TransactionStatus } from './types'
 import Web3 from 'web3'
-import { createTransaction } from '../../fixtures/libraries/ethereum'
-import { createContractData, createTokenData } from '../../fixtures/libraries/server'
+import { createTransaction } from '../../tests/fixtures/ethereum'
+import { createContractData, createTokenData } from '../../tests/fixtures/server'
 
 describe('Parse contract data', () => {
   let result: Contract
