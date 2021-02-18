@@ -101,7 +101,7 @@ describe BlockTransaction, type: :model do
   end
 
   describe 'scope' do
-    describe 'trashable' do
+    describe '#trashable' do
       let(:block_transactions) do
         [
           create(:block_transaction, datetime: 3.weeks.ago),

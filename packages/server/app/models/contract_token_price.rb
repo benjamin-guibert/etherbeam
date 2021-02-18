@@ -15,4 +15,15 @@ class ContractTokenPrice < ApplicationRecord
   # Scopes
 
   scope :before_datetime, ->(datetime) { where('datetime <= ?', datetime).order(datetime: :desc) }
+  # scope :trashable, lambda {
+  #                     select('array_agg(id) as ids').group("date_trunc('hour', datetime)").map do |group|
+  #                       group[1..]
+  #                     end
+  #                   }
+  scope :trashable, lambda {
+    where('datetime <= ?', 2.days.ago)
+      .group_by { |p| p.datetime.day }
+      .transform_values { |p| p[1..] }
+      .values.flatten
+  }
 end
