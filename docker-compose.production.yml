@@ -4,8 +4,6 @@ services:
   database:
     container_name: etherbeam_database
     image: postgres:latest
-    environment:
-      POSTGRES_PASSWORD: password
     volumes:
       - /var/db/etherbeam:/var/lib/postgresql/data:rw
     networks:
