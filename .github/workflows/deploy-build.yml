@@ -44,7 +44,7 @@ jobs:
         working-directory: ${{ env.SERVER_PATH }}
         run: |
           echo POSTGRES_PASSWORD='${{ secrets.POSTGRES_PASSWORD }}' > .env
-          echo ETH_SERVER_USER_PASSWORD='${{ secrets.ETH_SERVER_USER_PASSWORD }}' >> .env
+          echo ETH_SERVER_USER_PASSWORD='${{ secrets.SERVER_API_PASSWORD }}' >> .env
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
