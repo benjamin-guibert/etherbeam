@@ -18,4 +18,4 @@ test:
 production:
   <<: *default
   database: etherbeam
-  password: <%= Rails.application.secrets[:database_password] %>
+  password: <%= Rails.application.credentials[:database_password] %>
