@@ -41,10 +41,8 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Create master.key file
-        working-directory: ${{ env.ETH_SERVER_PATH }}/config
-        run: |
-          touch master.key
-          echo ${{ secrets.SERVER_MASTER_KEY }} > master.key
+        working-directory: ${{ env.SERVER_PATH }}/config
+        run: echo ${{ secrets.SERVER_MASTER_KEY }} > master.key
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
@@ -79,7 +77,6 @@ jobs:
       - name: Create Ethereum Server .env file
         working-directory: ${{ env.ETH_SERVER_PATH }}
         run: |
-          touch .env
           echo ETH_PROVIDER_IPC=1 > .env
           echo ETH_POOL_PROVIDER_IPC=0 >> .env
           echo ETH_POOL_PROVIDER=${{ secrets.ETH_POOL_PROVIDER }} >> .env
