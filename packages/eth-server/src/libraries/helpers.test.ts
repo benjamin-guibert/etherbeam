@@ -1,4 +1,4 @@
-import { clearMocks } from '../../helpers'
+import { clearMocks } from '../../tests/helpers'
 import {
   sleep,
   sanitizeHash,
@@ -6,8 +6,8 @@ import {
   getAddressHashesFromTransaction,
   isTransactionWatched,
 } from 'libraries/helpers'
-import { createTransaction, createContract, createToken } from '../../../tests/fixtures/libraries/ethereum'
-import { USDC_HASH, WETH_HASH } from 'libraries/types'
+import { createTransaction, createContract, createToken } from '../../tests/fixtures/ethereum'
+import { USDC_HASH, WETH_HASH } from './types'
 
 describe('Sleep', () => {
   let result = undefined

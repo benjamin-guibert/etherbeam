@@ -1,9 +1,9 @@
-import { EthereumData } from 'libraries/ethereum'
-import { createWeb3Block, createWeb3Transaction, createWeb3TransactionReceipt } from '../../fixtures/libraries/web3'
-import { createEthereumData } from '../../fixtures/libraries/ethereum'
-import { Transaction } from 'libraries/types'
-import { fetchBlockTransactions, fetchTransactionReceipt, fetchPendingTransaction } from 'libraries/web3'
-import { clearMocks } from '../../helpers'
+import { clearMocks } from '../../tests/helpers'
+import { createWeb3Block, createWeb3Transaction, createWeb3TransactionReceipt } from '../../tests/fixtures/web3'
+import { createEthereumData } from '../../tests/fixtures/ethereum'
+import { EthereumData } from './ethereum'
+import { Transaction } from './types'
+import { fetchBlockTransactions, fetchTransactionReceipt, fetchPendingTransaction } from './web3'
 
 const getBlockMock = jest.fn()
 const getTransactionReceiptMock = jest.fn()

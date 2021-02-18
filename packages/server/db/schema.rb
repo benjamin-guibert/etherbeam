@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_184140) do
     t.string "name"
     t.string "symbol"
     t.integer "decimals"
+    t.string "chart_pair"
     t.string "website"
     t.string "whitepaper"
     t.string "github"
@@ -35,7 +36,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_184140) do
     t.string "discord"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "chart_pair"
     t.index ["sanitized_hash"], name: "index_addresses_on_sanitized_hash", unique: true
   end
 
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 2021_02_11_184140) do
     t.index ["to_address_id"], name: "index_block_transactions_on_to_address_id"
   end
 
+  create_table "contract_token_prices", force: :cascade do |t|
+    t.bigint "contract_token_id", null: false
+    t.datetime "datetime", null: false
+    t.decimal "price", null: false
+    t.index ["contract_token_id"], name: "index_contract_token_prices_on_contract_token_id"
+  end
+
   create_table "logs", force: :cascade do |t|
     t.integer "log_type", default: 0, null: false
     t.bigint "address_id"
@@ -69,13 +76,6 @@ ActiveRecord::Schema.define(version: 2021_02_11_184140) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_logs_on_address_id"
     t.index ["block_transaction_id"], name: "index_logs_on_block_transaction_id"
-  end
-
-  create_table "token_prices", force: :cascade do |t|
-    t.bigint "token_id", null: false
-    t.datetime "datetime", null: false
-    t.decimal "price", null: false
-    t.index ["token_id"], name: "index_token_prices_on_token_id"
   end
 
   create_table "transaction_actions", force: :cascade do |t|
@@ -162,9 +162,9 @@ ActiveRecord::Schema.define(version: 2021_02_11_184140) do
 
   add_foreign_key "block_transactions", "addresses", column: "from_address_id"
   add_foreign_key "block_transactions", "addresses", column: "to_address_id"
+  add_foreign_key "contract_token_prices", "addresses", column: "contract_token_id"
   add_foreign_key "logs", "addresses"
   add_foreign_key "logs", "block_transactions"
-  add_foreign_key "token_prices", "addresses", column: "token_id"
   add_foreign_key "transaction_actions", "addresses", column: "from_address_id"
   add_foreign_key "transaction_actions", "addresses", column: "holder_address_id"
   add_foreign_key "transaction_actions", "addresses", column: "to_address_id"

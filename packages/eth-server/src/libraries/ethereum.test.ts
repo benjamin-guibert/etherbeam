@@ -1,9 +1,9 @@
 import { mocked } from 'ts-jest/utils'
-import { clearMocks } from '../../helpers'
+import { clearMocks } from '../../tests/helpers'
+import { createContract, createEthereumData, createToken, createTransaction } from '../../tests/fixtures/ethereum'
 import { BlockHeader } from 'web3-eth'
 import { Subscription } from 'web3-core-subscriptions'
-import { createContract, createEthereumData, createToken, createTransaction } from '../../fixtures/libraries/ethereum'
-import { fetchBlockTransactions, fetchPendingTransaction, fetchTransactionReceipt } from 'libraries/web3'
+import { fetchBlockTransactions, fetchPendingTransaction, fetchTransactionReceipt } from './web3'
 import {
   fetchContracts,
   fetchTokens,

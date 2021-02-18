@@ -5,7 +5,7 @@ require 'rails_helper'
 describe TokenActionHelper, type: :helper do
   describe '#parse_transaction_token_actions' do
     context 'when approval' do
-      let(:token) { create :token }
+      let(:token) { create :contract_token }
       let(:wallet) { create :address, :wallet }
       let(:block_transaction) do
         create :block_transaction_mined,
@@ -40,7 +40,7 @@ describe TokenActionHelper, type: :helper do
     end
 
     context 'when transfer' do
-      let(:token) { create :token }
+      let(:token) { create :contract_token }
       let(:wallet) { create :address, :wallet }
       let(:other_wallet) { create :address, :wallet }
       let(:block_transaction) do
@@ -84,8 +84,8 @@ describe TokenActionHelper, type: :helper do
     end
 
     context 'when swap' do
-      let(:token) { create :token }
-      let(:other_token) { create :token }
+      let(:token) { create :contract_token }
+      let(:other_token) { create :contract_token }
       let(:contract) { create :contract }
       let(:wallet) { create :address, :wallet }
       let(:other_contract) { create :contract }

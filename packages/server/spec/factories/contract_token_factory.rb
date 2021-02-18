@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :token do
+  factory :contract_token do
     address_hash { generate :address }
     label { 'Token (TKN)' }
     abi { '[]' }
@@ -21,22 +21,22 @@ FactoryBot.define do
       discord { 'https://discord.com/token' }
     end
 
-    factory :token_with_price do
+    factory :contract_token_with_price do
       before(:create) do |token|
-        create :token_price, token: token
+        create :contract_token_price, contract_token: token
 
         token.reload
       end
     end
 
-    factory :token_with_prices do
+    factory :contract_token_with_prices do
       before(:create) do |token|
-        create :token_price, price: 2_000.0, datetime: 2.minutes.ago, token: token
-        create :token_price, price: 1_000.0, datetime: 2.hours.ago, token: token
-        create :token_price, price: 4_000.0, datetime: 2.days.ago, token: token
-        create :token_price, price: 8_000.0, datetime: 2.weeks.ago, token: token
-        create :token_price, price: 2_000.0, datetime: 2.months.ago, token: token
-        create :token_price, price: 500.0, datetime: 2.years.ago, token: token
+        create :contract_token_price, price: 2_000.0, datetime: 2.minutes.ago, contract_token: token
+        create :contract_token_price, price: 1_000.0, datetime: 2.hours.ago, contract_token: token
+        create :contract_token_price, price: 4_000.0, datetime: 2.days.ago, contract_token: token
+        create :contract_token_price, price: 8_000.0, datetime: 2.weeks.ago, contract_token: token
+        create :contract_token_price, price: 2_000.0, datetime: 2.months.ago, contract_token: token
+        create :contract_token_price, price: 500.0, datetime: 2.years.ago, contract_token: token
 
         token.reload
       end

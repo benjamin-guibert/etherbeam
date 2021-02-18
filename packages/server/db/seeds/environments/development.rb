@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 user = User.new(
-  user_type: :system,
+  user_type: :eth_server,
   name: 'Ethereum Server',
   email: 'eth-server@etherbeam.com',
   password: 'eth-server'
@@ -28,7 +28,7 @@ user = User.create!(
 user.skip_confirmation!
 user.save
 
-Token.create!(
+ContractToken.create!(
   address_hash: '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984',
   label: 'Uniswap (UNI)',
   abi: JSON.dump(JSON.parse(File.read('db/seeds/abis/uni.json'))),

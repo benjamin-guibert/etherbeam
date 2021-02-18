@@ -1,4 +1,4 @@
-import { getLogger } from 'libraries/logger'
+import { getLogger } from './logger'
 import { Logger } from 'pino'
 
 describe('Get logger', () => {

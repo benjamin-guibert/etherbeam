@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   enum user_type: {
     user: 0,
     administrator: 1,
-    system: 2
+    eth_server: 2
   }
 
   # Validations

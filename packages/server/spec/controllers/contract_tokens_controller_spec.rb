@@ -2,11 +2,13 @@
 
 require 'rails_helper'
 
-describe TokensController, type: :controller do
+describe ContractTokensController, type: :controller do
   describe 'GET #index' do
-    it { is_expected.to route(:get, '/tokens').to(controller: :tokens, action: :index) }
+    it { is_expected.to route(:get, '/contract_tokens').to(controller: :contract_tokens, action: :index) }
 
-    let(:token) { create :token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111' }
+    let(:token) do
+      create :contract_token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111'
+    end
     let(:body) { JSON.parse(response.body) }
 
     before do
@@ -48,12 +50,14 @@ describe TokensController, type: :controller do
 
   describe 'GET #show' do
     it do
-      is_expected.to route(:get, '/tokens/0x0A00000000000000000000000000000000000111')
-        .to(controller: :tokens, action: :show, address: '0x0A00000000000000000000000000000000000111')
+      is_expected.to route(:get, '/contract_tokens/0x0A00000000000000000000000000000000000111')
+        .to(controller: :contract_tokens, action: :show, address: '0x0A00000000000000000000000000000000000111')
     end
 
     context 'when token exists' do
-      let(:token) { create :token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111' }
+      let(:token) do
+        create :contract_token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111'
+      end
       let(:body) { JSON.parse(response.body) }
 
       before do
@@ -100,8 +104,10 @@ describe TokensController, type: :controller do
     end
 
     context 'with actions' do
-      let(:token) { create :token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111' }
-      let(:other_token) { create :token }
+      let(:token) do
+        create :contract_token_with_prices, :full, address_hash: '0x0a00000000000000000000000000000000000111'
+      end
+      let(:other_token) { create :contract_token }
       let(:holder) { create :address, :wallet }
       let(:from_transaction_action) do
         create :transaction_action, action_type: :swap, holder_address_hash: holder.address_hash,

@@ -9,7 +9,9 @@ import {
   fetchTransactionsToUpdate,
   saveTransaction,
   saveTransactions,
+  ServerData,
   updateTokenPrice,
+  useServer,
 } from './server'
 import { BlockHeader } from 'web3-eth'
 import { Subscription } from 'web3-core-subscriptions'
@@ -26,6 +28,7 @@ const TRANSACTION_RECEIPTS_FETCHING_INTERVAL = 10 * 1000
 const TOKEN_PRICE_FETCHING_INTERVAL = 30 * 1000
 
 export interface EthereumData {
+  serverData: ServerData
   web3: Web3
   web3Pool: Web3
   ethersProvider: BaseProvider
@@ -100,8 +103,8 @@ const initializeProviders = (data: EthereumData): void => {
 }
 
 const initializeContracts = async (data: EthereumData): Promise<void> => {
-  data.contracts = (await fetchContracts()).filter((contract) => contract.type == ContractType.Contract)
-  data.contracts.push(...(await fetchTokens()))
+  data.contracts = (await fetchContracts(data.serverData)).filter((contract) => contract.type == ContractType.Contract)
+  data.contracts.push(...(await fetchTokens(data.serverData)))
 
   data.contracts.forEach((contract) => {
     const { hash, abi } = contract
@@ -113,6 +116,7 @@ const initializeContracts = async (data: EthereumData): Promise<void> => {
 
 export const useEthereum = async (): Promise<EthereumData> => {
   const data = {
+    serverData: useServer(),
     web3: undefined,
     web3Pool: undefined,
     ethersProvider: undefined,
@@ -143,10 +147,10 @@ const tryFetchBlockTransactions = async (number: number, data: EthereumData): Pr
   )
 }
 
-const trySaveTransactions = async (transactions: Transaction[]): Promise<boolean> => {
+const trySaveTransactions = async (transactions: Transaction[], data: EthereumData): Promise<boolean> => {
   const result = await tryAction<boolean>(
     async () => {
-      await saveTransactions(transactions)
+      await saveTransactions(transactions, data.serverData)
       return true
     },
     RETRY_WAIT,
@@ -175,7 +179,7 @@ const onNewBlock = async (blockHeader: BlockHeader, data: EthereumData): Promise
     return
   }
 
-  const result = await trySaveTransactions(filteredTransactions)
+  const result = await trySaveTransactions(filteredTransactions, data)
 
   if (result)
     logger.info(
@@ -212,12 +216,17 @@ export const unsubscribeFromNewBlocks = (data: EthereumData): void => {
   })
 }
 
-const tryFetchTransactionsToUpdate = async (): Promise<string[]> => {
-  return await tryAction<string[]>(fetchTransactionsToUpdate, RETRY_WAIT, MAX_RETRIES, (error) => {
-    logger.error('Error while fetching transactions to update.')
-    logger.error(error.message)
-    logger.error(error.stack)
-  })
+const tryFetchTransactionsToUpdate = async (data: EthereumData): Promise<string[]> => {
+  return await tryAction<string[]>(
+    () => fetchTransactionsToUpdate(data.serverData),
+    RETRY_WAIT,
+    MAX_RETRIES,
+    (error) => {
+      logger.error('Error while fetching transactions to update.')
+      logger.error(error.message)
+      logger.error(error.stack)
+    }
+  )
 }
 
 const tryFetchTransactionReceipt = async (hash: string, data: EthereumData): Promise<Transaction> => {
@@ -235,7 +244,7 @@ const fetchTransactionReceipts = async (data: EthereumData): Promise<void> => {
   if (!data.fetchingTransactionReceipts) return
   logger.info('Fetching transaction receipts...')
 
-  const hashes = await tryFetchTransactionsToUpdate()
+  const hashes = await tryFetchTransactionsToUpdate(data)
   logger.info(`${hashes.length} transaction(s) to update...`)
 
   const transactions = []
@@ -252,7 +261,7 @@ const fetchTransactionReceipts = async (data: EthereumData): Promise<void> => {
     }
 
     if (transactions.length) {
-      const updated = await trySaveTransactions(transactions)
+      const updated = await trySaveTransactions(transactions, data)
 
       if (updated) logger.info(`${transactions.length} transaction(s) updated.`)
     } else {
@@ -297,9 +306,9 @@ const tryFetchTokenPrice = async (token: Token, data: EthereumData): Promise<boo
   }
 }
 
-const tryUpdateTokenPrice = async (token: Token): Promise<boolean> => {
+const tryUpdateTokenPrice = async (token: Token, data: EthereumData): Promise<boolean> => {
   try {
-    await updateTokenPrice(token)
+    await updateTokenPrice(token, data.serverData)
 
     return true
   } catch (error) {
@@ -323,7 +332,7 @@ const fetchTokenPrices = async (data: EthereumData): Promise<void> => {
 
     const result = await tryFetchTokenPrice(token as Token, data)
 
-    if (result) await tryUpdateTokenPrice(token as Token)
+    if (result) await tryUpdateTokenPrice(token as Token, data)
   }
 
   logger.info(`Token prices fetched.`)
@@ -362,10 +371,10 @@ const tryFetchTransaction = async (hash: string, data: EthereumData): Promise<Tr
   )
 }
 
-const trySaveTransaction = async (transaction: Transaction): Promise<boolean> => {
+const trySaveTransaction = async (transaction: Transaction, data: EthereumData): Promise<boolean> => {
   const result = await tryAction<boolean>(
     async () => {
-      await saveTransaction(transaction)
+      await saveTransaction(transaction, data.serverData)
 
       return true
     },
@@ -388,7 +397,7 @@ const onNewPendingTransaction = async (hash: string, data: EthereumData): Promis
 
   if (!transaction || !isTransactionWatched(transaction, data.contracts)) return
 
-  const result = await trySaveTransaction(transaction)
+  const result = await trySaveTransaction(transaction, data)
 
   if (result) logger.info(`Pending transaction added: ${transaction.hash}.`)
 }

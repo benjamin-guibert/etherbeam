@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :contracts, only: :index
 
-  resources :tokens, only: :index
-  get '/tokens/:address', to: 'tokens#show'
-  post '/tokens/:address/prices', to: 'token_prices#save'
+  resources :contract_tokens, only: :index
+  get '/contract_tokens/:address', to: 'contract_tokens#show'
+  post '/contract_tokens/:address/prices', to: 'contract_token_prices#save'
 
   resources :block_transactions, only: :index
   post '/block_transactions', to: 'block_transactions#save'

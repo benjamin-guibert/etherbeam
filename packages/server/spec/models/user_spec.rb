@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe User, type: :model do
   describe 'enum' do
-    it { is_expected.to define_enum_for(:user_type).with_values(%i[user administrator system]) }
+    it { is_expected.to define_enum_for(:user_type).with_values(%i[user administrator eth_server]) }
   end
 
   describe 'validation' do
@@ -18,7 +18,7 @@ describe User, type: :model do
       it { is_expected.not_to validate_uniqueness_of :user_type }
       it { is_expected.to allow_value(:user).for :user_type }
       it { is_expected.to allow_value(:administrator).for :user_type }
-      it { is_expected.to allow_value(:system).for :user_type }
+      it { is_expected.to allow_value(:eth_server).for :user_type }
     end
 
     describe '#email' do
