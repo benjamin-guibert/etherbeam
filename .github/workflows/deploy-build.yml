@@ -84,6 +84,7 @@ jobs:
           echo ETH_PROVIDER_IPC=1 > .env
           echo ETH_POOL_PROVIDER_IPC=0 >> .env
           echo ETH_POOL_PROVIDER='${{ secrets.ETH_POOL_PROVIDER }}' >> .env
+          echo SERVER_API_HOST=server >> .env
           echo SERVER_API_USER='${{ secrets.SERVER_API_USER }}' >> .env
           echo SERVER_API_PASSWORD='${{ secrets.SERVER_API_PASSWORD }}' >> .env
       - name: Copy repository to the VPS
