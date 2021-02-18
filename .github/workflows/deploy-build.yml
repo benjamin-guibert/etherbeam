@@ -81,9 +81,9 @@ jobs:
         run: |
           echo ETH_PROVIDER_IPC=1 > .env
           echo ETH_POOL_PROVIDER_IPC=0 >> .env
-          echo ETH_POOL_PROVIDER='${{ secrets.ETH_POOL_PROVIDER }}' >> .env
-          echo SERVER_API_HOST='${{ secrets.SERVER_API_HOST }}' >> .env
-          echo SERVER_API_USER='${{ secrets.SERVER_API_USER }}' >> .env
+          echo ETH_POOL_PROVIDER=${{ secrets.ETH_POOL_PROVIDER }} >> .env
+          echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
+          echo SERVER_API_USER=${{ secrets.SERVER_API_USER }} >> .env
           echo SERVER_API_PASSWORD='${{ secrets.SERVER_API_PASSWORD }}' >> .env
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
@@ -120,7 +120,7 @@ jobs:
         working-directory: ${{ env.CLIENT_PATH }}
         run: |
           touch .env
-          echo SERVER_API_HOST='${{ secrets.SERVER_API_HOST }}' >> .env
+          echo SERVER_API_HOST=${{ secrets.SERVER_API_HOST }} >> .env
 
       - name: Get the Node version
         id: node
