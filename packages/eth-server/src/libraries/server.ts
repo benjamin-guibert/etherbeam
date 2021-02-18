@@ -40,7 +40,7 @@ export const useServer = (): ServerData => {
 
 export const logIn = async (data: ServerData): Promise<void> => {
   const { SERVER_API_USER, SERVER_API_PASSWORD } = process.env
-  logger.debug(`Logging in as ${SERVER_API_USER}...`)
+  logger.info(`Logging in as ${SERVER_API_USER}...`)
 
   const response = await data.axiosClient.post('auth/login', {
     email: SERVER_API_USER,
@@ -52,7 +52,7 @@ export const logIn = async (data: ServerData): Promise<void> => {
 }
 
 export const logOut = async (data: ServerData): Promise<void> => {
-  logger.debug(`Logging out...`)
+  logger.info(`Logging out...`)
 
   if (!data.authToken) return logger.warn('No token found.')
 
