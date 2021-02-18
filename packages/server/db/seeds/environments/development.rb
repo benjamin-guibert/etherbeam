@@ -22,8 +22,7 @@ user = User.create!(
   user_type: :user,
   name: 'Henry Case',
   email: 'hcase@etherbeam.com',
-  password: 'hcasehcase',
-  password_confirmation: 'hcasehcase'
+  password: 'hcasehcase'
 )
 user.skip_confirmation!
 user.save

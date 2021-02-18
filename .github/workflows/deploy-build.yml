@@ -40,9 +40,11 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-      - name: Create master.key file
-        working-directory: ${{ env.SERVER_PATH }}/config
-        run: echo ${{ secrets.SERVER_MASTER_KEY }} > master.key
+      - name: Create .env file
+        working-directory: ${{ env.SERVER_PATH }}
+        run: |
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} > .env
+          echo ETH_SERVER_USER_PASSWORD=${{ secrets.ETH_SERVER_USER_PASSWORD }} >> .env
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:

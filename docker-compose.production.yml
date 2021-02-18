@@ -8,6 +8,8 @@ services:
       - /var/db/etherbeam:/var/lib/postgresql/data:rw
     networks:
       - etherbeam
+    env_file:
+      - packages/server/.env
   server:
     container_name: etherbeam_server
     build: packages/server/.

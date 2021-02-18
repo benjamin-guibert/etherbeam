@@ -20,7 +20,7 @@
 yarn install
 ```
 
-- Create the `.env` file from [.sample.env](.sample.env) and modify values (see [Ethers provider](#ethers-provider))):
+- Create the `.env` file from [.sample.env](.sample.env) and modify its values (see [Ethers provider](#ethers-provider))):
 
 ```bash
 cp ./.sample.env .env

@@ -26,7 +26,7 @@ jobs:
             docker stop etherbeam_eth_server || true && docker rm etherbeam_eth_server || true
             docker stop etherbeam_server || true && docker rm etherbeam_server || true
             docker stop etherbeam_database || true && docker rm etherbeam_database || true
-            docker-compose -f docker-compose.production.yml -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} up -d
+            docker-compose -f docker-compose.production.yml up -d
             install -d -m 770 -o deploy -g user ${{ env.APP_PATH }}/dump
 
       - name: Wait & check Docker containers

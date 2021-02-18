@@ -4,7 +4,7 @@ user = User.new(
   user_type: :eth_server,
   name: 'Ethereum Server',
   email: 'eth-server@etherbeam.com',
-  password: Rails.application.credentials[:eth_server_user_password]
+  password: ENV['ETH_SERVER_USER_PASSWORD']
 )
 user.skip_confirmation!
 user.save
