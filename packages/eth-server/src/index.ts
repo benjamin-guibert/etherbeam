@@ -49,6 +49,7 @@ const displayFatalError = (error: AxiosError | Error): void => {
     logger.error(response.data)
   }
   logger.info('===== Ethereum Server: DOWN =====')
+  process.exit(1)
 }
 
 useEthereum()
