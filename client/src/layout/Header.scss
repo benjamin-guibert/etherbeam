@@ -1,0 +1,16 @@
+@use '../styles/resources/sizes';
+@use '../styles/resources/colors';
+
+.my-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: colors.$dark;
+  padding: sizes.$spacer-xs sizes.$spacer-l;
+
+  &-title {
+    padding: 0px;
+    margin-right: sizes.$spacer-xs;
+  }
+}

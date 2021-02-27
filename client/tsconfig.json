@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "target": "ES2015",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "allowJs": true,
+    "jsx": "react",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true
+    // "lib": ["dom", "dom.iterable", "esnext"],
+    // "moduleResolution": "node",
+    // "resolveJsonModule": true,
+    // "sourceMap": true,
+    // "typeRoots": ["./node_modules/@types"],
+    // "types": ["node", "jest"]
+  },
+  "include": ["src/**/*"]
+}

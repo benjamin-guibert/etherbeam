@@ -1,18 +1,27 @@
 {
-  "name": "etherbeam",
-  "description": "Ethereum cryptocurrency tracker",
+  "name": "@cryptotentanz/etherbeam",
+  "description": "Ethereum cryptocurrency tracker.",
+  "version": "1.0.0",
   "repository": "git@github.com:benjamin-guibert/etherbeam.git",
   "author": "Benjamin Guibert <contact@bguibert.com>",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "server",
+    "eth-server",
+    "client",
+    "shared/ts/*"
+  ],
   "scripts": {
-    "dev:server": "lerna run --scope server dev --stream",
+    "dev": "lerna run dev --stream",
+    "dev:server": "lerna run dev --scope @cryptotentanz/server --stream",
+    "dev:eth-server": "lerna run dev --scope @cryptotentanz/eth-server --stream",
+    "dev:client": "lerna run dev --scope @cryptotentanz/client --stream",
     "lint": "lerna run lint --stream",
     "format": "lerna run format --stream",
     "test": "lerna run test --stream"
   },
   "devDependencies": {
-    "eslint-plugin-mdx": "^1.8.2",
     "husky": "^4.3.0",
     "lerna": "^3.22.1"
   }

@@ -1,0 +1,16 @@
+@use '../styles/resources/sizes';
+
+.my-headersession {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &-name {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  &-signout {
+    padding-left: sizes.$spacer;
+  }
+}

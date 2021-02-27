@@ -1,0 +1,52 @@
+{
+  "name": "@cryptotentanz/etherbeam-eth-server",
+  "description": "Etherbeam's server dedicated to communication with the Ethereum blockchain.",
+  "version": "1.0.0",
+  "author": "Benjamin Guibert <contact@bguibert.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "yarn run build && node --unhandled-rejections=strict dist/index.js | pino-pretty",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "yarn run build && node dist/src/index.js",
+    "lint": "eslint --max-warnings 0 --ext js,ts,md .",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch --coverage=false"
+  },
+  "dependencies": {
+    "@cryptotentanz/api-client": "^1.0.0",
+    "@ethersproject/contracts": "^5.0.5",
+    "@ethersproject/providers": "^5.0.14",
+    "@ethersproject/solidity": "^5.0.5",
+    "@uniswap/sdk": "^3.0.3",
+    "async": "^3.2.0",
+    "lodash": "^4.17.21",
+    "pino": "^6.6.1",
+    "web3": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.5",
+    "@types/jest": "^26.0.20",
+    "@types/lodash": "^4.14.168",
+    "@types/pino": "^6.3.2",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-markdown": "^2.0.0",
+    "eslint-plugin-md": "^1.0.19",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.5.2",
+    "markdown-eslint-parser": "^1.2.1",
+    "pino-pretty": "^4.2.1",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  }
+}
