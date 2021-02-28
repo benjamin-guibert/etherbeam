@@ -21,6 +21,7 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
           <a
             class="my-clickable  my-link my-secondary-fg"
             href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+            rel="noreferrer"
             tabindex="0"
             target="_blank"
           >
@@ -37,6 +38,7 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
           <a
             class="my-clickable  my-link my-secondary-fg"
             href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+            rel="noreferrer"
             tabindex="0"
             target="_blank"
           >
@@ -181,6 +183,7 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             <a
               class="my-clickable  my-link-button my-primary-bg my-size-l"
               href="https://app.uniswap.org/#/swap?outputCurrency=0x0000000000000000000000000000000000000111"
+              rel="noreferrer"
               tabindex="0"
               target="_blank"
             >
@@ -220,6 +223,7 @@ exports[`<TokenPage /> Default should match snapshot 1`] = `
             <a
               class="my-clickable  my-link-button my-primary-bg my-size-l"
               href="https://app.uniswap.org/#/swap?inputCurrency=0x0000000000000000000000000000000000000111&"
+              rel="noreferrer"
               tabindex="0"
               target="_blank"
             >

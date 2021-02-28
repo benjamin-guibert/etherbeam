@@ -13,6 +13,7 @@ exports[`<Header /> should match snapshot 1`] = `
       >
         <a
           class="my-clickable my-header-title my-link my-light-fg"
+          rel="noreferrer"
           tabindex="0"
         >
           <span
@@ -35,6 +36,7 @@ exports[`<Header /> should match snapshot 1`] = `
       >
         <a
           class="my-clickable  my-link my-light-fg"
+          rel="noreferrer"
           tabindex="0"
           title="Tokens"
         >

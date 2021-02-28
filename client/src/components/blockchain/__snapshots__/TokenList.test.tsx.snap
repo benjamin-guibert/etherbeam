@@ -139,6 +139,7 @@ exports[`<TokenList /> Default should match snapshot 1`] = `
           <a
             class="my-clickable  my-link my-secondary-fg"
             href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+            rel="noreferrer"
             tabindex="0"
             target="_blank"
           >
@@ -268,6 +269,7 @@ exports[`<TokenList /> Default should match snapshot 1`] = `
           <a
             class="my-clickable  my-link my-secondary-fg"
             href="https://etherscan.io/address/0x0000000000000000000000000000000000000222"
+            rel="noreferrer"
             tabindex="0"
             target="_blank"
           >

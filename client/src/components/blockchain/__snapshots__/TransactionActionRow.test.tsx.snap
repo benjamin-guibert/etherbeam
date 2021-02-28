@@ -54,6 +54,7 @@ exports[`<TransactionActionRow /> Approval should match snapshot 1`] = `
       <a
         class="my-clickable  my-link my-light-fg"
         href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        rel="noreferrer"
         tabindex="0"
         target="_blank"
       >
@@ -98,6 +99,7 @@ exports[`<TransactionActionRow /> Approval should match snapshot 1`] = `
     <a
       class="my-clickable my-size-l my-ulink my-secondary-fg"
       href="https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001"
+      rel="noreferrer"
       tabindex="0"
       target="_blank"
       title="Etherscan"
@@ -198,6 +200,7 @@ exports[`<TransactionActionRow /> Buy should match snapshot 1`] = `
       <a
         class="my-clickable  my-link my-light-fg"
         href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        rel="noreferrer"
         tabindex="0"
         target="_blank"
       >
@@ -242,6 +245,7 @@ exports[`<TransactionActionRow /> Buy should match snapshot 1`] = `
     <a
       class="my-clickable my-size-l my-ulink my-secondary-fg"
       href="https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001"
+      rel="noreferrer"
       tabindex="0"
       target="_blank"
       title="Etherscan"
@@ -312,6 +316,7 @@ exports[`<TransactionActionRow /> Default should match snapshot 1`] = `
       <a
         class="my-clickable  my-link my-light-fg"
         href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        rel="noreferrer"
         tabindex="0"
         target="_blank"
       >
@@ -356,6 +361,7 @@ exports[`<TransactionActionRow /> Default should match snapshot 1`] = `
     <a
       class="my-clickable my-size-l my-ulink my-secondary-fg"
       href="https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001"
+      rel="noreferrer"
       tabindex="0"
       target="_blank"
       title="Etherscan"
@@ -456,6 +462,7 @@ exports[`<TransactionActionRow /> Sell should match snapshot 1`] = `
       <a
         class="my-clickable  my-link my-light-fg"
         href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        rel="noreferrer"
         tabindex="0"
         target="_blank"
       >
@@ -500,6 +507,7 @@ exports[`<TransactionActionRow /> Sell should match snapshot 1`] = `
     <a
       class="my-clickable my-size-l my-ulink my-secondary-fg"
       href="https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001"
+      rel="noreferrer"
       tabindex="0"
       target="_blank"
       title="Etherscan"
@@ -570,6 +578,7 @@ exports[`<TransactionActionRow /> Transfer should match snapshot 1`] = `
             <a
               class="my-clickable  my-link my-secondary-fg"
               href="https://etherscan.io/address/0x0000000000000000000000000000000000000222"
+              rel="noreferrer"
               tabindex="0"
               target="_blank"
             >
@@ -627,6 +636,7 @@ exports[`<TransactionActionRow /> Transfer should match snapshot 1`] = `
       <a
         class="my-clickable  my-link my-light-fg"
         href="https://etherscan.io/address/0x0000000000000000000000000000000000000111"
+        rel="noreferrer"
         tabindex="0"
         target="_blank"
       >
@@ -671,6 +681,7 @@ exports[`<TransactionActionRow /> Transfer should match snapshot 1`] = `
     <a
       class="my-clickable my-size-l my-ulink my-secondary-fg"
       href="https://etherscan.io/tx/0x0000000000000000000000000000000000000000000000000000000000000001"
+      rel="noreferrer"
       tabindex="0"
       target="_blank"
       title="Etherscan"
