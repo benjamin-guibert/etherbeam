@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
@@ -148,18 +149,18 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokenPage {...args} />
+const Template = (args: any) => <TokenPage {...args} />
 
 export const Default = Template.bind({})
 
 export const Loading = Template.bind({})
-Loading.args = { token: undefined, loading: true }
+;(Loading as any).args = { token: undefined, loading: true }
 
 export const Unknown = Template.bind({})
-Unknown.args = { token: undefined, alert: 'This token is unknown.' }
+;(Unknown as any).args = { token: undefined, alert: 'This token is unknown.' }
 
 export const NoPrice = Template.bind({})
-NoPrice.args = {
+;(NoPrice as any).args = {
   token: {
     ...token,
     price: undefined,
@@ -168,6 +169,6 @@ NoPrice.args = {
 }
 
 export const NoChartPair = Template.bind({})
-NoChartPair.args = {
+;(NoChartPair as any).args = {
   token: { ...token, chartPair: undefined },
 }

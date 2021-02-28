@@ -16,7 +16,7 @@ interface IconProps {
   className?: string
 }
 
-const Icon: FC<IconProps> = ({ icon, label, labelBreakpoint, size, iconSize, iconAlt, className }) => {
+const Icon: FC<IconProps> = ({ icon, label, labelBreakpoint, size, iconSize, iconAlt, className }: IconProps) => {
   const classNames = ['my-icon', size ? `my-size-${size}` : '', className].join(' ')
   const iconClassName = [iconSize ? `my-size-${iconSize}` : '', iconAlt ? 'my-alt' : ''].join(' ')
   const labelClassName = ['my-icon-label', labelBreakpoint ? `my-d-min-${labelBreakpoint}` : ''].join(' ')

@@ -9,6 +9,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "isolatedModules": true,
+    "skipLibCheck": true,
     "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Toaster from './Toaster'
@@ -14,6 +15,6 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Toaster {...args} />
+const Template = (args: any) => <Toaster {...args} />
 
 export const Default = Template.bind({})

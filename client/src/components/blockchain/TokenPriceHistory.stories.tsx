@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import TokenPriceHistory from './TokenPriceHistory'
@@ -39,6 +40,6 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokenPriceHistory {...args} />
+const Template = (args: any) => <TokenPriceHistory {...args} />
 
 export const Default = Template.bind({})

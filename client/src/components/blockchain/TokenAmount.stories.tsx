@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
@@ -25,18 +26,18 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokenAmount {...args} />
+const Template = (args: any) => <TokenAmount {...args} />
 
 export const Default = Template.bind({})
 
 export const Ether = Template.bind({})
-Ether.args = { token: null }
+;(Ether as any).args = { token: null }
 
 export const AmountPrintOptions = Template.bind({})
-AmountPrintOptions.args = { amountPrintOptions: { decimals: 10, forcedDecimals: true } }
+;(AmountPrintOptions as any).args = { amountPrintOptions: { decimals: 10, forcedDecimals: true } }
 
 export const NoSymbol = Template.bind({})
-NoSymbol.args = { noSymbol: true }
+;(NoSymbol as any).args = { noSymbol: true }
 
 export const NoBadge = Template.bind({})
-NoBadge.args = { noBadge: true }
+;(NoBadge as any).args = { noBadge: true }

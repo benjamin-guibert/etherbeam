@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
@@ -67,9 +68,9 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokenList {...args} />
+const Template = (args: any) => <TokenList {...args} />
 
 export const Default = Template.bind({})
 
 export const Loading = Template.bind({})
-Loading.args = { tokens: undefined, loading: true }
+;(Loading as any).args = { tokens: undefined, loading: true }

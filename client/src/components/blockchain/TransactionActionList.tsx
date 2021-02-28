@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Pagination } from '../../libraries/api'
+import { Pagination } from '@cryptotentanz/api-client'
 import { TransactionAction } from '../../libraries/types'
 import Table from '../Table'
 import PaginatedList from '../PaginatedList'
@@ -11,7 +11,7 @@ interface TransactionActionsListProps {
   actions: TransactionAction[]
 }
 
-const TransactionActionsList: FC<TransactionActionsListProps> = ({ actions }) => {
+const TransactionActionsList: FC<TransactionActionsListProps> = ({ actions }: TransactionActionsListProps) => {
   const [page, setPage] = useState<number>(1)
   const pagination: Pagination = {
     currentPage: page,
@@ -34,8 +34,8 @@ const TransactionActionsList: FC<TransactionActionsListProps> = ({ actions }) =>
           </tr>
         </thead>
         <tbody>
-          {currentPageActions.map((action) => (
-            <TransactionActionRow key={action.transaction.address.hash} action={action} />
+          {currentPageActions.map((action, index) => (
+            <TransactionActionRow key={index} action={action} />
           ))}
         </tbody>
       </Table>

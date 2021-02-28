@@ -6,7 +6,7 @@ interface TimeProps {
   dateTime: Date
 }
 
-const Time: FC<TimeProps> = ({ dateTime }) => {
+const Time: FC<TimeProps> = ({ dateTime }: TimeProps) => {
   return <span className="my-time">{moment(dateTime).format('HH:mm')}</span>
 }
 

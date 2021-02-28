@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Table from './Table'
@@ -8,9 +9,8 @@ export default {
   component: Table,
 } as Meta
 
-const Template = (args) => {
+const Template = (args: any) => {
   const color = args.color
-  const action = (): void => null
   const children = (
     <>
       <thead>
@@ -19,17 +19,17 @@ const Template = (args) => {
         <th>Header 3</th>
       </thead>
       <tbody>
-        <TableRow color={color} clickable action={action}>
+        <TableRow color={color} clickable action={undefined}>
           <td>Cell 1</td>
           <td>Cell 2</td>
           <td>Cell 3</td>
         </TableRow>
-        <TableRow color={color} clickable action={action}>
+        <TableRow color={color} clickable action={undefined}>
           <td>Cell 1</td>
           <td>Cell 2</td>
           <td>Cell 3</td>
         </TableRow>
-        <TableRow color={color} clickable action={action}>
+        <TableRow color={color} clickable action={undefined}>
           <td>Cell 1</td>
           <td>Cell 2</td>
           <td>Cell 3</td>
@@ -38,25 +38,25 @@ const Template = (args) => {
     </>
   )
 
-  return <Table children={children} {...args} />
+  return <Table {...args}>{children}</Table>
 }
 
 export const Default = Template.bind({})
 
 export const Dark = Template.bind({})
-Dark.args = { color: 'dark' }
+;(Dark as any).args = { color: 'dark' }
 
 export const Light = Template.bind({})
-Light.args = { color: 'light' }
+;(Light as any).args = { color: 'light' }
 
 export const Primary = Template.bind({})
-Primary.args = { color: 'primary' }
+;(Primary as any).args = { color: 'primary' }
 
 export const Secondary = Template.bind({})
-Secondary.args = { color: 'secondary' }
+;(Secondary as any).args = { color: 'secondary' }
 
 export const Positive = Template.bind({})
-Positive.args = { color: 'positive' }
+;(Positive as any).args = { color: 'positive' }
 
 export const Negative = Template.bind({})
-Negative.args = { color: 'negative' }
+;(Negative as any).args = { color: 'negative' }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { HistoryTime } from '../../libraries/types'
@@ -12,30 +13,30 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Difference {...args} />
+const Template = (args: any) => <Difference {...args} />
 
 export const Default = Template.bind({})
 
 export const Neutral = Template.bind({})
-Neutral.args = { ratio: 1.0 }
+;(Neutral as any).args = { ratio: 1.0 }
 
 export const Positive = Template.bind({})
-Positive.args = { ratio: 1.5 }
+;(Positive as any).args = { ratio: 1.5 }
 
 export const Negative = Template.bind({})
-Negative.args = { ratio: 0.5 }
+;(Negative as any).args = { ratio: 0.5 }
 
 export const Hour = Template.bind({})
-Hour.args = { time: HistoryTime.Hour }
+;(Hour as any).args = { time: HistoryTime.Hour }
 
 export const Day = Template.bind({})
-Day.args = { time: HistoryTime.Day }
+;(Day as any).args = { time: HistoryTime.Day }
 
 export const Week = Template.bind({})
-Week.args = { time: HistoryTime.Week }
+;(Week as any).args = { time: HistoryTime.Week }
 
 export const Month = Template.bind({})
-Month.args = { time: HistoryTime.Month }
+;(Month as any).args = { time: HistoryTime.Month }
 
 export const Year = Template.bind({})
-Year.args = { time: HistoryTime.Year }
+;(Year as any).args = { time: HistoryTime.Year }

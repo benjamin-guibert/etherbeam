@@ -8,7 +8,7 @@ interface TableProps {
   children?: ReactNode
 }
 
-const Table: FC<TableProps> = ({ color = 'dark', children }) => {
+const Table: FC<TableProps> = ({ color = 'dark', children }: TableProps) => {
   return <table className={`my-table my-${color}-bg`}>{children}</table>
 }
 

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
 import { createToken } from '../../../tests/fixtures/ethereum'
 import TokenList from './TokenList'
+import { Token } from 'libraries/types'
 
 describe('<TokenList />', () => {
   const goToTokenPage = jest.fn()
@@ -29,7 +30,7 @@ describe('<TokenList />', () => {
   })
 
   describe('Empty', () => {
-    const tokens = []
+    const tokens: Token[] = []
 
     beforeAll(() => {
       component = mount(<TokenList tokens={tokens} goToTokenPage={goToTokenPage} />)

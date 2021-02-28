@@ -9,7 +9,7 @@ interface ToasterProps {
   toasts: ToastType[]
 }
 
-const Toaster: FC<ToasterProps> = ({ toasts }) => {
+const Toaster: FC<ToasterProps> = ({ toasts }: ToasterProps) => {
   return (
     <List className="my-toaster">
       {toasts.map(({ id, type, content }) => (

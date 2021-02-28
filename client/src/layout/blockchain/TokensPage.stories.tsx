@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
@@ -65,6 +66,6 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokensPage {...args} />
+const Template = (args: any) => <TokensPage {...args} />
 
 export const Default = Template.bind({})

@@ -1,6 +1,5 @@
 import { BigNumber } from 'ethers'
-import { createToken } from '../../../tests/fixtures/ethereum'
-import { getUniswapTradeUrl, printEtherAmount, printTokenAmount, shortenAddress } from './helpers'
+import { printEtherAmount } from './helpers'
 
 describe('Print Ether amount', () => {
   const amount = BigNumber.from('1234567890000000000000')

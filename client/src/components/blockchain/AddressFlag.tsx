@@ -8,13 +8,13 @@ import Badge from '../Badge'
 
 type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'negative'
 
-interface FlagProps {
+interface AddressFlagProps {
   address: Address
   color?: ColorProp
   className?: string
 }
 
-const AddressFlag: FC<FlagProps> = ({ address, color, className }) => {
+const AddressFlag: FC<AddressFlagProps> = ({ address, color, className }: AddressFlagProps) => {
   const { label, type } = address
 
   const getTypeIcon = (): IconProp => {

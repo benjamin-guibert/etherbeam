@@ -10,7 +10,7 @@ interface TokenRowProps {
   goToTokenPage: (hash: string) => void
 }
 
-const TokenRow: FC<TokenRowProps> = ({ token, goToTokenPage }) => {
+const TokenRow: FC<TokenRowProps> = ({ token, goToTokenPage }: TokenRowProps) => {
   const { hash, name, price, priceHistory } = token
 
   return (

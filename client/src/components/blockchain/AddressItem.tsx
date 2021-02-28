@@ -14,7 +14,7 @@ interface AddressItemProps {
   className?: string
 }
 
-const AddressItem: FC<AddressItemProps> = ({ address, color, noFlag, className, short }) => {
+const AddressItem: FC<AddressItemProps> = ({ address, color, noFlag, className, short }: AddressItemProps) => {
   const { hash, type, url } = address
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Block from './Block'
@@ -10,6 +11,6 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Block {...args} />
+const Template = (args: any) => <Block {...args} />
 
 export const Default = Template.bind({})

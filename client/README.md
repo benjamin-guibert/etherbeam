@@ -37,7 +37,7 @@
 - Install the dependencies:
 
 ```bash
-yarn install
+yarn lerna bootstrap
 ```
 
 - Create the `.env` file from [.sample.env](.sample.env):

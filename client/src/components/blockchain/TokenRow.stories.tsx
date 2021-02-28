@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { BigNumber } from 'ethers'
@@ -41,12 +42,12 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TokenRow {...args} />
+const Template = (args: any) => <TokenRow {...args} />
 
 export const Default = Template.bind({})
 
 export const NoPrice = Template.bind({})
-NoPrice.args = {
+;(NoPrice as any).args = {
   token: {
     hash: '0x0000000000000000000000000000000000000111',
     type: AddressType.Token,
@@ -61,7 +62,7 @@ NoPrice.args = {
 }
 
 export const NoPriceHistory = Template.bind({})
-NoPriceHistory.args = {
+;(NoPriceHistory as any).args = {
   token: {
     hash: '0x0000000000000000000000000000000000000111',
     type: AddressType.Token,

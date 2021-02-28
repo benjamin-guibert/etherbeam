@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import TableRow from './TableRow'
@@ -27,42 +28,42 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TableRow {...args} />
+const Template = (args: any) => <TableRow {...args} />
 
 export const Default = Template.bind({})
 
 export const Light = Template.bind({})
-Light.args = { color: 'light' }
+;(Light as any).args = { color: 'light' }
 
 export const Primary = Template.bind({})
-Primary.args = { color: 'primary' }
+;(Primary as any).args = { color: 'primary' }
 
 export const Secondary = Template.bind({})
-Secondary.args = { color: 'secondary' }
+;(Secondary as any).args = { color: 'secondary' }
 
 export const Positive = Template.bind({})
-Positive.args = { color: 'positive' }
+;(Positive as any).args = { color: 'positive' }
 
 export const Negative = Template.bind({})
-Negative.args = { color: 'negative' }
+;(Negative as any).args = { color: 'negative' }
 
 export const Clickable = Template.bind({})
-Clickable.args = { clickable: true }
+;(Clickable as any).args = { clickable: true }
 
 export const Active = Template.bind({})
-Active.args = { active: true }
+;(Active as any).args = { active: true }
 
 export const ClickableActive = Template.bind({})
-ClickableActive.args = { clickable: true, active: true }
+;(ClickableActive as any).args = { clickable: true, active: true }
 
 export const Disabled = Template.bind({})
-Disabled.args = { disabled: true }
+;(Disabled as any).args = { disabled: true }
 
 export const ClickableDisabled = Template.bind({})
-ClickableDisabled.args = { clickable: true, disabled: true }
+;(ClickableDisabled as any).args = { clickable: true, disabled: true }
 
 export const ActiveDisabled = Template.bind({})
-ActiveDisabled.args = { active: true, disabled: true }
+;(ActiveDisabled as any).args = { active: true, disabled: true }
 
 export const ClickableActiveDisabled = Template.bind({})
-ClickableActiveDisabled.args = { clickable: true, active: true, disabled: true }
+;(ClickableActiveDisabled as any).args = { clickable: true, active: true, disabled: true }

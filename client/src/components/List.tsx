@@ -8,7 +8,7 @@ interface ListProps {
   children?: ReactNode
 }
 
-const List: FC<ListProps> = ({ horizontal, center, className, children }) => {
+const List: FC<ListProps> = ({ horizontal, center, className, children }: ListProps) => {
   const ulClassName = [horizontal ? 'my-list-h' : 'my-list-v', center ? 'my-list-center' : '', className].join(' ')
 
   return <ul className={ulClassName}>{children}</ul>

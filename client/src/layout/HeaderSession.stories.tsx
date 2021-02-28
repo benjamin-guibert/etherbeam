@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Meta } from '@storybook/react/types-6-0'
-import { UserType } from '../libraries/types'
+import { action } from '@storybook/addon-actions'
+import { ServerData } from '../libraries/server'
+import { User, UserType } from '../libraries/types'
+import { SessionContext } from './SessionContext'
 import HeaderSession from './HeaderSession'
 
 const user = {
@@ -16,19 +19,37 @@ const administrator = {
   type: UserType.Administrator,
 }
 
+const createDecorator = (currentUser: User | null | undefined): ((Story: any) => ReactNode) => {
+  // eslint-disable-next-line react/display-name
+  return (Story) => (
+    <SessionContext.Provider
+      value={{
+        serverData: (undefined as unknown) as ServerData,
+        currentUser,
+        initialize: action('session initialized'),
+        signIn: action('signed in'),
+        signOut: action('signed out'),
+      }}
+    >
+      <Story />
+    </SessionContext.Provider>
+  )
+}
+
 export default {
   title: 'Layout/HeaderSession',
   component: HeaderSession,
   argTypes: { signIn: { action: 'signed in' }, signOut: { action: 'signed out' } },
   args: { currentUser: user },
+  decorators: [createDecorator(user)],
 } as Meta
 
-const Template = (args) => <HeaderSession {...args} />
+const Template = (args: any) => <HeaderSession {...args} />
 
 export const Default = Template.bind({})
 
 export const Administrator = Template.bind({})
-Administrator.args = { currentUser: administrator }
+;(Administrator as any).decorators = [createDecorator(administrator)]
 
 export const Unauthentified = Template.bind({})
-Unauthentified.args = { currentUser: null }
+;(Unauthentified as any).decorators = [createDecorator(null)]

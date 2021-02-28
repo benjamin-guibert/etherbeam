@@ -12,7 +12,7 @@ interface DifferenceProps {
   size?: SizeProp
 }
 
-const Difference: FC<DifferenceProps> = ({ ratio, time, size }) => {
+const Difference: FC<DifferenceProps> = ({ ratio, time, size }: DifferenceProps) => {
   const getColor = () => {
     if (ratio > 1.01) {
       return 'positive'

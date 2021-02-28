@@ -43,6 +43,7 @@ import {
   subscribeToNewTokens,
   unsubscribeFromNewTokens,
   setAuthToken,
+  isAuthentified,
 } from './api'
 
 const createAuthToken = (token = 'abcdef1234567890'): AuthToken => {
@@ -120,8 +121,85 @@ describe('Set auth token', () => {
   it('should set token', () =>
     expect(apiClient.authTokenLifecycle).toMatchObject({
       currentToken: authToken,
-      newTokenSubscriptions: [],
+      nextToken: undefined,
     }))
+})
+
+describe('Is authentified', () => {
+  let result: boolean | null
+
+  describe('Authentified', () => {
+    const authToken = createAuthToken('abcdef12345678903')
+
+    describe('Current token', () => {
+      const tokenAuthLifecycle: AuthTokenLifecycle = {
+        currentToken: authToken,
+        nextToken: null,
+        newTokenSubscriptions: [jest.fn()],
+      }
+      const apiClient = createApiClientMock(tokenAuthLifecycle)
+
+      beforeAll(() => {
+        result = isAuthentified(apiClient)
+      })
+
+      it('should return', () => expect(result).toEqual(true))
+    })
+
+    describe('Next token', () => {
+      const tokenAuthLifecycle: AuthTokenLifecycle = {
+        currentToken: null,
+        nextToken: authToken,
+        newTokenSubscriptions: [jest.fn()],
+      }
+      const apiClient = createApiClientMock(tokenAuthLifecycle)
+
+      beforeAll(() => {
+        result = isAuthentified(apiClient)
+      })
+
+      it('should return', () => expect(result).toEqual(true))
+    })
+    describe('Both token', () => {
+      const tokenAuthLifecycle: AuthTokenLifecycle = {
+        currentToken: authToken,
+        nextToken: authToken,
+        newTokenSubscriptions: [jest.fn()],
+      }
+      const apiClient = createApiClientMock(tokenAuthLifecycle)
+
+      beforeAll(() => {
+        result = isAuthentified(apiClient)
+      })
+
+      it('should return', () => expect(result).toEqual(true))
+    })
+  })
+
+  describe('Unauthentified', () => {
+    const tokenAuthLifecycle: AuthTokenLifecycle = {
+      currentToken: null,
+      nextToken: null,
+      newTokenSubscriptions: [jest.fn()],
+    }
+    const apiClient = createApiClientMock(tokenAuthLifecycle)
+
+    beforeAll(() => {
+      result = isAuthentified(apiClient)
+    })
+
+    it('should return', () => expect(result).toEqual(false))
+  })
+
+  describe('No token auth', () => {
+    const apiClient = createApiClientMock()
+
+    beforeAll(() => {
+      result = isAuthentified(apiClient)
+    })
+
+    it('should return', () => expect(result).toEqual(null))
+  })
 })
 
 describe('Subscribe to new tokens', () => {
@@ -384,79 +462,6 @@ describe('Call API', () => {
     })
   })
 })
-
-// describe('Get auth token from response', () => {
-//   let result: AuthToken | null
-
-//   describe('With token', () => {
-//     const response = {
-//       headers: {
-//         'token-type': 'Bearer',
-//         client: 'client',
-//         uid: 'uid@email.com',
-//         'access-token': 'abcdef0123456789',
-//         expiry: '1234567890',
-//       },
-//     } as AxiosResponse
-
-//     beforeAll(() => {
-//       result = getAuthTokenFromResponse(response)
-//     })
-
-//     it('should return', () =>
-//       expect(result).toMatchObject({
-//         tokenType: response.headers['token-type'],
-//         client: response.headers['client'],
-//         uid: response.headers['uid'],
-//         accessToken: response.headers['access-token'],
-//         expiry: response.headers['expiry'],
-//       }))
-//   })
-
-//   describe('Without token', () => {
-//     const response = {
-//       headers: undefined,
-//     } as AxiosResponse
-
-//     beforeAll(() => {
-//       result = getAuthTokenFromResponse(response)
-//     })
-
-//     it('should not return', () => expect(result).toBeNull())
-//   })
-
-//   describe('Response null', () => {
-//     beforeAll(() => {
-//       result = getAuthTokenFromResponse(null)
-//     })
-
-//     it('should not return', () => expect(result).toBeNull())
-//   })
-// })
-
-// describe('Get auth headers', () => {
-//   const authToken = {
-//     tokenType: 'Bearer',
-//     client: 'client',
-//     uid: 'uid@email.com',
-//     accessToken: 'abcdef0123456789',
-//     expiry: '1234567890',
-//   }
-//   let result: { [key: string]: string }
-
-//   beforeAll(() => {
-//     result = getAuthHeaders(authToken)
-//   })
-
-//   it('should return', () =>
-//     expect(result).toMatchObject({
-//       'token-type': 'Bearer',
-//       client: 'client',
-//       uid: 'uid@email.com',
-//       'access-token': 'abcdef0123456789',
-//       expiry: '1234567890',
-//     }))
-// })
 
 describe('Get pagination', () => {
   it('gets the pagination from headers', () => {

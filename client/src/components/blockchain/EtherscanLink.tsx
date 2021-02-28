@@ -9,7 +9,7 @@ interface EtherscanLinkProps {
   size?: SizeProp
 }
 
-const EtherscanLink: FC<EtherscanLinkProps> = ({ url, size }) => {
+const EtherscanLink: FC<EtherscanLinkProps> = ({ url, size }: EtherscanLinkProps) => {
   return (
     <Link href={url} description="Etherscan" external className={size ? `my-size-${size}` : ''}>
       <div className="my-etherscanlink-img">

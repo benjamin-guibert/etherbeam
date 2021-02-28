@@ -12,7 +12,7 @@ interface TokenPriceHistoryProps {
   className?: string
 }
 
-const TokenPriceHistory: FC<TokenPriceHistoryProps> = ({ priceHistory, size, className }) => {
+const TokenPriceHistory: FC<TokenPriceHistoryProps> = ({ priceHistory, size, className }: TokenPriceHistoryProps) => {
   return (
     <List horizontal className={className}>
       {priceHistory.map(({ time, ratio }) => (

@@ -7,7 +7,7 @@ interface AddressHashProps {
   short?: boolean
 }
 
-const Hash: FC<AddressHashProps> = ({ hash, short }) => {
+const Hash: FC<AddressHashProps> = ({ hash, short }: AddressHashProps) => {
   return <span className="my-addresshash">{short ? shortenAddress(hash) : hash}</span>
 }
 

@@ -8,7 +8,7 @@ interface PaginatedListProps {
   children?: ReactNode
 }
 
-const PaginatedList: FC<PaginatedListProps> = ({ pagination, setPage, children }) => {
+const PaginatedList: FC<PaginatedListProps> = ({ pagination, setPage, children }: PaginatedListProps) => {
   const { totalPages, currentPage } = pagination || {}
 
   const PaginationComponent: FC = () => (

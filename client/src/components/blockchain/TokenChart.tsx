@@ -5,12 +5,12 @@ import TradingViewWidget, { Themes } from 'react-tradingview-widget'
 import './TokenChart.scss'
 
 interface TokenChartProps {
-  pair: string | null
+  pair: string | null | undefined
   width?: number
   height?: number
 }
 
-const TokenChart: FC<TokenChartProps> = ({ pair, width, height }) => {
+const TokenChart: FC<TokenChartProps> = ({ pair, width, height }: TokenChartProps) => {
   const classNames = [
     (!width && 'w-100') || '',
     (!height && 'h-100') || '',

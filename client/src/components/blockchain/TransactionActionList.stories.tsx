@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import {
@@ -120,6 +121,6 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TransactionActionList {...args} />
+const Template = (args: any) => <TransactionActionList {...args} />
 
 export const Default = Template.bind({})

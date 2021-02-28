@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect, useRef, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { Token } from '../../libraries/types'
-import { fetchToken, ServerData } from '../../libraries/server'
+import { fetchToken } from '../../libraries/server'
 import { ToastType } from '../toaster-helper'
 import { SessionContext } from '../SessionContext'
 import TokenPage from './TokenPage'
@@ -13,24 +13,22 @@ interface TokenPageParams {
 }
 
 interface TokenPageWrapperProps {
-  serverData: ServerData
   addToast: (toast: ToastType) => void
 }
 
-const TokenPageWrapper: FC<TokenPageWrapperProps> = ({ serverData, addToast }) => {
+const TokenPageWrapper: FC<TokenPageWrapperProps> = ({ addToast }: TokenPageWrapperProps) => {
   const addToastRef = useRef<(toast: ToastType) => void>(addToast)
-  const serverDataRef = useRef<ServerData>(serverData)
-  const [token, setToken] = useState<Token>(undefined)
+  const [token, setToken] = useState<Token | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
-  const [alert, setAlert] = useState<string>(null)
+  const [alert, setAlert] = useState<string | null>(null)
   const addressParam = useParams<TokenPageParams>().address
-  const { currentUser } = useContext(SessionContext)
+  const { serverData, currentUser } = useContext(SessionContext)
 
   useEffect(() => {
     if (!currentUser) return
     const getToken = async (): Promise<void> => {
       setLoading(true)
-      fetchToken(addressParam, serverDataRef.current, 'actions')
+      fetchToken(serverData, addressParam, 'actions')
         .then((fetchedToken) => {
           if (!fetchedToken) return setAlert(`This token is unknown.`)
 
@@ -50,7 +48,7 @@ const TokenPageWrapper: FC<TokenPageWrapperProps> = ({ serverData, addToast }) =
     return () => {
       clearInterval(interval)
     }
-  }, [currentUser, addressParam])
+  }, [serverData, currentUser, addressParam])
 
   return <TokenPage token={token} alert={alert} loading={loading} />
 }

@@ -11,7 +11,7 @@ type ColorProp = 'dark' | 'light' | 'primary' | 'secondary' | 'positive' | 'nega
 type SizeProp = 's' | 'm' | 'l' | 'xl'
 
 interface TokenAmountProps {
-  amount: BigNumber
+  amount: BigNumber | null | undefined
   token?: Token
   color?: ColorProp
   size?: SizeProp
@@ -30,7 +30,7 @@ const TokenAmount: FC<TokenAmountProps> = ({
   noSymbol,
   noBadge,
   className,
-}) => {
+}: TokenAmountProps) => {
   const getPrintedAmount = () => {
     if (!amount) return '--'
 

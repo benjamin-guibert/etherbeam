@@ -7,7 +7,7 @@ interface LoaderProps {
   type: LoaderTypeProp
 }
 
-const Loader: FC<LoaderProps> = ({ type }) => {
+const Loader: FC<LoaderProps> = ({ type }: LoaderProps) => {
   return (
     <div className="my-loader">
       <div className={`my-loader-${type}`}></div>

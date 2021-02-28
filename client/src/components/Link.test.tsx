@@ -1,6 +1,5 @@
 import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import { act } from 'react-dom/test-utils'
 import { clearMocks, mockFontAwesome } from '../../tests/helpers'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
 import Link from './Link'

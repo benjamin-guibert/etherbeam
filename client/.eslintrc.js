@@ -12,14 +12,16 @@ module.exports = {
   env: {
     node: true,
   },
-  plugins: ['@typescript-eslint', 'markdown'],
+  plugins: ['@typescript-eslint', 'markdown', 'eslint-plugin-react'],
   extends: [
     'eslint:recommended',
     'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:md/recommended',
+    'plugin:mdx/recommended',
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
-    'plugin:md/recommended',
+    'plugin:react/recommended',
   ],
   settings: {
     react: {
@@ -28,11 +30,15 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.mdx?'],
+      files: ['*.md'],
       parser: 'markdown-eslint-parser',
       rules: {
         'prettier/prettier': ['error', { parser: 'markdown' }],
       },
+    },
+    {
+      files: ['*.mdx'],
+      extends: ['plugin:mdx/recommended', 'plugin:mdx/overrides'],
     },
   ],
   rules: {

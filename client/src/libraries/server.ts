@@ -24,8 +24,12 @@ export interface ServerData {
   userSubscriptions: UserUpdateCallback[]
 }
 
-const onNewAuthToken = (token: AuthToken): void => {
+const onNewAuthToken = (data: ServerData, token: AuthToken): void => {
   saveAuthToken(token)
+
+  if (!token) {
+    onUserUpdate(data, null)
+  }
 }
 
 const initializeAuthToken = (apiClient: ApiClient): void => {
@@ -35,20 +39,18 @@ const initializeAuthToken = (apiClient: ApiClient): void => {
 }
 
 export const initializeServerData = (): ServerData => {
-  const apiClient = createApiClient(process.env.SERVER_API_HOST as string, true, TIMEOUT)
-  initializeAuthToken(apiClient)
-  subscribeToNewTokens(apiClient, onNewAuthToken)
-
   const onUserUpdateCallback = (user: User | null): void => {
-    flushAuthToken(apiClient)
-
     if (!user) removeAuthToken()
   }
-
-  return {
-    apiClient,
+  const data = {
+    apiClient: createApiClient(process.env.SERVER_API_HOST as string, true, TIMEOUT),
     userSubscriptions: [onUserUpdateCallback],
   }
+
+  initializeAuthToken(data.apiClient)
+  subscribeToNewTokens(data.apiClient, (token) => onNewAuthToken(data, token))
+
+  return data
 }
 
 export const subscribeToUserUpdates = ({ userSubscriptions }: ServerData, callback: UserUpdateCallback): void => {
@@ -107,6 +109,7 @@ export const signOut = async (data: ServerData): Promise<void> => {
   const { apiClient } = data
   await callApi(apiClient, RestAction.Delete, 'auth/sign_out', [HttpStatus.Ok, HttpStatus.NotFound], null, null, true)
 
+  flushAuthToken(apiClient)
   onUserUpdate(data, null)
 }
 

@@ -12,9 +12,9 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <AddressHash {...args} />
+const Template = (args: any) => <AddressHash {...args} />
 
 export const Default = Template.bind({})
 
 export const Short = Template.bind({})
-Short.args = { short: true }
+;(Short as any).args = { short: true }

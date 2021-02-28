@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Toast from './Toast'
@@ -10,15 +11,15 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Toast {...args} />
+const Template = (args: any) => <Toast {...args} />
 
 export const Default = Template.bind({})
 
 export const Info = Template.bind({})
-Info.args = { type: 'info' }
+;(Info as any).args = { type: 'info' }
 
 export const Success = Template.bind({})
-Success.args = { type: 'success' }
+;(Success as any).args = { type: 'success' }
 
 export const Error = Template.bind({})
-Error.args = { type: 'error' }
+;(Error as any).args = { type: 'error' }

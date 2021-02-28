@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import { TransactionActionType } from 'libraries/types'
+import { TransactionAction, TransactionActionType } from 'libraries/types'
 import { createTokenAction } from '../../../tests/fixtures/ethereum'
 import TransactionActionList from './TransactionActionList'
 
@@ -27,7 +27,7 @@ describe('<TransactionActionList />', () => {
   })
 
   describe('Empty', () => {
-    const actions = []
+    const actions: TransactionAction[] = []
 
     beforeAll(() => {
       component = shallow(<TransactionActionList actions={actions} />)

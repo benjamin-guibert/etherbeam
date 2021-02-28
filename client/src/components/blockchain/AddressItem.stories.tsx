@@ -19,12 +19,12 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <AddressItem {...args} />
+const Template = (args: any) => <AddressItem {...args} />
 
 export const Default = Template.bind({})
 
 export const Flag = Template.bind({})
-Flag.args = {
+;(Flag as any).args = {
   address: {
     hash: '0x0000000000000000000000000000000000000111',
     label: 'Wallet',
@@ -34,12 +34,12 @@ Flag.args = {
 }
 
 export const Short = Template.bind({})
-Short.args = {
+;(Short as any).args = {
   short: true,
 }
 
 export const NoFlag = Template.bind({})
-NoFlag.args = {
+;(NoFlag as any).args = {
   address: {
     hash: '0x0000000000000000000000000000000000000111',
     label: 'Wallet',

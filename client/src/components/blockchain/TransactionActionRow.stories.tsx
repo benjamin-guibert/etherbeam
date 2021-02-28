@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import {
@@ -49,14 +50,14 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <TransactionActionRow {...args} />
+const Template = (args: any) => <TransactionActionRow {...args} />
 
 export const Default = Template.bind({})
 
 export const Unknown = Template.bind({})
 
 export const Approval = Template.bind({})
-Approval.args = {
+;(Approval as any).args = {
   action: {
     index: 0,
     transaction: {
@@ -81,7 +82,7 @@ Approval.args = {
 }
 
 export const Transfer = Template.bind({})
-Transfer.args = {
+;(Transfer as any).args = {
   action: {
     index: 0,
     transaction: {
@@ -121,7 +122,7 @@ Transfer.args = {
 }
 
 export const Buy = Template.bind({})
-Buy.args = {
+;(Buy as any).args = {
   action: {
     index: 0,
     transaction: {
@@ -157,7 +158,7 @@ Buy.args = {
 }
 
 export const Sell = Template.bind({})
-Sell.args = {
+;(Sell as any).args = {
   action: {
     index: 0,
     transaction: {

@@ -34,7 +34,7 @@ const getAuthTokenFromHeaders = (headers: HttpHeaders): AuthToken | null => {
   }
 }
 
-const onNewToken = (apiClient: ApiClient, token: AuthToken): void => {
+const onNewToken = async (apiClient: ApiClient, token: AuthToken): Promise<void> => {
   apiClient.authTokenLifecycle?.newTokenSubscriptions.forEach((callback) => callback(token))
 }
 
@@ -84,7 +84,10 @@ const useResponseNextTokenOnFailure = (apiClient: ApiClient, response: AxiosResp
 }
 
 const initializeTokenAuth = (apiClient: ApiClient): void => {
-  apiClient.authTokenLifecycle = createAuthTokenLifecycle()
+  apiClient.authTokenLifecycle = {
+    newTokenSubscriptions: [],
+  }
+
   apiClient.axiosInstance.interceptors.request.use((config) => useRequestTokenAuth(apiClient, config))
   apiClient.axiosInstance.interceptors.response.use((response) => useResponseAuthHeaders(apiClient, response))
   apiClient.axiosInstance.interceptors.response.use((response) => useResponseNextTokenOnFailure(apiClient, response))
@@ -117,28 +120,30 @@ export const setAuthToken = (apiClient: ApiClient, token: AuthToken): void => {
   if (apiClient.authTokenLifecycle) apiClient.authTokenLifecycle.currentToken = token
 }
 
+export const isAuthentified = (apiClient: ApiClient): boolean | null => {
+  if (!apiClient.authTokenLifecycle) return null
+
+  return !!apiClient.authTokenLifecycle.currentToken || !!apiClient.authTokenLifecycle.nextToken
+}
+
 export const subscribeToNewTokens = (apiClient: ApiClient, callback: AuthTokenUpdateCallback): void => {
   apiClient.authTokenLifecycle?.newTokenSubscriptions.push(callback)
 }
 
 export const unsubscribeFromNewTokens = (apiClient: ApiClient, callback: AuthTokenUpdateCallback): void => {
   const index = apiClient.authTokenLifecycle?.newTokenSubscriptions.indexOf(callback)
-  console.log(index)
+
   if (index == undefined || index < 0) return
 
   apiClient.authTokenLifecycle?.newTokenSubscriptions.splice(index, 1)
 }
 
-const createAuthTokenLifecycle = (): AuthTokenLifecycle => {
-  return {
-    newTokenSubscriptions: [],
-  }
-}
-
 export const flushAuthToken = (apiClient: ApiClient): void => {
   if (!apiClient.authTokenLifecycle) return
 
-  apiClient.authTokenLifecycle = createAuthTokenLifecycle()
+  apiClient.authTokenLifecycle.lastCall = undefined
+  apiClient.authTokenLifecycle.currentToken = undefined
+  apiClient.authTokenLifecycle.nextToken = undefined
 }
 
 export const callApi = async <T>(

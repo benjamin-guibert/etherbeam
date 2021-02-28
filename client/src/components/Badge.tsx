@@ -11,7 +11,7 @@ interface BadgeProps {
   children?: ReactNode
 }
 
-const Badge: FC<BadgeProps> = ({ color = 'light', size, className, children }) => {
+const Badge: FC<BadgeProps> = ({ color = 'light', size, className, children }: BadgeProps) => {
   const spanClassName = [`my-badge my-${color}-bg`, size ? `my-size-${size}` : '', className].join(' ')
 
   return <span className={spanClassName}>{children}</span>

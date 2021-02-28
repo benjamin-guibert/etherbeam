@@ -30,7 +30,7 @@ interface IconLinkProps {
   description: string
 }
 
-const IconLink: FC<IconLinkProps> = ({ url, icon, description }) => {
+const IconLink: FC<IconLinkProps> = ({ url, icon, description }: IconLinkProps) => {
   return (
     <ListItem className="my-tokenpage-link">
       <Link href={url} icon={icon} description={description} external size="l" />
@@ -39,12 +39,12 @@ const IconLink: FC<IconLinkProps> = ({ url, icon, description }) => {
 }
 
 interface TokenPageProps {
-  token: Token
-  alert?: string
+  token: Token | null
+  alert?: string | null
   loading?: boolean
 }
 
-const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
+const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }: TokenPageProps) => {
   const {
     hash,
     name,
@@ -84,30 +84,32 @@ const TokenPage: FC<TokenPageProps> = ({ token, alert, loading }) => {
   const TradeActions: FC = () => {
     return (
       <Block>
-        <List horizontal center>
-          <ListItem>
-            <Link
-              href={getUniswapTradeUrl(null, hash)}
-              icon={faPlusCircle}
-              label="Buy"
-              color="primary"
-              size="l"
-              button
-              external
-            />
-          </ListItem>
-          <ListItem>
-            <Link
-              href={getUniswapTradeUrl(hash, null)}
-              icon={faMinusCircle}
-              label="Sell"
-              color="primary"
-              size="l"
-              button
-              external
-            />
-          </ListItem>
-        </List>
+        {hash && (
+          <List horizontal center>
+            <ListItem>
+              <Link
+                href={getUniswapTradeUrl(null, hash)}
+                icon={faPlusCircle}
+                label="Buy"
+                color="primary"
+                size="l"
+                button
+                external
+              />
+            </ListItem>
+            <ListItem>
+              <Link
+                href={getUniswapTradeUrl(hash, null)}
+                icon={faMinusCircle}
+                label="Sell"
+                color="primary"
+                size="l"
+                button
+                external
+              />
+            </ListItem>
+          </List>
+        )}
       </Block>
     )
   }

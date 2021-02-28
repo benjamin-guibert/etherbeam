@@ -8,7 +8,7 @@ interface TokensPageProps {
   loading?: boolean
 }
 
-const TokensPage: FC<TokensPageProps> = ({ tokens, goToTokenPage, loading }) => {
+const TokensPage: FC<TokensPageProps> = ({ tokens, goToTokenPage, loading }: TokensPageProps) => {
   return (
     <>
       <h1>Tokens</h1>

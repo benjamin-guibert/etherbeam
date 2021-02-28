@@ -32,7 +32,7 @@ yarn add @cryptotentanz/tools-ts
 - Install the dependencies:
 
 ```bash
-yarn install
+yarn lerna bootstrap
 ```
 
 ## Deployment

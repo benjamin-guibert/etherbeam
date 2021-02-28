@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Title from './Title'
@@ -7,9 +8,9 @@ export default {
   component: Title,
 } as Meta
 
-const Template = (args) => <Title {...args} />
+const Template = (args: any) => <Title {...args} />
 
 export const Default = Template.bind({})
 
 export const LabelBreakpoint = Template.bind({})
-LabelBreakpoint.args = { labelBreakpoint: 'xs' }
+;(LabelBreakpoint as any).args = { labelBreakpoint: 'xs' }

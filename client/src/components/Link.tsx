@@ -40,7 +40,7 @@ const Link: FC<LinkProps> = ({
   disabled,
   className,
   children,
-}) => {
+}: LinkProps) => {
   const history = useHistory()
 
   const getClassName = (): string => {
@@ -71,6 +71,7 @@ const Link: FC<LinkProps> = ({
       title={description}
       className={getClassName()}
       target={external ? '_blank' : undefined}
+      rel="noreferrer"
       href={external && !disabled ? href : undefined}
       onClick={!external ? runAction : undefined}
       onKeyUp={!external ? onKeyUp : undefined}

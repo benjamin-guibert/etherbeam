@@ -3,6 +3,7 @@
 exports[`<TokenChart /> Default should match snapshot 1`] = `
 <div
   class="w-100 h-100 "
+  style="width:auto;height:auto"
 >
   <article />
 </div>

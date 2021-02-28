@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import Badge from './Badge'
@@ -45,12 +46,12 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <List {...args} />
+const Template = (args: any) => <List {...args} />
 
 export const Default = Template.bind({})
 
 export const Horizontal = Template.bind({})
-Horizontal.args = { horizontal: true }
+;(Horizontal as any).args = { horizontal: true }
 
 export const Center = Template.bind({})
-Center.args = { horizontal: true, center: true }
+;(Center as any).args = { horizontal: true, center: true }

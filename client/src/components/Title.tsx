@@ -7,7 +7,7 @@ interface TitleProps {
   labelBreakpoint?: LabelBreakpointProp
 }
 
-const Title: FC<TitleProps> = ({ labelBreakpoint }) => {
+const Title: FC<TitleProps> = ({ labelBreakpoint }: TitleProps) => {
   const labelClassName = ['my-title-label', labelBreakpoint ? `my-d-min-${labelBreakpoint}` : ''].join(' ')
 
   return (

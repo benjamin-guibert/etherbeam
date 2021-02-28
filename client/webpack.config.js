@@ -33,7 +33,7 @@ module.exports = () => {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-          options: { presets: ['@babel/env'] },
+          options: { presets: ['@babel/env'], targets: { node: '10' } },
         },
         {
           test: /\.tsx?$/,

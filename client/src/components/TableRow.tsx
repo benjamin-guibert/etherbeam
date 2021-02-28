@@ -12,7 +12,15 @@ interface TableRowProps {
   children?: ReactNode
 }
 
-const TableRow: FC<TableRowProps> = ({ color = 'dark', clickable, action, active, disabled, className, children }) => {
+const TableRow: FC<TableRowProps> = ({
+  color = 'dark',
+  clickable,
+  action,
+  active,
+  disabled,
+  className,
+  children,
+}: TableRowProps) => {
   const onKeyUp = (event: React.KeyboardEvent<HTMLTableRowElement>): void => {
     if (event.key == 'Enter') runAction()
   }

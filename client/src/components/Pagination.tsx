@@ -11,7 +11,7 @@ interface PaginationProps {
 
 const ELLIPSIS_THRESHOLD_PAGES = 7
 
-const Pagination: FC<PaginationProps> = ({ total, current, setCurrent, className }) => {
+const Pagination: FC<PaginationProps> = ({ total, current, setCurrent, className }: PaginationProps) => {
   const displayEllipsis = total > ELLIPSIS_THRESHOLD_PAGES
   const pages: FC[] = []
 

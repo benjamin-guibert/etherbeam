@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import ListItem from './ListItem'
@@ -16,6 +17,6 @@ export default {
   args: { children: 'Item' },
 } as Meta
 
-const Template = (args) => <ListItem {...args} />
+const Template = (args: any) => <ListItem {...args} />
 
 export const Default = Template.bind({})

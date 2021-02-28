@@ -16,7 +16,6 @@ exports[`<App /> should match snapshot 1`] = `
         >
           <a
             class="my-clickable my-header-title my-link my-light-fg"
-            href="/"
             tabindex="0"
           >
             <span
@@ -27,7 +26,7 @@ exports[`<App /> should match snapshot 1`] = `
                 src="/images/ethereum.png"
               />
               <span
-                class="my-title-label"
+                class="my-title-label my-d-min-s"
               >
                 Etherbeam
               </span>
@@ -39,7 +38,6 @@ exports[`<App /> should match snapshot 1`] = `
         >
           <a
             class="my-clickable  my-link my-light-fg"
-            href="/tokens"
             tabindex="0"
             title="Tokens"
           >
@@ -75,6 +73,9 @@ exports[`<App /> should match snapshot 1`] = `
         </li>
       </ul>
     </nav>
+    <section
+      class="my-headersession"
+    />
   </header>
   <main
     class="my-app-main"

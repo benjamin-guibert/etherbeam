@@ -12,7 +12,7 @@ const HeaderSession: FC = () => {
 
   return (
     <section className="my-headersession">
-      {currentUser && (
+      {currentUser && type && (
         <>
           <Icon
             className="my-headersession-name"
@@ -31,7 +31,7 @@ const HeaderSession: FC = () => {
           />
         </>
       )}
-      {currentUser == null && (
+      {currentUser === null && (
         <Button
           action={() => signIn('user@etherbeam.com', 'password')}
           icon={faSignInAlt}

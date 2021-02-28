@@ -6,7 +6,7 @@ interface ListItemProps {
   children?: ReactNode
 }
 
-const ListItem: FC<ListItemProps> = ({ className, children }) => {
+const ListItem: FC<ListItemProps> = ({ className, children }: ListItemProps) => {
   return <li className={['my-listitem', className].join(' ')}>{children}</li>
 }
 

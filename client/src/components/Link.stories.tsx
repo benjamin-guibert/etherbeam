@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
@@ -13,64 +14,64 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Link {...args} />
+const Template = (args: any) => <Link {...args} />
 
 export const Default = Template.bind({})
 
 export const Dark = Template.bind({})
-Dark.args = { color: 'dark' }
-Dark.parameters = {
+;(Dark as any).args = { color: 'dark' }
+;(Dark as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 export const Light = Template.bind({})
-Light.args = { color: 'light' }
+;(Light as any).args = { color: 'light' }
 export const Primary = Template.bind({})
-Primary.args = { color: 'primary' }
+;(Primary as any).args = { color: 'primary' }
 export const Secondary = Template.bind({})
-Secondary.args = { color: 'secondary' }
+;(Secondary as any).args = { color: 'secondary' }
 export const Positive = Template.bind({})
-Positive.args = { color: 'positive' }
-Positive.parameters = {
+;(Positive as any).args = { color: 'positive' }
+;(Positive as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 export const Negative = Template.bind({})
-Negative.args = { color: 'negative' }
-Negative.parameters = {
+;(Negative as any).args = { color: 'negative' }
+;(Negative as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 
 export const Medium = Template.bind({})
-Medium.args = { size: 'm' }
+;(Medium as any).args = { size: 'm' }
 export const Large = Template.bind({})
-Large.args = { size: 'l' }
+;(Large as any).args = { size: 'l' }
 export const ExtraLarge = Template.bind({})
-ExtraLarge.args = { size: 'xl' }
+;(ExtraLarge as any).args = { size: 'xl' }
 
 export const Button = Template.bind({})
-Button.args = { button: true }
+;(Button as any).args = { button: true }
 
 export const NoUnderline = Template.bind({})
-NoUnderline.args = { noUnderline: true }
+;(NoUnderline as any).args = { noUnderline: true }
 
 export const Icon = Template.bind({})
-Icon.args = {
+;(Icon as any).args = {
   icon: faExclamationCircle,
 }
 
 export const IconNoLabel = Template.bind({})
-IconNoLabel.args = {
+;(IconNoLabel as any).args = {
   icon: faExclamationCircle,
   label: null,
 }
 
 export const CustomContent = Template.bind({})
-CustomContent.args = {
+;(CustomContent as any).args = {
   noUnderline: true,
   children: (
     <>
@@ -81,10 +82,10 @@ CustomContent.args = {
 }
 
 export const Active = Template.bind({})
-Active.args = { active: true }
+;(Active as any).args = { active: true }
 
 export const Disabled = Template.bind({})
-Disabled.args = { disabled: true }
+;(Disabled as any).args = { disabled: true }
 
 export const ActiveDisabled = Template.bind({})
-ActiveDisabled.args = { active: true, disabled: true }
+;(ActiveDisabled as any).args = { active: true, disabled: true }

@@ -27,7 +27,7 @@ interface TokenListProps {
   loading?: boolean
 }
 
-const TokenList: FC<TokenListProps> = ({ tokens, goToTokenPage, loading }) => {
+const TokenList: FC<TokenListProps> = ({ tokens, goToTokenPage, loading }: TokenListProps) => {
   return (
     <Table>
       <thead>

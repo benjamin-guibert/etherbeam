@@ -6,7 +6,7 @@ interface BlockProps {
   children?: ReactNode
 }
 
-const Block: FC<BlockProps> = ({ className, children }) => {
+const Block: FC<BlockProps> = ({ className, children }: BlockProps) => {
   return <div className={['my-block', className].join(' ')}>{children}</div>
 }
 

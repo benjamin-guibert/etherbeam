@@ -33,7 +33,7 @@ const Button: FC<ButtonProps> = ({
   active,
   disabled,
   className,
-}) => {
+}: ButtonProps) => {
   const getClassName = (): string => {
     const classNames = [link ? `my-button-link my-${color}-fg` : `my-button my-${color}-bg`, 'my-clickable']
     if (disabled) {

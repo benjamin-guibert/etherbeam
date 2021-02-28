@@ -28,19 +28,19 @@ const ApprovalAction: FC = () => {
   return <span>Approved</span>
 }
 
-const TransferAction: FC<ActionProps> = ({ action }) => {
+const TransferAction: FC<ActionProps> = ({ action }: ActionProps) => {
   const { fromAmount, fromAddress, toAddress } = action
 
   return (
     <span>
       <TokenAmount amount={fromAmount} token={fromAddress as Token} />
       <span> to </span>
-      <Address address={toAddress} short />
+      {toAddress && <Address address={toAddress} short />}
     </span>
   )
 }
 
-const BuyAction: FC<ActionProps> = ({ action }) => {
+const BuyAction: FC<ActionProps> = ({ action }: ActionProps) => {
   const { fromAmount, toAmount, toAddress } = action
 
   return (
@@ -56,7 +56,7 @@ const BuyAction: FC<ActionProps> = ({ action }) => {
   )
 }
 
-const SellAction: FC<ActionProps> = ({ action }) => {
+const SellAction: FC<ActionProps> = ({ action }: ActionProps) => {
   const { fromAmount, fromAddress, toAmount } = action
   return (
     <span>
@@ -75,7 +75,7 @@ interface TransactionActionRowProps {
   action: TransactionAction
 }
 
-const TransactionActionRow: FC<TransactionActionRowProps> = ({ action }) => {
+const TransactionActionRow: FC<TransactionActionRowProps> = ({ action }: TransactionActionRowProps) => {
   const {
     type,
     direction,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import * as TableStories from './Table.stories'
@@ -13,9 +14,9 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <PaginatedList {...args} />
+const Template = (args: any) => <PaginatedList {...args} />
 
 export const Default = Template.bind({})
 
 export const SinglePage = Template.bind({})
-SinglePage.args = { pagination: { totalPages: 1, currentPage: 1 } }
+;(SinglePage as any).args = { pagination: { totalPages: 1, currentPage: 1 } }

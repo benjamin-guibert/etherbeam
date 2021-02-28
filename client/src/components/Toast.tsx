@@ -13,7 +13,7 @@ interface ToastProps {
   children?: ReactNode
 }
 
-const Toast: FC<ToastProps> = ({ type = 'info', children }) => {
+const Toast: FC<ToastProps> = ({ type = 'info', children }: ToastProps) => {
   const [hidden, setHidden] = useState<boolean>(false)
 
   useEffect(() => {

@@ -21,7 +21,7 @@ describe('<TokenAmount />', () => {
       expect(spans.at(0).hasClass('my-tokenamount-symbol')).toBeTruthy()
       expect(spans.at(0).prop('children')).toEqual('ETH')
       expect(spans.at(1).hasClass('my-tokenamount-amount')).toBeTruthy()
-      expect(spans.at(1).prop('children')[1]).toEqual('1,000')
+      expect((spans.at(1).prop('children') as never)?.[1]).toEqual('1,000')
     })
 
     it('should match snapshot', () => expect(component.render()).toMatchSnapshot())
@@ -37,7 +37,7 @@ describe('<TokenAmount />', () => {
     it('should render', () => {
       const spans = component.find('Badge').find('span')
       expect(spans.at(0).prop('children')).toEqual(token.symbol)
-      expect(spans.at(1).prop('children')[1]).toEqual('1,000')
+      expect((spans.at(1).prop('children') as never)?.[1]).toEqual('1,000')
     })
   })
 
@@ -69,7 +69,7 @@ describe('<TokenAmount />', () => {
 
     it('should render', () => {
       const spans = component.find('Badge').find('span')
-      expect(spans.at(1).prop('children')[1]).toEqual('1,000.00')
+      expect((spans.at(1).prop('children') as never)?.[1]).toEqual('1,000.00')
     })
   })
 
@@ -81,7 +81,7 @@ describe('<TokenAmount />', () => {
     it('should render', () => {
       const spans = component.find('Badge').find('span')
       expect(spans.at(0).hasClass('my-tokenamount-amount')).toBeTruthy()
-      expect(spans.at(0).prop('children')[1]).toEqual('1,000')
+      expect((spans.at(0).prop('children') as never)?.[1]).toEqual('1,000')
     })
   })
 

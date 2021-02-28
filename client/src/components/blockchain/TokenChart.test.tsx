@@ -4,6 +4,7 @@ import { shallow, ShallowWrapper } from 'enzyme'
 jest.mock('react-tradingview-widget', () => {
   return {
     __esModule: true,
+    // eslint-disable-next-line react/display-name
     default: () => {
       return <article></article>
     },

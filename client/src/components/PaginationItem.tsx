@@ -19,7 +19,7 @@ interface PaginationItemProps {
   disabled?: boolean
 }
 
-const PaginationItem: FC<PaginationItemProps> = ({ page, action, selected, disabled }) => {
+const PaginationItem: FC<PaginationItemProps> = ({ page, action, selected, disabled }: PaginationItemProps) => {
   const getProps = (): { description: string | null; icon: IconDefinition | null } => {
     switch (page) {
       case 'first':

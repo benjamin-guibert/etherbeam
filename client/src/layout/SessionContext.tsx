@@ -1,61 +1,54 @@
-import { createContext, useCallback, useEffect, useState } from 'react'
+import { createContext, useEffect, useRef, useState } from 'react'
+import { isAuthentified } from '@cryptotentanz/api-client'
 import {
-  initializeAuthToken,
+  initializeServerData,
   ServerData,
-  validateToken,
   signIn as signInUser,
   signOut as signOutUser,
-  unsubscribeAuth,
-  subscribeAuth,
+  subscribeToUserUpdates,
+  unsubscribeFromUserUpdates,
+  validateToken,
 } from '../libraries/server'
-import { User } from 'libraries/types'
-import { loadAuthToken, removeAuthToken } from 'libraries/storage'
+import { User } from '../libraries/types'
+
+const serverData = initializeServerData()
 
 export interface SessionContextData {
   serverData: ServerData
-  currentUser: User
+  currentUser: User | null | undefined
   initialize: () => void
   signIn: (email: string, password: string) => void
   signOut: () => void
 }
 
-export const useSessionContextValue = (serverData: ServerData): SessionContextData => {
-  const [currentUser, setCurrentUser] = useState<User>(undefined)
+export const useSessionContextValue = (): SessionContextData => {
+  const [currentUser, setCurrentUser] = useState<User | null | undefined>(undefined)
+  const serverDataRef = useRef<ServerData>(serverData)
 
-  const initialize = useCallback((): void => {
-    const tokenAuth = loadAuthToken()
+  const initialize = () => {
+    if (isAuthentified(serverDataRef.current.apiClient)) {
+      validateToken(serverDataRef.current)
+    } else {
+      setCurrentUser(null)
+    }
+  }
+  const signIn = (email: string, password: string) => signInUser(serverDataRef.current, email, password)
 
-    if (!tokenAuth) return setCurrentUser(null)
-
-    initializeAuthToken(serverData, tokenAuth)
-    validateToken(serverData).then((user) => {
-      setCurrentUser(user)
-      if (!user) removeAuthToken()
-    })
-  }, [serverData])
-
-  const signIn = useCallback(
-    (email: string, password: string): void => {
-      signInUser(email, password, serverData).then(setCurrentUser)
-    },
-    [serverData]
-  )
-
-  const signOut = useCallback((): void => {
-    signOutUser(serverData).then(() => setCurrentUser(null))
-  }, [serverData])
+  const signOut = () => signOutUser(serverDataRef.current)
 
   useEffect(() => {
-    subscribeAuth(serverData, setCurrentUser)
+    const serverData = serverDataRef.current
 
-    return () => unsubscribeAuth(serverData, setCurrentUser)
-  }, [serverData])
+    subscribeToUserUpdates(serverData, setCurrentUser)
 
-  return { serverData, currentUser, initialize, signIn, signOut }
+    return () => unsubscribeFromUserUpdates(serverData, setCurrentUser)
+  }, [])
+
+  return { serverData: serverDataRef.current, currentUser, initialize, signIn, signOut }
 }
 
 export const SessionContext = createContext<SessionContextData>({
-  serverData: undefined,
+  serverData: (undefined as unknown) as ServerData,
   currentUser: undefined,
   initialize: () => undefined,
   signIn: () => undefined,

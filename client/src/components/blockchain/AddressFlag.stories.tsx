@@ -19,12 +19,12 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <AddressFlag {...args} />
+const Template = (args: any) => <AddressFlag {...args} />
 
 export const Default = Template.bind({})
 
 export const Wallet = Template.bind({})
-Wallet.args = {
+;(Wallet as any).args = {
   address: {
     hash: '0x0000000000000000000000000000000000000111',
     label: 'Wallet',
@@ -34,7 +34,7 @@ Wallet.args = {
 }
 
 export const Contract = Template.bind({})
-Contract.args = {
+;(Contract as any).args = {
   address: {
     hash: '0x0000000000000000000000000000000000000111',
     label: 'Contract',
@@ -44,7 +44,7 @@ Contract.args = {
 }
 
 export const Token = Template.bind({})
-Token.args = {
+;(Token as any).args = {
   address: {
     hash: '0x0000000000000000000000000000000000000111',
     label: 'Token',

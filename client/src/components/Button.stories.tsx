@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
@@ -14,59 +15,59 @@ export default {
   },
 } as Meta
 
-const Template = (args) => <Button {...args} />
+const Template = (args: any) => <Button {...args} />
 
 export const Default = Template.bind({})
 
 export const Dark = Template.bind({})
-Dark.args = { color: 'dark' }
-Dark.parameters = {
+;(Dark as any).args = { color: 'dark' }
+;(Dark as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 export const Light = Template.bind({})
-Light.args = { color: 'light' }
+;(Light as any).args = { color: 'light' }
 export const Primary = Template.bind({})
-Primary.args = { color: 'primary' }
+;(Primary as any).args = { color: 'primary' }
 export const Secondary = Template.bind({})
-Secondary.args = { color: 'secondary' }
+;(Secondary as any).args = { color: 'secondary' }
 export const Positive = Template.bind({})
-Positive.args = { color: 'positive' }
-Positive.parameters = {
+;(Positive as any).args = { color: 'positive' }
+;(Positive as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 export const Negative = Template.bind({})
-Negative.args = { color: 'negative' }
-Negative.parameters = {
+;(Negative as any).args = { color: 'negative' }
+;(Negative as any).parameters = {
   backgrounds: {
     default: 'Light',
   },
 }
 
 export const Medium = Template.bind({})
-Medium.args = { size: 'm' }
+;(Medium as any).args = { size: 'm' }
 export const Large = Template.bind({})
-Large.args = { size: 'l' }
+;(Large as any).args = { size: 'l' }
 export const ExtraLarge = Template.bind({})
-ExtraLarge.args = { size: 'xl' }
+;(ExtraLarge as any).args = { size: 'xl' }
 
 export const NoIcon = Template.bind({})
-NoIcon.args = { icon: null }
+;(NoIcon as any).args = { icon: null }
 
 export const NoLabel = Template.bind({})
-NoLabel.args = { label: null }
+;(NoLabel as any).args = { label: null }
 
 export const Link = Template.bind({})
-Link.args = { link: true }
+;(Link as any).args = { link: true }
 
 export const Active = Template.bind({})
-Active.args = { active: true }
+;(Active as any).args = { active: true }
 
 export const Disabled = Template.bind({})
-Disabled.args = { disabled: true }
+;(Disabled as any).args = { disabled: true }
 
 export const ActiveDisabled = Template.bind({})
-ActiveDisabled.args = { active: true, disabled: true }
+;(ActiveDisabled as any).args = { active: true, disabled: true }
