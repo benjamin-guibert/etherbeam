@@ -1,6 +1,6 @@
 server:
-  - packages/server/**/*
+  - server/**/*
 eth-server:
-  - packages/eth-server/**/*
+  - eth-server/**/*
 client:
-  - packages/client/**/*
+  - client/**/*

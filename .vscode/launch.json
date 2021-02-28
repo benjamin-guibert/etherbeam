@@ -5,32 +5,32 @@
       "name": "Server",
       "type": "Ruby",
       "request": "launch",
-      "cwd": "${workspaceRoot}/packages/server",
-      "program": "${workspaceRoot}/packages/server/bin/rails",
+      "cwd": "${workspaceRoot}/server",
+      "program": "${workspaceRoot}/server/bin/rails",
       "args": ["server"]
     },
     {
       "name": "Server - Test",
       "type": "Ruby",
       "request": "launch",
-      "cwd": "${workspaceRoot}/packages/server",
-      "program": "${workspaceRoot}/packages/server/bin/bundle",
+      "cwd": "${workspaceRoot}/server",
+      "program": "${workspaceRoot}/server/bin/bundle",
       "args": ["exec", "rspec", "-I", "${workspaceRoot}"]
     },
     {
       "name": "Server - Test (file)",
       "type": "Ruby",
       "request": "launch",
-      "cwd": "${workspaceRoot}/packages/server",
-      "program": "${workspaceRoot}/packages/server/bin/bundle",
+      "cwd": "${workspaceRoot}/server",
+      "program": "${workspaceRoot}/server/bin/bundle",
       "args": ["exec", "rspec", "-I", "${file}"]
     },
     {
       "name": "Server - Test (line)",
       "type": "Ruby",
       "request": "launch",
-      "cwd": "${workspaceRoot}/packages/server",
-      "program": "${workspaceRoot}/packages/server/bin/bundle",
+      "cwd": "${workspaceRoot}/server",
+      "program": "${workspaceRoot}/server/bin/bundle",
       "args": ["exec", "rspec", "-I", "${file}:${lineNumber}"]
     }
   ]

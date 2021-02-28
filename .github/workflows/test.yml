@@ -7,7 +7,7 @@ jobs:
     name: Test Server
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./packages/server
+      WORKING_DIRECTORY: ./server
       RAILS_ENV: test
 
     steps:
@@ -49,7 +49,7 @@ jobs:
     name: Test Ethereum Server
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./packages/eth-server
+      WORKING_DIRECTORY: ./eth-server
       NODE_ENV: test
 
     steps:
@@ -82,7 +82,7 @@ jobs:
     name: Test Client
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./packages/client
+      WORKING_DIRECTORY: ./client
       NODE_ENV: test
 
     steps:

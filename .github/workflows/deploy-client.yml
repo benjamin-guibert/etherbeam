@@ -10,7 +10,7 @@ jobs:
     environment: development
     env:
       APP_PATH: /var/app/etherbeam
-      WORKING_DIRECTORY: packages/client
+      WORKING_DIRECTORY: ./client
       WWW_USER: www-data
       WWW_PATH: /var/www/${{ secrets.NGINX_NAME }}
 
@@ -26,7 +26,7 @@ jobs:
           script: |
             sudo rm -rf ${{ env.WWW_PATH }}/*
             mkdir -p -m 770 ${{ env.WWW_PATH }}
-            cp -r ${{ env.APP_PATH }}/packages/client/dist/* ${{ env.WWW_PATH }}
+            cp -r ${{ env.APP_PATH }}/client/dist/* ${{ env.WWW_PATH }}
             sudo chown -R ${{ env.WWW_USER }}:${{ env.WWW_USER }} ${{ env.WWW_PATH }}
             sudo chmod -R 770 ${{ env.WWW_PATH }}
             ls -halrt ${{ env.WWW_PATH }}
