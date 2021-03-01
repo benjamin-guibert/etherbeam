@@ -2,6 +2,7 @@ name: Deploy Build
 env:
   SERVER_API_HOST: http://server:3000/
   APP_PATH: /var/app/etherbeam
+  API_CLIENT_PATH: ./shared/ts/api-client
   SERVER_PATH: ./server
   ETH_SERVER_PATH: ./eth-server
   CLIENT_PATH: ./client
@@ -21,6 +22,7 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
@@ -41,11 +43,13 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
       - name: Create .env file
         working-directory: ${{ env.SERVER_PATH }}
         run: |
           echo POSTGRES_PASSWORD='${{ secrets.POSTGRES_PASSWORD }}' > .env
           echo ETH_SERVER_USER_PASSWORD='${{ secrets.SERVER_API_PASSWORD }}' >> .env
+
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
@@ -56,6 +60,7 @@ jobs:
           source: "${{ env.SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
           rm: false
+
       - name: Build Docker container
         uses: appleboy/ssh-action@master
         with:
@@ -79,6 +84,7 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
       - name: Create Ethereum Server .env file
         working-directory: ${{ env.ETH_SERVER_PATH }}
         run: |
@@ -88,6 +94,7 @@ jobs:
           echo SERVER_API_HOST='${{ env.SERVER_API_HOST }}' >> .env
           echo SERVER_API_USER='${{ secrets.SERVER_API_USER }}' >> .env
           echo SERVER_API_PASSWORD='${{ secrets.SERVER_API_PASSWORD }}' >> .env
+
       - name: Copy repository to the VPS
         uses: appleboy/scp-action@master
         with:
@@ -98,6 +105,7 @@ jobs:
           source: "${{ env.ETH_SERVER_PATH}}/*"
           target: "${{ env.APP_PATH }}"
           rm: false
+
       - name: Build Docker container
         uses: appleboy/ssh-action@master
         with:
@@ -141,6 +149,10 @@ jobs:
       - name: Install client dependencies
         working-directory: ${{ env.CLIENT_PATH }}
         run: yarn install --non-interactive
+
+      - name: Build API client
+        working-directory: ${{ env.API_CLIENT_PATH }}
+        run: yarn build
 
       - name: Build distribution
         working-directory: ${{ env.CLIENT_PATH }}
