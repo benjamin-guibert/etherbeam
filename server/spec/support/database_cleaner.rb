@@ -2,15 +2,12 @@
 
 require 'database_cleaner'
 
+DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |config|
-  config.before(:context) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.start
+  config.before(:each) do
+    DatabaseCleaner.clean
 
     Rails.application.load_seed
-  end
-
-  config.after(:context) do
-    DatabaseCleaner.clean
   end
 end
