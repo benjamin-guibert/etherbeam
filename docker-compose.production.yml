@@ -9,10 +9,10 @@ services:
     networks:
       - etherbeam
     env_file:
-      - packages/server/.env
+      - server/.env
   server:
     container_name: etherbeam_server
-    build: packages/server/.
+    build: server/.
     environment:
       - RAILS_ENV=production
     volumes:
@@ -26,7 +26,7 @@ services:
       - database
   eth-server:
     container_name: etherbeam_eth_server
-    build: packages/eth-server/.
+    build: eth-server/.
     environment:
       - NODE_ENV=production
       - NODE_PORT=3002

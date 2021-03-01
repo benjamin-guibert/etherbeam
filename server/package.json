@@ -1,0 +1,17 @@
+{
+  "name": "@cryptotentanz/etherbeam-server",
+  "description": "Etherbeam's server side.",
+  "version": "1.0.0",
+  "author": "Benjamin Guibert <contact@bguibert.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rails server -p 3001",
+    "format": "rubocop --auto-correct",
+    "lint": "rubocop",
+    "test": "rspec",
+    "routes": "rails routes"
+  },
+  "devDependencies": {
+    "eslint-plugin-md": "^1.0.19"
+  }
+}

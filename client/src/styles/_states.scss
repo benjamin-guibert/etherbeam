@@ -1,0 +1,20 @@
+@use 'resources/sizes';
+@use 'resources/colors';
+@use 'resources/fonts';
+
+// Status
+
+.my-disabled {
+  &-fg,
+  &-fg:hover,
+  &-fg:active {
+    color: colors.$disabled-fg !important;
+  }
+
+  &-bg,
+  &-bg:hover,
+  &-bg:active {
+    background-color: colors.$disabled-bg !important;
+    color: colors.$light !important;
+  }
+}

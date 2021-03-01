@@ -12,7 +12,7 @@ services:
       - etherbeam
   server:
     container_name: etherbeam_server_test
-    build: packages/server/.
+    build: server/.
     environment:
       - RAILS_ENV=test
     networks:
@@ -21,7 +21,7 @@ services:
       - database
   eth-server:
     container_name: etherbeam_eth_server_test
-    build: packages/eth-server/.
+    build: eth-server/.
     environment:
       - NODE_ENV=test
     networks:

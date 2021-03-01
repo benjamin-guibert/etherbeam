@@ -3,11 +3,48 @@ name: Test
 on: [push]
 
 jobs:
+  test-api-client:
+    name: Test API client
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: ./shared/ts/api-client
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Get the Node version
+        id: node
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "::set-output name=NODE_VERSION::$(cat .node-version)"
+
+      - name: Set up Node ${{ steps.node.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.node.outputs.NODE_VERSION }}"
+
+      - name: Install dependencies
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: yarn install --non-interactive
+
+      - name: Run Lint
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: yarn lint
+
+      - name: Run tests
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: yarn test
+
+      - name: Build distribution
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: yarn build
+
   test-server:
     name: Test Server
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./packages/server
+      WORKING_DIRECTORY: ./server
       RAILS_ENV: test
 
     steps:
@@ -48,8 +85,9 @@ jobs:
   test-eth-server:
     name: Test Ethereum Server
     runs-on: ubuntu-latest
+    needs: test-api-client
     env:
-      WORKING_DIRECTORY: ./packages/eth-server
+      WORKING_DIRECTORY: ./eth-server
       NODE_ENV: test
 
     steps:
@@ -81,8 +119,9 @@ jobs:
   test-client:
     name: Test Client
     runs-on: ubuntu-latest
+    needs: test-api-client
     env:
-      WORKING_DIRECTORY: ./packages/client
+      WORKING_DIRECTORY: ./client
       NODE_ENV: test
 
     steps:

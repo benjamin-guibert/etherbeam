@@ -1,9 +1,13 @@
 {
-  "packages": ["packages/*"],
-  "version": "0.0.1",
-  "command": {
-    "run": {
-      "npmClient": "yarn"
-    }
-  }
+  "name": "etherbeam",
+  "description": "Ethereum cryptocurrency tracker",
+  "packages": [
+    "server",
+    "eth-server",
+    "client",
+    "shared/ts/*"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "version": "1.0.0"
 }

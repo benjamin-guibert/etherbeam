@@ -10,6 +10,7 @@
 ## Table of Contents
 
 - [Stack](#stack)
+- [Scripts](#scripts)
 - [Release History](#release-history)
 - [Versionning](#versionning)
 - [Authors](#authors)
@@ -17,9 +18,19 @@
 
 ## Stack
 
-- [Server](packages/server/README.md): Server side.
-- [Ethereum Server](packages/eth-server/README.md): Server dedicated to communication with the Ethereum blockchain.
-- [Client](packages/client/README.md): Client side.
+- [Server](server/README.md): Server side.
+- [Ethereum Server](eth-server/README.md): Server dedicated to communication with the Ethereum blockchain.
+- [Client](client/README.md): Client side.
+
+## Scripts
+
+- `yarn dev`: Run the stack in development mode.
+- `yarn dev:server`: Run the server in development mode.
+- `yarn dev:eth-server`: Run the Ethereum server in development mode.
+- `yarn dev:client`: Run the client in development mode.
+- `yarn format`: Format the code, apply needed modifications.
+- `yarn lint`: Check the code quality.
+- `yarn test`: Test the code.
 
 ## Release History
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> Default should match snapshot 1`] = `
+<a
+  class="my-clickable  my-ulink my-secondary-fg"
+  rel="noreferrer"
+  tabindex="0"
+>
+  <span>
+    Label
+  </span>
+</a>
+`;

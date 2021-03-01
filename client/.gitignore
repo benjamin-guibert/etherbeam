@@ -1,0 +1,19 @@
+# Dependencies
+
+/node_modules
+
+# Deployment
+
+/dist
+
+# Tests
+
+/coverage
+
+# Logs
+
+/log
+
+# Temporary files
+
+/tmp

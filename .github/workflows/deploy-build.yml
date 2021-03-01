@@ -2,9 +2,9 @@ name: Deploy Build
 env:
   SERVER_API_HOST: http://server:3000/
   APP_PATH: /var/app/etherbeam
-  SERVER_PATH: packages/server
-  ETH_SERVER_PATH: packages/eth-server
-  CLIENT_PATH: packages/client
+  SERVER_PATH: ./server
+  ETH_SERVER_PATH: ./eth-server
+  CLIENT_PATH: ./client
 
 on:
   workflow_dispatch:
