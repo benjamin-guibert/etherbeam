@@ -1,4 +1,10 @@
 name: Test
+env:
+  API_CLIENT_PATH: ./shared/ts/api-client
+  SERVER_PATH: ./server
+  ETH_SERVER_PATH: ./eth-server
+  CLIENT_PATH: ./eth-server
+
 
 on: [push]
 
@@ -7,7 +13,6 @@ jobs:
     name: Test API client
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./shared/ts/api-client
       NODE_ENV: test
 
     steps:
@@ -16,7 +21,7 @@ jobs:
 
       - name: Get the Node version
         id: node
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.API_CLIENT_PATH }}
         run: echo "::set-output name=NODE_VERSION::$(cat .node-version)"
 
       - name: Set up Node ${{ steps.node.outputs.NODE_VERSION }}
@@ -25,26 +30,21 @@ jobs:
           node-version: "${{ steps.node.outputs.NODE_VERSION }}"
 
       - name: Install dependencies
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.API_CLIENT_PATH }}
         run: yarn install --non-interactive
 
       - name: Run Lint
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.API_CLIENT_PATH }}
         run: yarn lint
 
       - name: Run tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.API_CLIENT_PATH }}
         run: yarn test
-
-      - name: Build distribution
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: yarn build
 
   test-server:
     name: Test Server
     runs-on: ubuntu-latest
     env:
-      WORKING_DIRECTORY: ./server
       RAILS_ENV: test
 
     steps:
@@ -53,7 +53,7 @@ jobs:
 
       - name: Get Ruby version
         id: rbenv
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.SERVER_PATH }}
         run: echo "::set-output name=RUBY_VERSION::$(cat .ruby-version)"
 
       - name: Set up Ruby ${{ steps.rbenv.outputs.RUBY_VERSION }}
@@ -62,32 +62,30 @@ jobs:
           ruby-version: "${{ steps.rbenv.outputs.RUBY_VERSION }}"
 
       - name: Install dependencies
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.SERVER_PATH }}
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
       - name: Run Rubocop
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.SERVER_PATH }}
         run: bundle exec rubocop --parallel
 
       - name: Start database Docker container
         run: docker-compose -f docker-compose.test.yml up -d database
 
       - name: Set up database
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.SERVER_PATH }}
         run: bundle exec rake db:setup
 
       - name: Run tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.SERVER_PATH }}
         run: bundle exec rspec
 
   test-eth-server:
     name: Test Ethereum Server
     runs-on: ubuntu-latest
-    needs: test-api-client
     env:
-      WORKING_DIRECTORY: ./eth-server
       NODE_ENV: test
 
     steps:
@@ -96,7 +94,7 @@ jobs:
 
       - name: Get the Node version
         id: node
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.ETH_SERVER_PATH }}
         run: echo "::set-output name=NODE_VERSION::$(cat .node-version)"
 
       - name: Set up Node ${{ steps.node.outputs.NODE_VERSION }}
@@ -105,23 +103,21 @@ jobs:
           node-version: "${{ steps.node.outputs.NODE_VERSION }}"
 
       - name: Install dependencies
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.ETH_SERVER_PATH }}
         run: yarn install
 
       - name: Run Lint
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.ETH_SERVER_PATH }}
         run: yarn lint
 
       - name: Run tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.ETH_SERVER_PATH }}
         run: yarn test
 
   test-client:
     name: Test Client
     runs-on: ubuntu-latest
-    needs: test-api-client
     env:
-      WORKING_DIRECTORY: ./client
       NODE_ENV: test
 
     steps:
@@ -130,7 +126,7 @@ jobs:
 
       - name: Get the Node version
         id: node
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.CLIENT_PATH }}
         run: echo "::set-output name=NODE_VERSION::$(cat .node-version)"
 
       - name: Set up Node ${{ steps.node.outputs.NODE_VERSION }}
@@ -139,13 +135,17 @@ jobs:
           node-version: "${{ steps.node.outputs.NODE_VERSION }}"
 
       - name: Install dependencies
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.CLIENT_PATH }}
         run: yarn install --non-interactive
 
+      - name: Build api-client
+        working-directory: ${{ env.CLIENT_PATH }}
+        run: yarn build
+
       - name: Run Lint
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.CLIENT_PATH }}
         run: yarn lint
 
       - name: Run tests
-        working-directory: ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{ env.CLIENT_PATH }}
         run: yarn test
