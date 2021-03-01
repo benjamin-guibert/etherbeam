@@ -6,8 +6,7 @@ COPY . .
 
 EXPOSE 3000
 
-RUN yarn install --non-interactive
-
 RUN yarn lerna run build --scope @cryptotentanz/api-client
+RUN yarn install --non-interactive
 
 CMD yarn start
