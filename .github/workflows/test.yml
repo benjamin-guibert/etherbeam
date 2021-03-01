@@ -106,6 +106,10 @@ jobs:
         working-directory: ${{ env.ETH_SERVER_PATH }}
         run: yarn install
 
+      - name: Build API client
+        working-directory: ${{ env.API_CLIENT_PATH }}
+        run: yarn build
+
       - name: Run Lint
         working-directory: ${{ env.ETH_SERVER_PATH }}
         run: yarn lint
@@ -138,8 +142,8 @@ jobs:
         working-directory: ${{ env.CLIENT_PATH }}
         run: yarn install --non-interactive
 
-      - name: Build api-client
-        working-directory: ${{ env.CLIENT_PATH }}
+      - name: Build API client
+        working-directory: ${{ env.API_CLIENT_PATH }}
         run: yarn build
 
       - name: Run Lint
